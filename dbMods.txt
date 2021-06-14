@@ -1,0 +1,7 @@
+
+
+
+
+ALTER TABLE `job_orders_processes` ADD `start_date` DATE NULL AFTER `job_order_id`, ADD `duration` INT NULL AFTER `start_date`, ADD `end_date` DATE NULL AFTER `duration`;
+ALTER TABLE `job_orders_processes_acts` ADD `start_date` DATE NULL AFTER `job_order_id`, ADD `duration` INT NULL AFTER `start_date`, ADD `end_date` DATE NULL AFTER `duration`;
+ALTER TABLE `job_orders_processes_acts_tasks` ADD `start_date` DATE NULL AFTER `job_order_id`, ADD `duration` INT NULL AFTER `start_date`, ADD `end_date` DATE NULL AFTER `duration`;

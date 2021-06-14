@@ -1,0 +1,1 @@
+[24-Sep-2020 12:52:19 Asia/Dubai] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/wyy8kvbzrh9n/public_html/ghant/bootstrap/chk_log_user.php on line 37

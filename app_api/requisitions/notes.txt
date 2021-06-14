@@ -1,0 +1,83 @@
+
+
+message box - in accounts for revised PO
+
+Print po should be attacj=hed and a mailshould be sent to supplier
+
+Email notification 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Revision Number to be displayed in PO
+The older revision below and new revision above should be displayed
+
+job cost sheet 
+reallocate budget 
+add budget
+
+job activity sheet
+
+code item budget
+
+
+
+
+
+
+
+
+
+
+
+
+PO - req should open the req table
+Send enquiry next to quoted price
+The Generate PO should have the file added in quotation
+Add change to generate PO
+on whos desk - after approve change whos desk name
+change white to black rfq
+req form right side status change , doc remove rfq list and put the 
+check if both the items have rfq list 
+edit to get items - req form
+Archive next to approve in ---
+Archive req in req - operation
+change name s.qty in req to stock
+CR to certificates - req form
+Create RFQ - should open email with the table 
+Finish RFQ should be removed and next should be added.
+popup - success message - can go to next
+bottom - right - next button
+FIrst RFQs
+then the compartive sheet
+compatitive supplier
+Everything connected by next
+Add multiple files in quotation
+supplier .. more than one quotation add
+Estimation Rename completed to Startestimation
+Add revision number column in drafts
+Quotation file uploading mandatory
+VAT included - yes
+Currency - AED
+Delivery Period - 1to 2 days
+payment term - 60 days tt
+Project material tracking search by item name
+only after the po is approved then activate print PO
+a red mark with number of message pending
