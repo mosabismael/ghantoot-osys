@@ -109,7 +109,7 @@ if(mysqli_num_rows($q_exe) > 0){
 			<ul class="tabber-header">
 				<li id="sel-1" onclick="set_tabber(1);" class="active"><?=lang("general", "AAR"); ?></li>
 				<li id="sel-2" onclick="set_tabber(2);"><?=lang("contacts", "AAR"); ?></li>
-				<!-- <li id="sel-3" onclick="set_tabber(3);"></li> -->
+				<li id="sel-3" onclick="set_tabber(3);"><?=lang("items", "AAR"); ?></li>
 				<li id="sel-4" onclick="set_tabber(4);"><?=lang("extra_details", "AAR"); ?></li>
 			</ul>
 			

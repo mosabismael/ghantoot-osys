@@ -30,12 +30,24 @@
 		$headerName = 'ProductLevel4';
 		include('addHeader.php');
 	?>
-	<p><?=$level3_id?></p>
 	<form method="post" name="firstLevel" class = "addform" id = "level4Form">
 		<label for ="no">Product Name</label>
 		<select id="name" name="name" required >
 			<option value="" disabled selected>Choose a Name</option>
-	
+			<?php
+				$qu_type_sel = "SELECT * FROM  `structural_sections`";
+				$qu_type_EXE = mysqli_query($KONN, $qu_type_sel);
+				if(mysqli_num_rows($qu_type_EXE)){
+					while($type_REC = mysqli_fetch_assoc($qu_type_EXE)){
+						$Column_1 = $type_REC['Hot_finished_Square_Hollow_Sections_in_accordance_with_EN_10210'];
+						$Column_2 = $type_REC['Column_2'];
+
+					?>
+					<option value="<?=$Column_1?> | <?=$Column_2?>"><?=$Column_1?>  | <?=$Column_2?></option>
+					<?php
+					}
+				}
+			?>
 		</select>
 		<!-- <input type = "text" id = "name" name = "name" required ><br> -->
 		<label for ="name">Product description</label>
