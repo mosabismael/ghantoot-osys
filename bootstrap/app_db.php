@@ -11,13 +11,13 @@ switch($Running_Environment){
 		$hostname_connecter = "localhost";
 		$database_connecter = "osys_db";
 		$username_connecter = "root";
-		$password_connecter = "";
+		$password_connecter = "admin";
 		break;
 	case 'server':
 		$hostname_connecter = "localhost";
-		$database_connecter = "ghant_db";
-		$username_connecter = "profiles_adtcher";
-		$password_connecter = "Y7yRy5JVpQSE";
+		$database_connecter = "osys_db";
+		$username_connecter = "root";
+		$password_connecter = "";
 		break;
 }
 
