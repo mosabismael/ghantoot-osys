@@ -243,7 +243,9 @@
 						}
 					}
 				}
-				die('1|projects_list.php?added=1');
+				die('1|projects_estimation.php?project_id='.$project_id);
+
+				// die('1|projects_list.php?added=1');
 				
 				
 				
