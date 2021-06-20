@@ -47,7 +47,7 @@
 	  
 <div class="btns-holder">
 	<button class="btn btn-primary" type="button" onClick="set_tabber(1);"><?=lang('Previous'); ?></button>
-	<button class="btn btn-primary" type="button" onClick="set_tabber(4);"><?=lang('next'); ?></button>
+	<button class="btn btn-primary" type="button" onClick="set_tabber(3);"><?=lang('next'); ?></button>
 </div>
 	
 	
