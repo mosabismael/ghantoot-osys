@@ -11,7 +11,7 @@ switch($Running_Environment){
 		$hostname_connecter = "localhost";
 		$database_connecter = "osys_db";
 		$username_connecter = "root";
-		$password_connecter = "admin";
+		$password_connecter = "";
 		break;
 	case 'server':
 		$hostname_connecter = "localhost";

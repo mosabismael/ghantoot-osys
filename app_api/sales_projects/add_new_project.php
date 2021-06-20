@@ -234,8 +234,112 @@
 													$insertStatement2 = mysqli_prepare($KONN,$qu_level3_insert);
 													mysqli_stmt_execute($insertStatement2);
 												}
+												}
+											}
+												else if($level2_name == 'Steel Assembly and Erection'){
+											
+												$level2_id = mysqli_insert_id($KONN);
+												$qu_level3_insert = "INSERT INTO `z_boq` (
+												`project_id`,
+												`level1_id`, 
+												`level2_id`, 
+												`level3_id`,
+												`level4_id`,
+												`level5_id`,
+												`has_boq_detail`,
+												`boq_material_name`
+												) VALUES (
+												'".$project_id."',
+												'".$level1_id."',
+												'".$level2_id."',
+												'0',
+												'0',
+												'0',
+												'0',
+												'Steel Assembly and Erection'
+												);";
+												$insertStatement2 = mysqli_prepare($KONN,$qu_level3_insert);
+												mysqli_stmt_execute($insertStatement2);
+											}
+											else if($level2_name == 'Panel Erection'){
+												
+												$level2_id = mysqli_insert_id($KONN);
+												$qu_level3_insert = "INSERT INTO `z_boq` (
+												`project_id`,
+												`level1_id`, 
+												`level2_id`, 
+												`level3_id`,
+												`level4_id`,
+												`level5_id`,
+												`has_boq_detail`,
+												`boq_material_name`
+												) VALUES (
+												'".$project_id."',
+												'".$level1_id."',
+												'".$level2_id."',
+												'0',
+												'0',
+												'0',
+												'0',
+												'Panel Erection'
+												);";
+												$insertStatement2 = mysqli_prepare($KONN,$qu_level3_insert);
+												mysqli_stmt_execute($insertStatement2);
 											}
 											
+											else if($level2_name == 'Metal decking Fabrication'){
+												
+												$level2_id = mysqli_insert_id($KONN);
+												$qu_level3_insert = "INSERT INTO `z_boq` (
+												`project_id`,
+												`level1_id`, 
+												`level2_id`, 
+												`level3_id`,
+												`level4_id`,
+												`level5_id`,
+												`has_boq_detail`,
+												`boq_material_name`
+												) VALUES (
+												'".$project_id."',
+												'".$level1_id."',
+												'".$level2_id."',
+												'0',
+												'0',
+												'0',
+												'0',
+												'Metal decking Fabrication'
+												);";
+												$insertStatement2 = mysqli_prepare($KONN,$qu_level3_insert);
+												mysqli_stmt_execute($insertStatement2);
+											}
+											
+											else if($level2_name == 'Metal Deck Erection'){
+												
+												$level2_id = mysqli_insert_id($KONN);
+												$qu_level3_insert = "INSERT INTO `z_boq` (
+												`project_id`,
+												`level1_id`, 
+												`level2_id`, 
+												`level3_id`,
+												`level4_id`,
+												`level5_id`,
+												`has_boq_detail`,
+												`boq_material_name`
+												) VALUES (
+												'".$project_id."',
+												'".$level1_id."',
+												'".$level2_id."',
+												'0',
+												'0',
+												'0',
+												'0',
+												'Metal Deck Erection'
+												);";
+												$insertStatement2 = mysqli_prepare($KONN,$qu_level3_insert);
+												mysqli_stmt_execute($insertStatement2);
+											}
+											else{
+												
 										}
 									}
 								}
@@ -246,7 +350,6 @@
 				die('1|projects_estimation.php?project_id='.$project_id);
 
 				// die('1|projects_list.php?added=1');
-				
 				
 				
 				

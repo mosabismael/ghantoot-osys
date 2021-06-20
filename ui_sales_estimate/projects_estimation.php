@@ -277,6 +277,20 @@
 								$('#coat-input1-'+id).hide();
 							}
 						}
+						else if(name == 'Panel Erection' || name == 'Metal decking Fabrication' || name == 'Metal Deck Erection'){
+							$('#head-name-'+id).html('Name');
+							$('#standard-input1-'+id).hide();
+							$('#head-weight-'+id).hide();
+							$('#head-standard-'+id).hide();
+							$('#head-sa-'+id).show();
+							$('#weight1-'+id).hide();
+							$('#head-group-'+id).hide();
+							$('#head-coat-'+id).hide();
+							$('#item-group-'+id).hide();
+							$('#coat-input1-'+id).hide();
+							$('#surfacearea-input1-'+id).show();
+							
+						}
 						else{
 							$('#standard-input1-'+id).hide();
 							$('#head-sa-'+id).hide();
@@ -425,7 +439,7 @@
 					$(level).find('#displayName').text("Add UB/UC");
 					$(level).find('#type_id').hide();
 					$(level).find('#type_name').hide();
-					console.log($(level));
+					console.log($('#level3_name').val());
 
 
 				}
@@ -684,6 +698,10 @@
 							boq_org = '<div class = "td"><input style = "width: 35%;margin-right: 10%;" type = "text" id = "boq_length-'+id+'" value =  "' + item_length + '" disabled><select id = "boq_length_unit-'+id+'" disabled><option value = "'+boq_length_unit_id+'">'+unit_name_length+'</option></select></div>'+ 
 							'<div class = "td"><input style = "width: 35%;margin-right: 10%;" type = "text" id = "boq_surfacearea-'+id+'" value =  "' + item_surfacearea + '" disabled><select id = "boq_surfacearea_unit-'+id+'" disabled><option value = "'+boq_surfacearea_unit_id+'">'+unit_name_surfacearea+'</option></select></select></div>';
 						}
+						if($('#header-boq-title-2').text() == 'Panels' || $('#header-boq-title-2').text() == 'Metal decking Fabrication' || $('#header-boq-title-2').text() == 'Metal decking Erection' ){
+							insertIntoManpower(item_surfacearea , item_name, item_surfacearea, item_surfacearea, boq_surfacearea_unit_id, 1, 1, boq, '', 0 ,item_surfacearea, '' , $('#header-boq-title-2').text());
+						}
+						
 						var nw_tr = '<div id="itemo-' + id + '" class="tr quote_item" idler="' + items_c + '">'+ 
 						'<div class = "td">'+
 						'<i onclick="rem_item(' + id + ",'"+tabber_id_sno+"'"+ ",'"+ths_tot+"'"+",'"+id+"',"+"'1'"+');" class="fa fa-trash" style="color:red;cursor:pointer;" area-hidden="true"></i>'+
@@ -1034,7 +1052,30 @@
 				}	
 				
 			}
-			
+				
+			function insertIntoManpower( ths_tot,item_name, item_qty, item_price, item_unit,item_manhour, item_manhour_cost, boq_id, standard , number_coat , surface_area, group, name){
+				var boq = 0;
+				if(name == 'Panels'){
+						name = 'Panel Erection';
+				}
+				$.ajax({
+					type: "GET",
+					url: "projects_estimate/add_manhour_details_table.php",
+					data: {'project_id': $('#project_id').val(), 'name':name, 'item_name':item_name,'item_qty':item_qty,'item_price':item_price,'item_tot':ths_tot,'item_unit':item_unit, 'item_manhour':item_manhour,'boq_id':boq,'item_manhour_cost':item_manhour_cost, 'standard':standard, 'number_coat':number_coat, 'surface_area':surface_area, 'group':group},
+					dataType :"json",
+					success: function(response) {
+						alert("added");
+					},
+					error: function (error) {
+						alert("ERR|add_manhour_details_table");
+					}
+				});
+				
+			}
+			function getBoqID( id , item_name  ){
+				var boq = 0;
+				
+			}
 			function add_manhour_details_table(tabber_id_sno, tabber_id, items_c , item_unit_name, ths_tot,item_name, item_qty, item_price, item_unit,item_manhour, item_manhour_cost, boq_id, standard , number_coat , surface_area, group){
 				var boq = parseInt(boq_id);
 				var res = "";
@@ -1523,6 +1564,8 @@
 				$('#item_price1'+tabber_id).val('');
 				$('#item_manhour1'+tabber_id).val('');
 				$('#item_manhour_cost1'+tabber_id).val('');
+				$('#surfacearea-input1'+tabber_id).val('');
+
 				
 				$('#item_name2'+tabber_id).val('');
 				$('#sa2'+tabber_id).val('');

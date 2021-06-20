@@ -19,6 +19,20 @@
 	}
 	if(isset($_GET['boq_id'])){
 		$boq_id = $_GET['boq_id'];
+		if($boq_id == 0){
+			if(isset($_GET['name'])){
+				$name = $_GET['name'];
+				$project_id = $_GET['project_id'];
+				$qu_project_level1_ins = "SELECT boq_id from z_boq where project_id = $project_id and boq_material_name = '$name'";
+				$userStatement = mysqli_prepare($KONN,$qu_project_level1_ins);
+				mysqli_stmt_execute($userStatement);
+				$qu_gen_status_change_EXE = mysqli_stmt_get_result($userStatement);
+				if(mysqli_num_rows($qu_gen_status_change_EXE)){
+					$gen_status_change_REC = mysqli_fetch_assoc($qu_gen_status_change_EXE);
+					$boq_id = $gen_status_change_REC['boq_id'];
+				}
+			}
+		}
 	}
 	if(isset($_GET['item_manhour'])){
 		$item_manhour = $_GET['item_manhour'];

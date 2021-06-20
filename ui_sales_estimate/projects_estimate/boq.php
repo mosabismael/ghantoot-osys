@@ -1,6 +1,8 @@
 <input type = "hidden" id = "tabber_id" name = "tabber_id">
 <input type = "hidden" id = "boq_id" name = "boq_id">
 <div class  ="header-title" id = "header-boq-title<?=$tabber_id?>" style = "float: left;font-size: 25px;"></div>
+
+
 <div class="table" id = "boq_normal<?=$tabber_id?>">
 	<div class = "tableHeader">
 		<div class = "tr">
@@ -136,7 +138,7 @@
 			<div class = "th"><i onclick = "delete_boq(<?=$tabber_id?>);" class="fa fa-trash" ></i></div>
 			<div class = "th"><?=lang('No.'); ?></div>
 			<div class = "th" id = "head-name<?=$tabber_id?>"><?=lang('Complexity'); ?></div>
-			<div class = "th" id="head-weight<?=$tabber_id?>" style = "display:block;"><?=lang('weight'); ?></div>
+			<div class = "th" id="head-weight<?=$tabber_id?>" ><?=lang('weight'); ?></div>
 			<div class = "th" id = "head-group<?=$tabber_id?>" style = "display:none;"><?=lang('Group'); ?></div>
 			<div class = "th" id = "head-standard<?=$tabber_id?>" style = "display:none;"><?=lang('Standard'); ?></div>
 			<div class = "th" id = "head-coat<?=$tabber_id?>" style = "display:none;"><?=lang('Number of Coat'); ?></div>
@@ -159,8 +161,8 @@
 				</div>
 			</div>
 			
-			<div class = "td" style ="display:block;" id = "weight1<?=$tabber_id?>">
-				<div class="form-item">
+			<div class = "td"  id = "weight1<?=$tabber_id?>">
+							<div class="form-item">
 					<input type="text" placeholder="<?=lang('item_weight'); ?>" id="item_qty1<?=$tabber_id?>">
 					<select id="item_unit1<?=$tabber_id?>" class="data-elem">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
