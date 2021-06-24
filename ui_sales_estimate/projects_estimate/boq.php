@@ -1,6 +1,8 @@
+
 <input type = "hidden" id = "tabber_id" name = "tabber_id">
 <input type = "hidden" id = "boq_id" name = "boq_id">
-<div class  ="header-title" id = "header-boq-title<?=$tabber_id?>" style = "float: left;font-size: 25px;"></div>
+<div class  ="header-title"   id = "header-boq-title<?=$tabber_id?>" style = "float: left;font-size: 25px;"></div>
+
 
 
 <div class="table" id = "boq_normal<?=$tabber_id?>">
@@ -18,6 +20,7 @@
 			<div class = "th"><?=lang('Total'); ?></div>
 		</div>
 	</div>
+
 	<div class = "tableBody">
 		<div class = "tr" id="added_items<?=$tabber_id?>"><hr></div>	
 		<div class = "tr">
@@ -62,7 +65,20 @@
 					</select>
 				</div>
 			</div>
-			
+	
+<script>
+	if(($('#header-boq-title<?=$tabber_id?>').text() == '40x40 | 3.2')){
+		var temp="jumbo"; 
+    $("#item_complexity<?=$tabber_id?>").val(temp);
+	}else{
+
+		var temp1 = $('#header-boq-title<?=$tabber_id?>').text();
+	console.log(temp1);
+	}
+
+	
+
+</script>
 			<div class = "td" id = "boq-qty-value<?=$tabber_id?>">
 				<div class="form-item">
 					<input type="text" placeholder="<?=lang('item_length'); ?>" id="item_length<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">

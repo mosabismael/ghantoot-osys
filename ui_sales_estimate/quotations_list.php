@@ -100,7 +100,10 @@
 				$isExpired = false;
 				$stater = $quotation_status." - Expired";
 			}
-			$convert = "<form action='projects_new.php'> <input class='favorite styled'
+			$convert = "<form action='projects_new.php'> 
+			<input type='hidden' name='user' value='$client_name'>
+
+			<input class='favorite styled'
 			type='submit'
 			value='Estimation >>  '></form>";
 

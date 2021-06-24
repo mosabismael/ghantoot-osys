@@ -18,10 +18,13 @@
 	</div>
 </div>
 <div class = "tabber-boq-4 notdisplayed" style = "margin-top: 5%;">
+
 	<?php
 		$tabber_id = "-4";
+		$complexity_id = "heavy";
 		include('boq.php');
 
+		
 	?>
 	
 </div>
@@ -29,8 +32,8 @@
 <div class = "add-new notdisplayed" id = "addProductLevel4">
 	<?php 
 		$headerName = 'ProductLevel4';
+		
 		include('addHeader.php');
-		echo "dd";
 
 	?>
 	<form method="post" name="firstLevel" class = "addform" id = "level4Form">
@@ -50,7 +53,6 @@
 					?>
 					<option value="<?=$Column_1?> | <?=$Column_2?>"><?=$Column_1?>  | <?=$Column_2?></option>
 					<?php
-									echo $Column_3;
 
 					}
 				}
@@ -82,6 +84,7 @@
 		</select>
 		<button type = "submit" name = "submitRecordLevel4" id = "button-add" onclick = "closeaddItem('ProductLevel4')">Add</button>
 	</form>
+
 </div>
 
 
@@ -112,6 +115,7 @@
 		return false;
 	};
 	function loadLevel4Data(id, name, level1_id, level2_id, level3_id){
+
 		$.ajax({
 			url      :"projects_estimate/fourthLevelData.php",
 			data     :{ 'id': id,'level1_id':level1_id,'level2_id':level2_id,'level3_id':level3_id},
@@ -130,10 +134,13 @@
 					var boq_td = '';
 					if(response[i].show_complete == '0'){
 						boq_td = '<i class="fas fa-folder" onclick = "loadBoq('+"'"+response[i].type_name+"'"+","+"5"+","+"'"+response[i].level5_id+"'"+","+level1_id+","+level2_id+","+level3_id+","+id+","+response[i].level5_id+","+response[i].boq_id+","+"'"+response[i].level5_name+"'"+');"></i>';
+						console.log(response);
 						if(response[i].boq_id=='0'){
 							boq_td = '<i class="fas fa-check complete" onclick = "loadBoq('+"'"+response[i].type_name+"'"+","+"5"+","+ "'"+response[i].level5_id+"',"+level1_id+","+level2_id+","+level3_id+","+"'"+id+"',"+response[i].level5_id+", 0"+","+"'"+response[i].level5_name+"'"+');"></i>';
+
 						}
 					}
+
 					var tr = '' + 
 					'<div class = "tr" id = "level5-'+response[i].level5_id+'">'+
 					'<div class = "td">' + response[i].sno + '</div>'+

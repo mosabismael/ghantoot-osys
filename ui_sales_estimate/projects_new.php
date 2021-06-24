@@ -12,6 +12,7 @@
 <head>
 	<?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
+
 </head>
 <body>
 <?php
@@ -24,7 +25,14 @@
 
 
 <div class="row">
+<?php
+if(isset($_GET['user'])){
+	$user = '';
+}
+	$user = $_GET['user'];
 
+	
+?>
 
 <form 
 id="add-new-client-form" 
@@ -44,7 +52,7 @@ api="<?=api_root; ?>sales_projects/add_new_project.php">
 					id="new-client_name" 
 					name="client_name" 
 					list="clients-data"
-					value=""
+					value="<?=$user?>" 
 					req="1" 
 					den="" 
 					placeholder="<?=lang('Type Client Name to Select'); ?>" 
