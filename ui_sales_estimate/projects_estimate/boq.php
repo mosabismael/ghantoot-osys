@@ -67,14 +67,11 @@
 			</div>
 	
 <script>
-	if(($('#header-boq-title<?=$tabber_id?>').text() == '40x40 | 3.2')){
 		var temp="jumbo"; 
     $("#item_complexity<?=$tabber_id?>").val(temp);
-	}else{
 
-		var temp1 = $('#header-boq-title<?=$tabber_id?>').text();
-	console.log(temp1);
-	}
+
+	
 
 	
 

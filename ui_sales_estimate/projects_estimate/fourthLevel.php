@@ -17,6 +17,8 @@
 		</div>
 	</div>
 </div>
+<script>
+</script>
 <div class = "tabber-boq-4 notdisplayed" style = "margin-top: 5%;">
 
 	<?php
@@ -28,7 +30,7 @@
 	?>
 	
 </div>
-<i class="far fa-plus-square addbutton displayed" id = "addbutton"onclick = "openaddItem('ProductLevel4')"></i>
+<i class="far fa-plus-square addbutton displayed" id = "addbutton"onclick =  "openaddItem('ProductLevel4')"></i>
 <div class = "add-new notdisplayed" id = "addProductLevel4">
 	<?php 
 		$headerName = 'ProductLevel4';
@@ -40,7 +42,7 @@
 		<label for ="no">Product Name</label>
 		<select id="name" name="name" required >
 
-			<option value="" disabled selected>Choose a Name</option>
+			<option id="structural_sections_id" value="" disabled selected>Choose a Name</option>
 			<?php
 
 				$qu_type_sel = "SELECT * FROM  `structural_sections`";
@@ -53,7 +55,7 @@
 					?>
 					<option value="<?=$Column_1?> | <?=$Column_2?>"><?=$Column_1?>  | <?=$Column_2?></option>
 					<?php
-
+						
 					}
 				}
 
@@ -115,6 +117,7 @@
 		return false;
 	};
 	function loadLevel4Data(id, name, level1_id, level2_id, level3_id){
+		console.log(data4);
 
 		$.ajax({
 			url      :"projects_estimate/fourthLevelData.php",
@@ -134,7 +137,6 @@
 					var boq_td = '';
 					if(response[i].show_complete == '0'){
 						boq_td = '<i class="fas fa-folder" onclick = "loadBoq('+"'"+response[i].type_name+"'"+","+"5"+","+"'"+response[i].level5_id+"'"+","+level1_id+","+level2_id+","+level3_id+","+id+","+response[i].level5_id+","+response[i].boq_id+","+"'"+response[i].level5_name+"'"+');"></i>';
-						console.log(response);
 						if(response[i].boq_id=='0'){
 							boq_td = '<i class="fas fa-check complete" onclick = "loadBoq('+"'"+response[i].type_name+"'"+","+"5"+","+ "'"+response[i].level5_id+"',"+level1_id+","+level2_id+","+level3_id+","+"'"+id+"',"+response[i].level5_id+", 0"+","+"'"+response[i].level5_name+"'"+');"></i>';
 
@@ -152,7 +154,7 @@
 					'</div>'+
 					'<div class = "td" style = "width: 15%;"><input class = "estimation_amount" style = "border:none;" type = "text" id = "amount-5-'+response[i].level5_id+'" value = '+response[i].total_amount+'></div>'+			
 					'</div>'
-					
+
 					$('#level5Body').append( tr );
 				}
 			},

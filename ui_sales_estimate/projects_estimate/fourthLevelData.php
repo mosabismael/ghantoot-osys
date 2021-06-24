@@ -80,6 +80,7 @@
 			);
 			
 			$sNo++;
+			echo $level4_id;
 		}
 		
 		

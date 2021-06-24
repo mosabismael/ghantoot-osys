@@ -1,3 +1,4 @@
+
 <?php
 	require_once('../bootstrap/app_config.php');
 	require_once('../bootstrap/chk_log_user.php');
@@ -29,7 +30,7 @@
 if(isset($_GET['user'])){
 	$user = '';
 }
-	$user = $_GET['user'];
+	$user =  $_GET['user'];
 
 	
 ?>
@@ -55,8 +56,9 @@ api="<?=api_root; ?>sales_projects/add_new_project.php">
 					value="<?=$user?>" 
 					req="1" 
 					den="" 
-					placeholder="<?=lang('Type Client Name to Select'); ?>" 
-					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>">
+					placeholder="<?=lang('Type Client Name to Select'); ?>"
+					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>"
+>
 
 					<span class="noter" id="clien_load_res">* <?=lang('fill client name to load information'); ?></span>
 		<datalist id="clients-data">
@@ -66,7 +68,7 @@ $q_exe = mysqli_query($KONN, $q);
 if(mysqli_num_rows($q_exe) > 0){
 	while($record = mysqli_fetch_assoc($q_exe)){
 ?>
-<option><?=$record['client_name']; ?></option>
+<option ><?=$record['client_name']; ?></option>
 <?php
 		}
 	}
@@ -164,6 +166,7 @@ if(mysqli_num_rows($q_exe) > 0){
 
 function loadClient(){
 	var client_name = $('#new-client_name').val().trim();
+
 	if(client_name != ''){
 		
 		$.ajax({

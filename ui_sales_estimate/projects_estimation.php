@@ -162,6 +162,7 @@
 						</div>
 						<div class="tabber-4 tabber-content">
 							<div class = "heirarchy" id = "heirarchy4"></div>
+							
 							<?php
 								include('projects_estimate/fourthLevel.php');
 							?>
@@ -247,6 +248,7 @@
 				$('#history').hide();
 			}
 			function loadBoq(type_name, id, sno, level1_id, level2_id, level3_id, level4_id, level5_id, boq_id, name){
+				var data4 ='';
 				if($('.tabber-boq-'+id).hasClass('notdisplayed')){
 					$('.tabber-boq-'+id).removeClass('notdisplayed');
 					$('.tabber-boq-'+id).addClass('displayed');
@@ -364,6 +366,10 @@
 						
 						
 					}
+					if(($('#sel-4').text()=='UB/UC' || $('#sel-4').text()=='Angles' || $('#sel-4').text()=='Plates') ){
+							 data4 =  $('#header-boq-title-4').text();
+							 console.log(data4);
+							} else
 					if($('#header-boq-title-2').text() == 'Surface Treatment' && $('#sel-3').text()=='LV03'){
 						$('#boq_normal-'+id).css('display', 'none');
 						$('#boq_manpower-'+id).css('display', 'none');
@@ -439,7 +445,6 @@
 					$(level).find('#displayName').text("Add UB/UC");
 					$(level).find('#type_id').hide();
 					$(level).find('#type_name').hide();
-					console.log($('#level3_name').val());
 
 
 				}
@@ -687,6 +692,9 @@
 						var boq_org = '<div class = "td" class = "boq-complexity-group'+tabber_id+'"><select id = "boq_complexity-'+id+'" style = "width:100%" disabled><option value = "'+complexity+'">'+complexity+'</select></div>'+
 						'<div class = "td"><input style = "width: 35%;margin-right: 10%;" type = "text" id = "boq_length-'+id+'" value =  "' + item_length + '" disabled><select id = "boq_length_unit-'+id+'" disabled><option value = "'+boq_length_unit_id+'">'+unit_name_length+'</option></select></div>'+ 
 						'<div class = "td"><input style = "width: 35%;margin-right: 10%;" type = "text" id = "boq_surfacearea-'+id+'" value =  "' + item_surfacearea + '" disabled><select id = "boq_surfacearea_unit-'+id+'" disabled><option value = "'+boq_surfacearea_unit_id+'">'+unit_name_surfacearea+'</option></select></select></div>';
+						if($('#header-boq-title-4').text() == '40x40 | 3.2'){
+								
+							}
 						if($('#header-boq-title-2').text() == 'Consumables' && $('#sel-3').text()=='LV03'){
 							boq_org =	"";
 							
@@ -1243,6 +1251,7 @@
 								boq_org =	"";
 								
 							}
+						
 							if(($('#header-boq-title-2').text() == 'Fasteners' || $('#header-boq-title-2').text() == 'Studs') && $('#sel-3').text()=='LV03'){
 								boq_org = '<div class = "td"><input style = "width: 35%;margin-right: 10%;" type = "text" id = "boq_surfacearea-'+response[i].boq_detail_id+'" value =  "' + response[i].boq_surfacearea + '" disabled><select id = "boq_surfacearea_unit-'+response[i].boq_detail_id+'" disabled><option value = "'+response[i].boq_surfacearea_unit_id+'">'+response[i].unit_name_surfacearea+'</option></select></select></div>';
 							}
