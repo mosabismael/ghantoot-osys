@@ -1375,10 +1375,12 @@
 			function calculateTotalBoq(boq_detail_id, tabber_id_sno){
 				var qty = $('#boq_qty-'+boq_detail_id).val();
 				var cost = $('#boq_price-'+boq_detail_id).val();
+				var length  = $('#boq_length-'+boq_detail_id).val();
+
 				$('#totalAmount').val(parseInt($('#totalAmount').val()) - parseInt($('#amount'+tabber_id_sno).val()));
 				$('#amount'+tabber_id_sno).val((parseFloat($('#amount'+tabber_id_sno).val()) - parseFloat($('#boq_total-'+boq_detail_id).val())).toFixed(3));
 				
-				$('#boq_total-'+boq_detail_id).val((qty*cost).toFixed(3));
+				$('#boq_total-'+boq_detail_id).val((qty*cost*length).toFixed(3));
 				$('#amount'+tabber_id_sno).val((parseFloat($('#amount'+tabber_id_sno).val()) + parseFloat($('#boq_total-'+boq_detail_id).val())).toFixed(3));
 				$('#totalAmount').val(parseInt($('#totalAmount').val()) + parseInt(Math.round($('#amount'+tabber_id_sno).val())));
 			}
@@ -1388,7 +1390,7 @@
 				$('#totalAmount').val(parseInt($('#totalAmount').val()) - parseInt($('#amount'+tabber_id_sno).val()));
 				$('#amount'+tabber_id_sno).val((parseFloat($('#amount'+tabber_id_sno).val()) - parseFloat($('#boq_total-'+boq_detail_id).val())).toFixed(3));
 				
-				$('#boq_total-'+boq_detail_id).val((qty*cost).toFixed(3));
+				$('#boq_total-'+boq_detail_id).val((qty*cost*length).toFixed(3));
 				$('#amount'+tabber_id_sno).val((parseFloat($('#amount'+tabber_id_sno).val()) + parseFloat($('#boq_total-'+boq_detail_id).val())).toFixed(3));
 				$('#totalAmount').val(parseInt($('#totalAmount').val()) + parseInt(Math.round($('#amount'+tabber_id_sno).val())));
 				
