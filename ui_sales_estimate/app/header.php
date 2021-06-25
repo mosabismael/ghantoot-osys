@@ -17,7 +17,7 @@
 		</div>
 		
 		<div data-ids="3" class="navItem">
-			<span><?=lang("Projects", "AAR"); ?></span>
+			<span><?=lang("Estimation", "AAR"); ?></span>
 		</div>
 		
 	</div>
@@ -68,13 +68,13 @@
 
 
 <div id="menuContent-3" style="display:none !important;">
-		<a class="<?php if( $subPageID == 30 ){ echo "activeSub"; } ?>" href="projects_new.php">
+		<!-- <a class="<?php if( $subPageID == 30 ){ echo "activeSub"; } ?>" href="projects_new.php">
 			<i class="fas fa-folder-plus"></i>
-			<span><?=lang("Add_New", "AAR"); ?></span>
-		</a>
+			<span></span>
+		</a> -->
 		<a class="<?php if( $subPageID == 31 ){ echo "activeSub"; } ?>" href="projects_list.php">
 			<i class="fas fa-folder-open"></i>
-			<span><?=lang("Projects_List", "AAR"); ?></span>
+			<span><?=lang("Estimation_List", "AAR"); ?></span>
 		</a>
 </div>
 
