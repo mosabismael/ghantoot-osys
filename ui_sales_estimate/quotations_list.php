@@ -4,8 +4,8 @@
 	// $page_title=$page_description=$page_keywords=$page_author= $SETTINGS['site_title'.$lang_db];
 	$page_title=$page_description=$page_keywords=$page_author= "GOMI ERP";
 	
-	$menuId = 2;
-	$subPageID = 21;
+	$menuId = 4;
+	$subPageID = 41;
 ?>
 <!DOCTYPE html>
 <html dir="<?=$lang_dir; ?>" lang="<?=$lang; ?>">

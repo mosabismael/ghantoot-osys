@@ -11,13 +11,18 @@
 		<div data-ids="1" class="navItem">
 			<span><?=lang("clients", "AAR"); ?></span>
 		</div>
-		
 		<div data-ids="2" class="navItem">
-			<span><?=lang("Quotations", "AAR"); ?></span>
+			<span><?=lang("Enquiries ", "AAR"); ?></span>
 		</div>
 		
 		<div data-ids="3" class="navItem">
 			<span><?=lang("Estimation", "AAR"); ?></span>
+		</div>
+		<div data-ids="4" class="navItem">
+			<span><?=lang("Quotations", "AAR"); ?></span>
+		</div>
+		<div data-ids="5" class="navItem">
+			<span><?=lang("Project", "AAR"); ?></span>
 		</div>
 		
 	</div>
@@ -55,14 +60,15 @@
 </div>
 
 
+
 <div id="menuContent-2" style="display:none !important;">
-		<a class="<?php if( $subPageID == 20 ){ echo "activeSub"; } ?>" href="quotations_new.php">
+		<a class="<?php if( $subPageID == 20 ){ echo "activeSub"; } ?>" href="enquiries_new.php">
 			<i class="fas fa-plus"></i>
 			<span><?=lang("Add_New", "AAR"); ?></span>
 		</a>
-		<a class="<?php if( $subPageID == 21 ){ echo "activeSub"; } ?>" href="quotations_list.php">
-			<i class="fab fa-buffer"></i>
-			<span><?=lang("quotations_List", "AAR"); ?></span>
+		<a class="<?php if( $subPageID == 21 ){ echo "activeSub"; } ?>" href="enquiries_List.php">
+			<i class="fas fa-clipboard-list"></i>
+			<span><?=lang("enquiries_List", "AAR"); ?></span>
 		</a>
 </div>
 
@@ -78,8 +84,16 @@
 		</a>
 </div>
 
-
-
+<div id="menuContent-4" style="display:none !important;">
+		<a class="<?php if( $subPageID == 40 ){ echo "activeSub"; } ?>" href="quotations_new.php">
+			<i class="fas fa-plus"></i>
+			<span><?=lang("Add_New", "AAR"); ?></span>
+		</a>
+		<a class="<?php if( $subPageID == 41 ){ echo "activeSub"; } ?>" href="quotations_list.php">
+			<i class="fab fa-buffer"></i>
+			<span><?=lang("quotations_List", "AAR"); ?></span>
+		</a>
+</div>
 
 <script>
 initMnu();
