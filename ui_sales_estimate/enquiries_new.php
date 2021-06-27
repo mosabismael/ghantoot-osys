@@ -6,7 +6,7 @@
 	$page_title=$page_description=$page_keywords=$page_author= "GOMI ERP";
 	
     $menuId = 2;
-	$subPageID = 21;
+	$subPageID = 20;
 	
 	
 
@@ -98,11 +98,28 @@ input[type=submit]:hover {
 <div class="container">
   <form action="/action_page.php">
     <label for="fname">Client Name</label>
-    <select id="fname" name="fname" >
-      <option value="1">Client Name1</option>
-      <option value="2">Client Name2</option>
-      <option value="3">Client Name3</option>
-    </select>
+    <input class="frmData" type="text" 
+					id="new-client_name" 
+					name="client_name" 
+					list="clients-data"
+					value="<?=$client_name; ?>"
+					req="1" 
+					den="" 
+					placeholder="<?=lang('Type Client Name to Select'); ?>" 
+					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>">
+		<datalist id="clients-data">
+<?php
+$q = "SELECT `client_name` FROM `gen_clients`";
+$q_exe = mysqli_query($KONN, $q);
+if(mysqli_num_rows($q_exe) > 0){
+	while($record = mysqli_fetch_assoc($q_exe)){
+?>
+<option><?=$record['client_name']; ?></option>
+<?php
+		}
+	}
+?>
+		</datalist>
     <!-- <label for="lname">Last Name</label>
     <input type="text" id="lname" name="lastname" placeholder="Your last name.."> -->
     <h4>
@@ -121,8 +138,10 @@ input[type=submit]:hover {
     <input type="date" id="date" name="date">
     <label for="details">Details</label>
     <textarea id="details" name="details" placeholder="Detail your enquiry here..." style="height:200px"></textarea>
-
-    <input type="submit" value="SEND ENQUIRY">
+    <div class="btns-holder">
+	<button class="btn btn-primary" type="button" onClick="set_tabber(1);"><?=lang('cancel'); ?></button>
+	<button class="btn btn-primary" type="button" onClick=""><?=lang('SEND ENQUIRY'); ?></button>
+</div>
   </form>
 </div>
 <?php
