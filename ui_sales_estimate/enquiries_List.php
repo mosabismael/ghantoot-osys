@@ -99,28 +99,24 @@ input[type=submit]:hover {
 	<thead>
 		<tr>
 			<th><?=lang("Sys_Id", "AAR"); ?></th>
-			<th><?=lang("REF", "AAR"); ?># - <?=lang("REV", "AAR"); ?></th>
-			<th><?=lang("RFQ", "AAR"); ?></th>
+			<th><?=lang("Enquiry Type", "AAR"); ?></th>
 			<th><?=lang("Date", "AAR"); ?></th>
-			<th><?=lang("Token_-_Client_Name", "AAR"); ?></th>
-			<th><?=lang("Valid_Until", "AAR"); ?></th>
+			<th><?=lang("Details", "AAR"); ?></th>
+			<th><?=lang("Client Name", "AAR"); ?></th>
 			<th><?=lang("Status", "AAR"); ?></th>
-
-			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
 <?php
-	$qu_sales_quotations_sel = "SELECT * FROM  `sales_quotations`";
-	$qu_sales_quotations_EXE = mysqli_query($KONN, $qu_sales_quotations_sel);
-	if(mysqli_num_rows($qu_sales_quotations_EXE)){
-		while($sales_quotations_REC = mysqli_fetch_assoc($qu_sales_quotations_EXE)){
-			$quotation_id = $sales_quotations_REC['quotation_id'];
-			$client_id = $sales_quotations_REC['client_id'];
-			$valider_std = $sales_quotations_REC['valid_date'];
-			$valider = $sales_quotations_REC['valid_date'];
-			$quotation_status = $sales_quotations_REC['quotation_status'];
-			$stater = $quotation_status;
+	$qu_enquiries_sel = "SELECT * FROM  `enquiries`";
+	$qu_enquiries_EXE = mysqli_query($KONN, $qu_enquiries_sel);
+	if(mysqli_num_rows($qu_enquiries_EXE)){
+		while($enquiries_REC = mysqli_fetch_assoc($qu_enquiries_EXE)){
+			$enquiry_id  = $enquiries_REC['enquiry_id'];
+			$client_id = $enquiries_REC['client_id'];
+			$date = $enquiries_REC['date'];
+			$enquiry_type = $enquiries_REC['enquiry_type'];
+			$details = $enquiries_REC['details'];
 			
 			$isExpired = false;
 			
@@ -134,11 +130,6 @@ input[type=submit]:hover {
 		$client_name = $gen_clients_DATA['client_name'];
 	}
 	
-			if($valider_std < date('Y-m-d')){
-				$valider = '<span style="color:red;">'.$valider.'</span>';
-				$isExpired = false;
-				$stater = $quotation_status." - Expired";
-			}
 			$convert = "<form action='projects_new.php'> 
 			<input type='hidden' name='user' value='$client_name'>
 
@@ -147,18 +138,13 @@ input[type=submit]:hover {
 			value='Estimation >>  '></form>";
 
 		?>
-		<tr id="quote-<?=$quotation_id; ?>">
-			<td><?=$quotation_id; ?></td>
-			<td><?=$sales_quotations_REC["quotation_ref"]; ?> - <?=$sales_quotations_REC["rev_no"]; ?></td>
-			<td><?=$sales_quotations_REC["rfq_no"]; ?></td>
-			<td><?=$sales_quotations_REC["quotation_date"]; ?></td>
+		<tr id="quote-<?=$enquiry_id; ?>">
+			<td><?=$enquiry_id; ?></td>
+			<td><?=$enquiries_REC["enquiry_type"]; ?></td>
+			<td><?=$enquiries_REC["date"]; ?></td>
 			<td><?=$client_name; ?></td>
-			<td><?=$valider; ?></td>
-			<td><?=$stater; ?></td>
-
-			<td class="text-center">
-				<a href="quotations_details.php?quotation_id=<?=$quotation_id; ?>" title="<?=lang("Account Details", "AAR"); ?>"><i class="fas fa-info-circle"></i></a>
-			</td>
+			<td><?=$enquiries_REC["details"]; ?></td>
+			<td></td>
 		</tr>
 		<?php
 		}

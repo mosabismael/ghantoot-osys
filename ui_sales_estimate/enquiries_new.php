@@ -95,12 +95,21 @@ input[type=submit]:hover {
 
 <h2>Enquiry Form</h2>
 <p>Complete this Enquiry Form to obtain additional information about our services or send personal complaints. We will analyze your enquiry and return to you shortly by email or phone.</p>
-<div class="container">
-  <form
-  api="<?=api_root; ?>clients/add_new_client.php">
+  
+  <div class="row">
 
-    <label for="fname">Client Name</label>
-    <input class="frmData" type="text" 
+
+<form 
+id="add-new-enquiries-form" 
+id-modal="add_new_enquiries" 
+class="boxes-holder" 
+api="<?=api_root; ?>sales_projects/add_new_enquiries.php">
+
+
+<div class="col-100">
+	<div class="form-grp">
+		<label class="lbl_class"><?=lang('Client Name', 'ARR', 1); ?></label>
+    <select class="frmData" type="text" 
 					id="new-client_name" 
 					name="client_name" 
 					list="clients-data"
@@ -111,40 +120,93 @@ input[type=submit]:hover {
 					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>">
 		<datalist id="clients-data">
 <?php
-$q = "SELECT `client_name` FROM `gen_clients`";
+$q = "SELECT `client_name`,`client_id` FROM `gen_clients`";
 $q_exe = mysqli_query($KONN, $q);
 if(mysqli_num_rows($q_exe) > 0){
 	while($record = mysqli_fetch_assoc($q_exe)){
 ?>
-<option><?=$record['client_name']; ?></option>
+<option value="<?=$record['client_id']; ?>"><?=$record['client_name']; ?></option>
 <?php
 		}
 	}
 ?>
 		</datalist>
-    <!-- <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name.."> -->
-    <h4>
+    </select>
+	</div>
+</div>
+
+<div class="zero"></div>
+<h4>
     Please be specific of the enquiry you want to submit in this Enquiry Form, so we can return to you fast with the information you are looking for. Thank you!
     </h4>
-    <br>
-    <label for="enquiry">Enquiry type</label>
-    <select id="enquiry" name="enquiry">
-      <option value="pricing_levels">Pricing levels</option>
+<div class="col-100">
+	<div class="form-grp">
+		<label class="lbl_class"><?=lang('Enquiry type', 'ARR', 1); ?></label>
+		<select class="frmData" type="text" 
+				id="new-enquiry_type" 
+				name="enquiry_type" 
+				req="1" 
+        
+				den="" 
+				alerter="<?=lang("Please_Check_enquiry_type", "AAR"); ?>">
+        <option value="pricing_levels">Pricing levels</option>
       <option value="maintenance">Maintenance</option>
       <option value="testing">Testing</option>
       <option value="complaints">Complaints</option>
+      </select>
 
-    </select>
-    <label for="date">Date</label>
-    <input type="date" id="date" name="date">
-    <label for="details">Details</label>
-    <textarea id="details" name="details" placeholder="Detail your enquiry here..." style="height:200px"></textarea>
-    <div class="btns-holder">
-    <a  href="enquiries_List.php"><button class="btn btn-primary" type="button" onClick="enquiries_List.php"><?=lang('cancel'); ?></button></a>
-    <button type="button"  onclick="submit_form('add-new-enquiry-form', 'forward_page');" class="btn btn-primary"><?=lang("SEND ENQUIRY", "AAR"); ?></button>
+	</div>
 </div>
-  </form>
+
+<div class="zero"></div>
+
+
+
+<div class="col-100">
+	<div class="form-grp">
+		<label class="lbl_class"><?=lang('Date', 'ARR', 1); ?></label>
+		<input class="frmData" type="date"
+				id="new-date" 
+				name="date" 
+				req="1" 
+				den="0" 
+				alerter="<?=lang("Please_Check_date", "AAR"); ?>">
+
+			</input>
+	</div>
+</div>
+<div class="zero"></div>
+
+
+<div class="col-100">
+	<div class="form-grp">
+		<label class="lbl_class"><?=lang('Details', 'ARR', 1); ?></label>
+		<textarea class="frmData" type="text" 
+        placeholder="Detail your enquiry here..."
+				id="new-details" 
+				name="details"
+				req="1" 
+				den="" 
+        style="height:200px"
+				alerter="<?=lang("Please_Check_details", "AAR"); ?>"></textarea>
+
+	</div>
+</div>
+
+	<div class="zero"></div>
+	
+<div class="col-100 text-center" id="add_new_enquiries">
+		<!-- <div class="form-alerts"></div> -->
+<a  href="enquiries_List.php"><button class="btn btn-primary" type="button" onClick="enquiries_List.php"><?=lang('cancel'); ?></button></a>
+    <button type="button"  onclick="submit_form('add-new-enquiries-form', 'forward_page');" class="btn btn-primary"><?=lang("SEND ENQUIRY", "AAR"); ?></button>
+		
+	<div class="zero"></div>
+</div>
+
+</form>
+
+  <div class="zero"></div>
+
 </div>
 <?php
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
