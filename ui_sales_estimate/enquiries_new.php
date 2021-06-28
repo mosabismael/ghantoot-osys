@@ -96,7 +96,9 @@ input[type=submit]:hover {
 <h2>Enquiry Form</h2>
 <p>Complete this Enquiry Form to obtain additional information about our services or send personal complaints. We will analyze your enquiry and return to you shortly by email or phone.</p>
 <div class="container">
-  <form action="/action_page.php">
+  <form
+  api="<?=api_root; ?>clients/add_new_client.php">
+
     <label for="fname">Client Name</label>
     <input class="frmData" type="text" 
 					id="new-client_name" 
@@ -139,8 +141,8 @@ if(mysqli_num_rows($q_exe) > 0){
     <label for="details">Details</label>
     <textarea id="details" name="details" placeholder="Detail your enquiry here..." style="height:200px"></textarea>
     <div class="btns-holder">
-	<button class="btn btn-primary" type="button" onClick="set_tabber(1);"><?=lang('cancel'); ?></button>
-	<button class="btn btn-primary" type="button" onClick=""><?=lang('SEND ENQUIRY'); ?></button>
+    <a  href="enquiries_List.php"><button class="btn btn-primary" type="button" onClick="enquiries_List.php"><?=lang('cancel'); ?></button></a>
+    <button type="button"  onclick="submit_form('add-new-enquiry-form', 'forward_page');" class="btn btn-primary"><?=lang("SEND ENQUIRY", "AAR"); ?></button>
 </div>
   </form>
 </div>
