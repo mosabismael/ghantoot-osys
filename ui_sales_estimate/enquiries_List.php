@@ -117,9 +117,44 @@ input[type=submit]:hover {
 			$date = $enquiries_REC['date'];
 			$enquiry_type = $enquiries_REC['enquiry_type'];
 			$details = $enquiries_REC['details'];
-			
+			$status = "<button style='background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;'>Estimation</button>";
+
 			$isExpired = false;
-			
+			if ($enquiries_REC['status'] == 0){
+				$status = "<button style='background-color: #f44336;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;'>Done</button>";
+			}else{
+				if ($enquiries_REC['status'] == 2){
+					$status = "<button style='background-color: #555555;
+					border: none;
+					color: white;
+					padding: 15px 32px;
+					text-align: center;
+					text-decoration: none;
+					display: inline-block;
+					font-size: 16px;
+					margin: 4px 2px;
+					cursor: pointer;'>work in progress</button>";
+				}
+			}
+
 			
 	$qu_gen_clients_sel = "SELECT * FROM  `gen_clients` WHERE `client_id` = $client_id";
 	$qu_gen_clients_EXE = mysqli_query($KONN, $qu_gen_clients_sel);
@@ -144,7 +179,7 @@ input[type=submit]:hover {
 			<td><?=$enquiries_REC["date"]; ?></td>
 			<td><?=$client_name; ?></td>
 			<td><?=$enquiries_REC["details"]; ?></td>
-			<td></td>
+			<td><?=$status; ?></td>
 		</tr>
 		<?php
 		}

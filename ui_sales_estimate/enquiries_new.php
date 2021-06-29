@@ -106,9 +106,22 @@ class="boxes-holder"
 api="<?=api_root; ?>sales_projects/add_new_enquiries.php">
 
 
-<div class="col-100">
+<div class="col-30">
 	<div class="form-grp">
-		<label class="lbl_class"><?=lang('Client Name', 'ARR', 1); ?></label>
+		<label class="lbl_class"><?=lang('Date', 'ARR', 1); ?></label>
+		<input class="frmData" type="date"
+				id="new-date" 
+				name="date" 
+				req="1" 
+				den="0" 
+				alerter="<?=lang("Please_Check_date", "AAR"); ?>">
+
+			</input>
+	</div>
+	<div class="col-50">
+
+	<div class="form-grp">
+		<label class="lbl_class"><?=lang('TO:', 'ARR', 1); ?></label>
     <select class="frmData" type="text" 
 					id="new-client_name" 
 					name="client_name" 
@@ -133,12 +146,55 @@ if(mysqli_num_rows($q_exe) > 0){
 		</datalist>
     </select>
 	</div>
+	</div>
+	<div class="col-33">
+	<div class="form-grp">
+	<label class="lbl_class"><?=lang('Attn:', 'ARR', 1); ?></label>
+		<input class="frmData" type="text" 
+				id="new-attn_name" 
+				name="attn_name" 
+				req="1" 
+				den="" 
+				alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>">
+	</div>
+	</div>
 </div>
 
 <div class="zero"></div>
-<h4>
-    Please be specific of the enquiry you want to submit in this Enquiry Form, so we can return to you fast with the information you are looking for. Thank you!
-    </h4>
+<div class="col-33">
+	<div class="form-grp">
+	<label class="lbl_class"><?=lang('Subject:', 'ARR', 1); ?></label>
+		<input class="frmData" type="text" 
+				id="new-subject" 
+				placeholder="Title here..."
+				name="subject_name" 
+				req="1" 
+				den="" 
+				alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>">
+	</div>
+	</div>
+	<div class="col-100">
+	<div class="form-grp">
+		<label class="lbl_class"><?=lang('Details', 'ARR', 1); ?></label>
+		<textarea class="frmData" type="text" 
+        placeholder="Detail your enquiry here..."
+				id="new-details" 
+				name="details"
+				req="1" 
+				den="" 
+        style="height:200px"
+				alerter="<?=lang("Please_Check_details", "AAR"); ?>"></textarea>
+				
+	</div>
+	<div class="form-grp">
+
+	<label for="attachments">Choose a attachments:</label>
+
+			<input type="file"	
+       id="attachments" name="attachments">
+</div>
+</div>
+
 <div class="col-100">
 	<div class="form-grp">
 		<label class="lbl_class"><?=lang('Enquiry type', 'ARR', 1); ?></label>
@@ -158,40 +214,6 @@ if(mysqli_num_rows($q_exe) > 0){
 	</div>
 </div>
 
-<div class="zero"></div>
-
-
-
-<div class="col-100">
-	<div class="form-grp">
-		<label class="lbl_class"><?=lang('Date', 'ARR', 1); ?></label>
-		<input class="frmData" type="date"
-				id="new-date" 
-				name="date" 
-				req="1" 
-				den="0" 
-				alerter="<?=lang("Please_Check_date", "AAR"); ?>">
-
-			</input>
-	</div>
-</div>
-<div class="zero"></div>
-
-
-<div class="col-100">
-	<div class="form-grp">
-		<label class="lbl_class"><?=lang('Details', 'ARR', 1); ?></label>
-		<textarea class="frmData" type="text" 
-        placeholder="Detail your enquiry here..."
-				id="new-details" 
-				name="details"
-				req="1" 
-				den="" 
-        style="height:200px"
-				alerter="<?=lang("Please_Check_details", "AAR"); ?>"></textarea>
-
-	</div>
-</div>
 
 	<div class="zero"></div>
 	
@@ -200,13 +222,9 @@ if(mysqli_num_rows($q_exe) > 0){
 <a  href="enquiries_List.php"><button class="btn btn-primary" type="button" onClick="enquiries_List.php"><?=lang('cancel'); ?></button></a>
     <button type="button"  onclick="submit_form('add-new-enquiries-form', 'forward_page');" class="btn btn-primary"><?=lang("SEND ENQUIRY", "AAR"); ?></button>
 		
-	<div class="zero"></div>
 </div>
 
 </form>
-
-  <div class="zero"></div>
-
 </div>
 <?php
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
