@@ -73,7 +73,7 @@
 			<td><?=$project_status_td?></td>
 			<td class="text-center">
 				<a href="projects_details.php?project_id=<?=$project_id; ?>" title="<?=lang("Project_Details", "AAR"); ?>"><button type="button">Details</button></a>
-				<a href="projects_estimation.php?project_id=<?=$project_id; ?>" title="<?=lang("Project_Details", "AAR"); ?>"><button type="button">Estimation</button></a>
+				<a href="projects_estimation.php?project_id=<?=$project_id; ?>" title="<?=lang("Estimation", "AAR"); ?>"><button type="button">Estimation</button></a>
 			</td>
 		</tr>
 		<?php

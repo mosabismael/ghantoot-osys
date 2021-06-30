@@ -41,8 +41,30 @@
     <?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 input[type=text], select, textarea {
   width: 100%;
@@ -73,7 +95,16 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
-
+#myInput {
+  background-image: url('/app/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
 input[type=submit]:hover {
   background-color: #45a049;
 }
@@ -91,6 +122,7 @@ input[type=submit]:hover {
 	include('app/header.php');
 	//PAGE DATA START -----------------------------------------------///---------------------------------
 ?>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
 <div class="row">
 	<div class="col-100">
@@ -101,8 +133,9 @@ input[type=submit]:hover {
 			<th><?=lang("Sys_Id", "AAR"); ?></th>
 			<th><?=lang("Enquiry Type", "AAR"); ?></th>
 			<th><?=lang("Date", "AAR"); ?></th>
-			<th><?=lang("Details", "AAR"); ?></th>
 			<th><?=lang("Client Name", "AAR"); ?></th>
+			<th><?=lang("Subject", "AAR"); ?></th>
+			<th><?=lang("Details", "AAR"); ?></th>
 			<th><?=lang("Status", "AAR"); ?></th>
 		</tr>
 	</thead>
@@ -117,7 +150,8 @@ input[type=submit]:hover {
 			$date = $enquiries_REC['date'];
 			$enquiry_type = $enquiries_REC['enquiry_type'];
 			$details = $enquiries_REC['details'];
-			$status = "<button style='background-color: #4CAF50;
+
+			$status = "<a href='projects_estimation.php?project_id=1' ><button  type='button' style='background-color: #4CAF50;
 			border: none;
 			color: white;
 			padding: 15px 32px;
@@ -126,11 +160,15 @@ input[type=submit]:hover {
 			display: inline-block;
 			font-size: 16px;
 			margin: 4px 2px;
-			cursor: pointer;'>Estimation</button>";
+			cursor: pointer;'>Done</button></a>";
 
 			$isExpired = false;
 			if ($enquiries_REC['status'] == 0){
-				$status = "<button style='background-color: #f44336;
+				$status = "<form action='projects_new.php'> 
+				<input type='hidden' name='user' value='$client_name'>
+				<input 
+				style='background-color: #f44336;
+
 				border: none;
 				color: white;
 				padding: 15px 32px;
@@ -139,10 +177,13 @@ input[type=submit]:hover {
 				display: inline-block;
 				font-size: 16px;
 				margin: 4px 2px;
-				cursor: pointer;'>Done</button>";
+				cursor: pointer;'
+				type='submit'
+				value='Estimation'></form>";
+			
 			}else{
 				if ($enquiries_REC['status'] == 2){
-					$status = "<button style='background-color: #555555;
+					$status = "<a href='projects_estimation.php?project_id=1' ><button  type='button' style='background-color: #555555;
 					border: none;
 					color: white;
 					padding: 15px 32px;
@@ -151,7 +192,7 @@ input[type=submit]:hover {
 					display: inline-block;
 					font-size: 16px;
 					margin: 4px 2px;
-					cursor: pointer;'>work in progress</button>";
+					cursor: pointer;'> Progress</button>";
 				}
 			}
 
@@ -178,6 +219,7 @@ input[type=submit]:hover {
 			<td><?=$enquiries_REC["enquiry_type"]; ?></td>
 			<td><?=$enquiries_REC["date"]; ?></td>
 			<td><?=$client_name; ?></td>
+			<td><?=$enquiries_REC["subject"]; ?></td>
 			<td><?=$enquiries_REC["details"]; ?></td>
 			<td><?=$status; ?></td>
 		</tr>
@@ -193,7 +235,16 @@ input[type=submit]:hover {
 ?>
 	</tbody>
 </table>
-		
+<div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#" class="active">1</a>
+  <a href="#" >2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div>
 	</div>
 	<div class="zero"></div>
 </div>  
@@ -202,5 +253,26 @@ input[type=submit]:hover {
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
 	include('app/footer.php');
 ?>
+<script>
+
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 </body>
 </html>

@@ -12,12 +12,17 @@
 			isset($_POST['client_name']) &&
 		isset($_POST['enquiry_type']) &&
 		isset($_POST['date']) &&
-		isset($_POST['details'])){		
+		isset($_POST['subject_name']) &&
+		isset($_POST['details']) &&
+		isset($_POST['attn_name'])){		
 			$enquiry_id = 0;
 			$client_name = test_inputs($_POST['client_name']);
 			$enquiry = test_inputs($_POST['enquiry_type']);
 			$date = test_inputs($_POST['date']);
 			$details = test_inputs($_POST['details']);
+			$subject = test_inputs($_POST['subject_name']);
+			$attn = test_inputs($_POST['attn_name']);
+
 			
 			
 			
@@ -25,11 +30,15 @@
 			`client_id`, 
 			`enquiry_type`, 
 			`date`, 
+			`subject`,
+			`attn`,
 			`details`
 			) VALUES (
 			'".$client_name."', 
 			'".$enquiry."', 
 			'".$date."', 
+			'".$subject."',
+			'".$attn."',
 			'".$details."'
 			);";
 			$insertStatement = mysqli_prepare($KONN,$qu_gen_enquiry_ins);
