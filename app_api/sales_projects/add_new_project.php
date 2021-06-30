@@ -8,16 +8,20 @@
 	require_once($main_pointer.'bootstrap/chk_log_user.php');
 	try{
 		
+
 		if( isset($_POST['client_id']) &&
 		isset($_POST['project_name']) && 
 		isset($_POST['project_notes']) &&
-		isset($_POST['project_type'])
+		isset($_POST['project_type']) &&
+		isset($_POST['enquiry'])
+
+		
 		){
 			
-			
+
 			$project_id = 0;
 			$client_id = ( int ) test_inputs($_POST['client_id']);
-			
+			$enquiries_id = ( int ) test_inputs($_POST['enquiry']);
 			$project_name = test_inputs($_POST['project_name']);
 			
 			$created_date = date("Y-m-d");
@@ -35,6 +39,7 @@
 			`created_date`, 
 			`project_notes`, 
 			`client_id`, 
+			`enquiries_id`, 
 			`employee_id`, 
 			`project_status` ,
 			`project_type`
@@ -43,6 +48,7 @@
 			'".$created_date."', 
 			'".$project_notes."', 
 			'".$client_id."', 
+			'".$enquiries_id."', 
 			'".$EMPLOYEE_ID."', 
 			'".$project_status."',
 			'".$project_type."'
@@ -50,9 +56,16 @@
 			
 			$insertStatement = mysqli_prepare($KONN,$qu_z_project_ins);
 			
+			$status = 2;
+			$qu_enquiries_updt = "UPDATE  `enquiries` SET 
+			`status` = '".$status."'
+			WHERE `enquiry_id` = $enquiries_id;";
+			$updateStatement = mysqli_prepare($KONN,$qu_enquiries_updt);
+			mysqli_stmt_execute($updateStatement);
 			mysqli_stmt_execute($insertStatement);
-			
+
 			$project_id = mysqli_insert_id($KONN);
+			
 			if( $project_id != 0 ){
 				
 				if($project_type == 'steel'){
@@ -357,7 +370,7 @@
 				
 			}
 			
-			
+		
 			
 			
 			

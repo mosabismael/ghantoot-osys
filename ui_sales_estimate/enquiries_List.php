@@ -122,7 +122,21 @@ input[type=submit]:hover {
 	include('app/header.php');
 	//PAGE DATA START -----------------------------------------------///---------------------------------
 ?>
+
+<div class="row">
+<div class="col-33">
+<button style=" background-color: #2e6da4;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;" onclick="sortTable()">Sort</button>
+</div>
+	<div class="col-33">
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+</div>
+
+</div>
 
 <div class="row">
 	<div class="col-100">
@@ -136,7 +150,9 @@ input[type=submit]:hover {
 			<th><?=lang("Client Name", "AAR"); ?></th>
 			<th><?=lang("Subject", "AAR"); ?></th>
 			<th><?=lang("Details", "AAR"); ?></th>
+			<th><?=lang("Attachments", "AAR"); ?></th>
 			<th><?=lang("Status", "AAR"); ?></th>
+
 		</tr>
 	</thead>
 	<tbody>
@@ -151,7 +167,7 @@ input[type=submit]:hover {
 			$enquiry_type = $enquiries_REC['enquiry_type'];
 			$details = $enquiries_REC['details'];
 
-			$status = "<a href='projects_estimation.php?project_id=1' ><button  type='button' style='background-color: #4CAF50;
+			$status = "<a href='projects_estimation.php?enquiry_id=$enquiry_id' ><button  type='button' style='background-color: #4CAF50;
 			border: none;
 			color: white;
 			padding: 15px 32px;
@@ -164,8 +180,10 @@ input[type=submit]:hover {
 
 			$isExpired = false;
 			if ($enquiries_REC['status'] == 0){
-				$status = "<form action='projects_new.php'> 
-				<input type='hidden' name='user' value='$client_name'>
+				$status = "<form action='new_estimation.php'> 
+				<input type='hidden' name='user' value='$client_id'>
+				<input type='hidden' name='enquiry_id' value='$enquiry_id'>
+
 				<input 
 				style='background-color: #f44336;
 
@@ -206,12 +224,6 @@ input[type=submit]:hover {
 		$client_name = $gen_clients_DATA['client_name'];
 	}
 	
-			$convert = "<form action='projects_new.php'> 
-			<input type='hidden' name='user' value='$client_name'>
-
-			<input class='favorite styled'
-			type='submit'
-			value='Estimation >>  '></form>";
 
 		?>
 		<tr id="quote-<?=$enquiry_id; ?>">
@@ -221,6 +233,8 @@ input[type=submit]:hover {
 			<td><?=$client_name; ?></td>
 			<td><?=$enquiries_REC["subject"]; ?></td>
 			<td><?=$enquiries_REC["details"]; ?></td>
+			<td><button>show</button>
+			<button>print</button></td>
 			<td><?=$status; ?></td>
 		</tr>
 		<?php
@@ -254,7 +268,40 @@ input[type=submit]:hover {
 	include('app/footer.php');
 ?>
 <script>
-
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("dataTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[3];
+      y = rows[i + 1].getElementsByTagName("TD")[3];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
