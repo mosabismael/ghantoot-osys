@@ -168,6 +168,14 @@ input[type=submit]:hover {
 			$date = $enquiries_REC['date'];
 			$enquiry_type = $enquiries_REC['enquiry_type'];
 			$details = $enquiries_REC['details'];
+			$qu_z_project_sel = "SELECT * FROM  `z_project` WHERE `enquiries_id` = $enquiry_id";
+			$qu_z_project_EXE = mysqli_query($KONN, $qu_z_project_sel);
+			$project_id = "NA";
+			if(mysqli_num_rows($qu_z_project_EXE)){
+				
+				$gen_z_projec_DATA = mysqli_fetch_assoc($qu_z_project_EXE);
+				$project_id = $gen_z_projec_DATA['project_id'];
+			}
 
 			$status = "<a href='projects_estimation.php?enquiry_id=$enquiry_id' ><button  type='button' style='background-color: #4CAF50;
 			border: none;
@@ -203,7 +211,7 @@ input[type=submit]:hover {
 			
 			}else{
 				if ($enquiries_REC['status'] == 2){
-					$status = "<a href='projects_estimation.php?project_id=1' ><button  type='button' style='background-color: #555555;
+					$status = "<a href='projects_estimation.php?project_id=$project_id' ><button  type='button' style='background-color: #555555;
 					border: none;
 					color: white;
 					padding: 15px 32px;
