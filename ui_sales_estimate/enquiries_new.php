@@ -189,9 +189,10 @@ if(mysqli_num_rows($q_exe) > 0){
 	<div class="form-grp">
 
 	<label for="attachments">Choose a attachments:</label>
+	<input type="file" name="pdf_file" accept=".pdf"/>
+            <input type="hidden" name="MAX_FILE_SIZE" value="67108864"/> <!--64 MB's worth in bytes-->
 
-			<input type="file"	
-       id="attachments" name="attachments">
+		
 </div>
 </div>
 

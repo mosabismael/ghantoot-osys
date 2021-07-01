@@ -117,6 +117,7 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
+
 <?php
 	$WHERE = "";
 	include('app/header.php');
@@ -135,6 +136,7 @@ input[type=submit]:hover {
 	<div class="col-33">
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 </div>
+<iframe id="myFrame" style="display:none" width="600" height="300"></iframe>
 
 </div>
 
@@ -233,8 +235,8 @@ input[type=submit]:hover {
 			<td><?=$client_name; ?></td>
 			<td><?=$enquiries_REC["subject"]; ?></td>
 			<td><?=$enquiries_REC["details"]; ?></td>
-			<td><button>show</button>
-			<button>print</button></td>
+			<td><input type="button" value="Open PDF" onclick = "openPdf()"/>
+		</td>
 			<td><?=$status; ?></td>
 		</tr>
 		<?php
@@ -320,6 +322,14 @@ function myFunction() {
     }       
   }
 }
+function openPdf()
+{
+var omyFrame = document.getElementById("myFrame");
+omyFrame.style.display="block";
+omyFrame.src = "1dummy.pdf";
+}
+
+
 </script>
 </body>
 </html>
