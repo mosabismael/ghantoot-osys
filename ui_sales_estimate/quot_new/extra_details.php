@@ -39,7 +39,6 @@
 
 
 
-
 <div class="btns-holder">
 	<button class="btn btn-primary" type="button" onClick="set_tabber(3);"><?=lang('Previous'); ?></button>
 	<button class="btn btn-success" type="button" onclick="submit_form('new-quotation-form', 'forward_page');"><?=lang('ADD Quotation'); ?></button>

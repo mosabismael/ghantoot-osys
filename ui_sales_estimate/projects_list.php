@@ -30,7 +30,6 @@
 	<thead>
 		<tr>
 			<th><?=lang("Sys_Id", "AAR"); ?></th>
-			<th><?=lang("project_name", "AAR"); ?></th>
 			<th><?=lang("Created_Date", "AAR"); ?></th>
 			<th><?=lang("Client_Name", "AAR"); ?></th>
 			<th><?=lang("Status", "AAR"); ?></th>
@@ -47,7 +46,7 @@
 			$project_name = $z_project_REC['project_name'];
 			$client_id = $z_project_REC['client_id'];
 			$created_date = $z_project_REC['created_date'];
-			
+			$quotation_id = $z_project_REC['quotation_id'];
 			$project_status = $z_project_REC['project_status'];
 			
 			
@@ -65,17 +64,38 @@
 		$project_status_td = '<div class="w3-light-grey"><div class="w3-red" style="height:24px;width:50%"></div></div>In Progress';
 	}
 		?>
+					<form action='quotations_new.php'> 
+
 		<tr id="quote-<?=$project_id; ?>">
 			<td><?=$project_id; ?></td>
-			<td><?=$project_name; ?></td>
 			<td><?=$created_date; ?></td>
 			<td><?=$client_name; ?></td>
 			<td><?=$project_status_td?></td>
 			<td class="text-center">
-				<a href="projects_details.php?project_id=<?=$project_id; ?>" title="<?=lang("Project_Details", "AAR"); ?>"><button type="button">Details</button></a>
-				<a href="projects_estimation.php?project_id=<?=$project_id; ?>" title="<?=lang("Estimation", "AAR"); ?>"><button type="button">Estimation</button></a>
+				<a href="projects_details.php?project_id=<?=$project_id; ?>" title="<?=lang("Project_Details", "AAR"); ?>"><button class="btn" type="button">Details</button></a>
+				<a href="projects_estimation.php?project_id=<?=$project_id; ?>" title="<?=lang("Estimation", "AAR"); ?>"><button class="btn" type="button">Estimation</button></a>
+				<?php
+				if($quotation_id == 0){
+					
+				?>
+				<a href="quotations_details.php?quotation_id=1" title="<?=lang("Quotation", "AAR"); ?>"><button type="button" class="btn"><i class="fa fa-bars"></i> Quotation</button></a>
+					<?php
+				}
+					?>
+						<?php
+				if($quotation_id != 0){
+
+				?>
+			
+				<input type='hidden' name='project_id' value='<?= $project_id ?>'>
+				<button type="submit" class="btn"><i class="fa fa-folder"></i> Quotation</button>
+					<?php
+				}
+					?>
 			</td>
 		</tr>
+		</form>
+
 		<?php
 		}
 	} else {

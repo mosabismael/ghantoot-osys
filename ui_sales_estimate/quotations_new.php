@@ -44,18 +44,21 @@
 
 	$WHERE = "";
 	include('app/header.php');
+	
 	//PAGE DATA START -----------------------------------------------///---------------------------------
 ?>
 
 
 
 <div class="row">
-
-
+<?php
+$project_id = $_GET['project_id'];
+?>
 <form 
 id="new-quotation-form" 
 id-modal="add_new_quotation_modal" 
 api="<?=api_root; ?>sales/quotations/add_new.php">
+<input type='hidden' name='project_id' value='<?=$_GET['project_id']?>'>
 
 <div class="row">
 	<div class="col-100">

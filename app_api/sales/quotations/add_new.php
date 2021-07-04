@@ -33,7 +33,8 @@
 			$currency_id = test_inputs($_POST['currency_id']);
 			$delivery_period_id = test_inputs($_POST['delivery_period_id']);
 			$delivery_method = test_inputs($_POST['delivery_method']);
-			
+			$project_id = test_inputs($_POST['project_id']);
+
 			$valid_until = test_inputs($_POST['valid_until']);
 			$valid_date;
 			
@@ -174,12 +175,12 @@
 								die("0|ERROR STATE CONTACTS");
 							
 						}
-					}
-					
-					
-					
-					
-					
+					}		
+					$qu_project_ins = "UPDATE  `z_project` SET 
+					`quotation_id` = '".$quotation_id."' WHERE `project_id` = $project_id;";
+						$insertStatement = mysqli_prepare($KONN,$qu_project_ins);
+						
+						mysqli_stmt_execute($insertStatement);
 					
 					
 					die("1|quotations_details.php?quotation_id=$quotation_id");
