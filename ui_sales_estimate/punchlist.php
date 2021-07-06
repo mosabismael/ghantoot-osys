@@ -701,7 +701,6 @@ body { margin-left: 0.3in; margin-right: 0.3in; margin-top: 0.3in; margin-bottom
         <tbody>
           <tr class="row0">
             <td class="column0 style0 null">
-<div style="position: relative;"><img style="position: absolute; z-index: 1; left: 0px; top: 0px; width: 1056px; height: 282px;" src="zip:///home/CloudConvertio/tmp/in_work/d407ce7da30c439393a4823b0bc63ba8.xlsx#xl/media/image1.jpg" border="0" /></div></td>
             <td class="column1">&nbsp;</td>
             <td class="column2">&nbsp;</td>
             <td class="column3">&nbsp;</td>
