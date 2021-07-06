@@ -50,6 +50,12 @@ for($I=$min_v;$I<=$max_v;$I++){
 				den="" 
 				disabled
 				alerter="<?=lang("Please_Check_Quotation_Date", "AAR"); ?>">
+		<input class="frmData has_date" type="hidden" 
+				id="new-project" 
+				name="project" 
+				value='<?=$_GET['project_id']?>'
+				>
+
 	</div>
 	<br>
 	<br>

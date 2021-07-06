@@ -75,15 +75,15 @@
 				<a href="projects_details.php?project_id=<?=$project_id; ?>" title="<?=lang("Project_Details", "AAR"); ?>"><button class="btn" type="button">Details</button></a>
 				<a href="projects_estimation.php?project_id=<?=$project_id; ?>" title="<?=lang("Estimation", "AAR"); ?>"><button class="btn" type="button">Estimation</button></a>
 				<?php
-				if($quotation_id == 0){
+				if($quotation_id != 0){
 					
 				?>
-				<a href="quotations_details.php?quotation_id=1" title="<?=lang("Quotation", "AAR"); ?>"><button type="button" class="btn"><i class="fa fa-bars"></i> Quotation</button></a>
+				<a href="quotations_details.php?quotation_id=<?= $quotation_id; ?>" title="<?=lang("Quotation", "AAR"); ?>"><button type="button" class="btn"><i class="fa fa-bars"></i> Quotation</button></a>
 					<?php
 				}
 					?>
 						<?php
-				if($quotation_id != 0){
+				if($quotation_id == 0){
 
 				?>
 			

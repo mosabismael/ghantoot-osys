@@ -6,7 +6,7 @@
 	$main_pointer = '../../../';
 	require_once($main_pointer.'bootstrap/app_config.php');
 	require_once($main_pointer.'bootstrap/chk_log_user.php');
-	
+
 	
 	try{
 		
@@ -22,7 +22,6 @@
 		isset($_POST['is_vat_included']) && 
 		isset($_POST['client_id']) 
 		){
-			
 			$quotation_id = 0;
 			$quotation_ref = "";
 			$rev_no = "0";
@@ -33,7 +32,7 @@
 			$currency_id = test_inputs($_POST['currency_id']);
 			$delivery_period_id = test_inputs($_POST['delivery_period_id']);
 			$delivery_method = test_inputs($_POST['delivery_method']);
-			$project_id = test_inputs($_POST['project_id']);
+			$project_id = test_inputs($_POST['project']);
 
 			$valid_until = test_inputs($_POST['valid_until']);
 			$valid_date;
@@ -133,6 +132,11 @@
 			
 			
 			$quotation_id = mysqli_insert_id($KONN);
+			$qu_project_ins = "UPDATE  `z_project` SET 
+			`quotation_id` = '".$quotation_id."' WHERE `project_id` = $project_id;";
+				$insertStatement = mysqli_prepare($KONN,$qu_project_ins);
+				
+				mysqli_stmt_execute($insertStatement);
 			if( $quotation_id != 0 ){
 				
 				if( insert_state_change($KONN, $quotation_status, $quotation_id, "sales_quotations", $EMPLOYEE_ID) ) {
@@ -153,14 +157,7 @@
 							if(mysqli_num_rows($qu_gen_clients_contacts_EXE)){
 								$gen_clients_contacts_DATA = mysqli_fetch_assoc($qu_gen_clients_contacts_EXE);
 								$contact_name = $gen_clients_contacts_DATA['contact_name'];
-							}
-							
-							
-							
-							
-							
-							
-							
+							}		
 							$qu_sales_quotations_contacts_ins = "INSERT INTO `sales_quotations_contacts` (
 							`contact_id`, 
 							`quotation_id` 
@@ -176,21 +173,11 @@
 							
 						}
 					}		
-					$qu_project_ins = "UPDATE  `z_project` SET 
-					`quotation_id` = '".$quotation_id."' WHERE `project_id` = $project_id;";
-						$insertStatement = mysqli_prepare($KONN,$qu_project_ins);
-						
-						mysqli_stmt_execute($insertStatement);
+		
 					
 					
 					die("1|quotations_details.php?quotation_id=$quotation_id");
-					
-					
-					
-					
-					
-					
-					
+				
 					} else {
 					die('0|Data Status Error 65154');
 				}

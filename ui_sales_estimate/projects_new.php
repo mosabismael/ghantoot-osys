@@ -5,7 +5,7 @@
 	// $page_title=$page_description=$page_keywords=$page_author= $SETTINGS['site_title'.$lang_db];
 	$page_title=$page_description=$page_keywords=$page_author= "GOMI ERP";
 	
-	$menuId = 3;
+	$menuId = 5;
 	$subPageID = 30;
 ?>
 <!DOCTYPE html>
@@ -27,19 +27,19 @@
 
 <div class="row">
 <?php
-if(isset($_GET['user'])){
+if(isset($_GET['quotation_id'])){
 	$user = '';
 }
-	$user =  $_GET['user'];
+	$user =  $_GET['quotation_id'];
 
 	
 ?>
 
 <form 
 id="add-new-client-form" 
-id-modal="add_new_project" 
+id-modal="add_subnew_project" 
 class="boxes-holder" 
-api="<?=api_root; ?>sales_projects/add_new_project.php">
+api="<?=api_root; ?>sales_projects/add_subnew_project.php">
 
 
 
@@ -47,44 +47,9 @@ api="<?=api_root; ?>sales_projects/add_new_project.php">
 <div class="row">
 	<div class="col-100">
 	
-		<div class="form-grp">
-			<label><?=lang('Client_Name'); ?></label>
-			<input class="frmData" type="text" 
-					id="new-client_name" 
-					name="client_name" 
-					list="clients-data"
-					value="<?=$user?>" 
-					req="1" 
-					den="" 
-					placeholder="<?=lang('Type Client Name to Select'); ?>"
-					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>"
->
 
-					<span class="noter" id="clien_load_res">* <?=lang('fill client name to load information'); ?></span>
-		<datalist id="clients-data">
-<?php
-$q = "SELECT `client_name` FROM `gen_clients`";
-$q_exe = mysqli_query($KONN, $q);
-if(mysqli_num_rows($q_exe) > 0){
-	while($record = mysqli_fetch_assoc($q_exe)){
-?>
-<option ><?=$record['client_name']; ?></option>
-<?php
-		}
-	}
-?>
-		</datalist>
-		</div>
 	</div>
-	
-	
-			<input class="frmData" type="hidden" 
-					id="new-client_id" 
-					name="client_id" 
-					req="1" 
-					den="0" 
-					value="0"
-					alerter="<?=lang("Please_Check_Client_Name", "AAR"); ?>">
+	<input type="hidden" name='quotation_id' value='<?= $_GET['quotation_id'] ?>'>
 	
 </div>
 
@@ -104,22 +69,7 @@ if(mysqli_num_rows($q_exe) > 0){
 	</div>
 </div>
 
-<div class="col-50">
-	<div class="form-grp">
-		<label class="lbl_class"><?=lang('project_type', 'ARR', 1); ?></label>
-		<select class="frmData"
-				id="new-project_type" 
-				name="project_type" 
-				req="0" 
-				den="" 
-				alerter="<?=lang("Please_Check_project_type", "AAR"); ?>" >
-				<option selected disabled>---Select one---</option>
-				<option value = "steel">Steel</option>
-				<option value = "Marine">Marine</option>
-				<option value = "others">Construction</option>
-		</select>
-	</div>
-</div>
+
 
 <div class="col-50">
 	<div class="form-grp">
@@ -135,7 +85,7 @@ if(mysqli_num_rows($q_exe) > 0){
 
 	<div class="zero"></div>
 	
-<div class="col-100 text-center" id="add_new_project">
+<div class="col-100 text-center" id="add_subnew_project">
 		<div class="form-alerts"></div>
 <button type="button"  onclick="submit_form('add-new-client-form', 'forward_page');" class="btn btn-primary"><?=lang("Add", "AAR"); ?></button>
 			
@@ -153,57 +103,6 @@ if(mysqli_num_rows($q_exe) > 0){
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
 	include('app/footer.php');
 ?>
-
-
-
-
-
-
-
-
-
-<script>
-
-function loadClient(){
-	var client_name = $('#new-client_name').val().trim();
-
-	if(client_name != ''){
-		
-		$.ajax({
-		url      :"<?=api_root; ?>/clients/get_client_info.php",
-		data     :{'client_name': client_name, 'operation': 1},
-		dataType :"JSON",
-		type     :'POST',
-		success  :function(response){
-				var client_id = response[0].client_id;
-				var client_name = response[0].client_name;
-				var payment_term_id = response[0].payment_term_id;
-				payment_term_id = parseInt(payment_term_id);
-				
-				
-				$('#new-client_id').val(client_id);
-				// $('#new-client_name').val(client_name);
-				if(client_id != '0'){
-					$('#clien_load_res').html('<span style="color:green;">Client Information Loaded</span>');
-					isClientSelected = true;
-				} else {
-					isClientSelected = false;
-					$('#clien_load_res').html('<span style="color:red;">Client Information ERROR</span>');
-				}
-				
-			},
-		error    :function(){
-			alert('Data Error No: 5467653');
-			isClientSelected = false;
-			},
-		});
-	}
-}
-
-$("#new-client_name").on('input',function(){
-	loadClient();
-});
-</script>
 
 </body>
 </html>
