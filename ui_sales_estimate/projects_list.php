@@ -88,6 +88,8 @@
 				?>
 			
 				<input type='hidden' name='project_id' value='<?= $project_id ?>'>
+				<input type='hidden' name='client_id' value='<?= $client_id ?>'>
+
 				<button type="submit" class="btn"><i class="fa fa-folder"></i> Quotation</button>
 					<?php
 				}

@@ -119,7 +119,7 @@
 			<td ><?=$convert; ?></td>
 
 			<td class="text-center">
-				<a href="quotations_details.php?quotation_id=<?=$quotation_id; ?>" title="<?=lang("Account Details", "AAR"); ?>"><i class="fas fa-info-circle"></i></a>
+				<a href="punchlist.php" title="<?=lang("Account Details", "AAR"); ?>"><i class="fas fa-info-circle"></i></a>
 			</td>
 		</tr>
 		<?php

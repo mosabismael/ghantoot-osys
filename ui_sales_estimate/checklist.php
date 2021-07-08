@@ -15,7 +15,7 @@
       <meta name="author" content="ragaz" />
       <meta name="company" content="Smartsheet" />
       <style type="text/css">
-      html { font-family:Calibri, Arial, Helvetica, sans-serif; font-size:11pt; background-color:white }
+    
       a.comment-indicator:hover + div.comment { background:#ffd; position:absolute; display:block; border:1px solid black; padding:0.5em }
       a.comment-indicator { background:red; display:inline-block; border:1px solid black; width:0.5em; height:0.5em }
       div.comment { display:none }
@@ -167,25 +167,6 @@ body { margin-left: 0.3in; margin-right: 0.3in; margin-top: 0.3in; margin-bottom
         <col class="col14">
         <col class="col15">
         <tbody>
-          <tr class="row0">
-            <td class="column0 style6 null">
-<div style="position: relative;"><img style="position: absolute; z-index: 1; left: 0px; top: 0px; width: 1056px; height: 282px;" src="zip:///home/CloudConvertio/tmp/in_work/eab3846e7f3c4a8e8c33facb93f3fde1.xlsx#xl/media/image1.jpg" border="0" /></div></td>
-            <td class="column1">&nbsp;</td>
-            <td class="column2">&nbsp;</td>
-            <td class="column3">&nbsp;</td>
-            <td class="column4">&nbsp;</td>
-            <td class="column5">&nbsp;</td>
-            <td class="column6">&nbsp;</td>
-            <td class="column7">&nbsp;</td>
-            <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td>
-            <td class="column11">&nbsp;</td>
-            <td class="column12">&nbsp;</td>
-            <td class="column13">&nbsp;</td>
-            <td class="column14">&nbsp;</td>
-            <td class="column15">&nbsp;</td>
-          </tr>
           <tr class="row1">
             <td class="column0">&nbsp;</td>
             <td class="column1 style3 s">PROJECT CLOSEOUT CHECKLIST</td>

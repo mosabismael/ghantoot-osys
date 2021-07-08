@@ -53,6 +53,8 @@
 <div class="row">
 <?php
 $project_id = $_GET['project_id'];
+$get_client_id = $_GET['client_id'];
+
 ?>
 <form 
 id="new-quotation-form" 
@@ -68,7 +70,7 @@ api="<?=api_root; ?>sales/quotations/add_new.php">
 					id="new-client_name" 
 					name="client_name" 
 					list="clients-data"
-					value="<?=$client_name; ?>"
+					value=""
 					req="1" 
 					den="" 
 					placeholder="<?=lang('Type Client Name to Select'); ?>" 
@@ -173,6 +175,7 @@ function loadClient(){
 		dataType :"JSON",
 		type     :'POST',
 		success  :function(response){
+			console.log(response);
 				var client_id = response[0].client_id;
 				var client_name = response[0].client_name;
 				var payment_term_id = response[0].payment_term_id;
@@ -205,6 +208,7 @@ function loadClient(){
 
 $("#new-client_name").on('input',function(){
 	loadClient();
+
 });
 
 
