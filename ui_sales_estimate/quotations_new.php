@@ -66,15 +66,17 @@ api="<?=api_root; ?>sales/quotations/add_new.php">
 	
 		<div class="form-grp">
 			<label><?=lang('Client_Name'); ?></label>
-			<input class="frmData" type="text" 
+			<select class="frmData" type="text" 
 					id="new-client_name" 
 					name="client_name" 
 					list="clients-data"
-					value=""
+					value="4"
 					req="1" 
 					den="" 
 					placeholder="<?=lang('Type Client Name to Select'); ?>" 
 					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>">
+					<option value = "<?=$client_name; ?>" selected><?= $client_name; ?></option>
+
 
 					<span class="noter" id="clien_load_res">* <?=lang('fill client name to load information'); ?></span>
 		<datalist id="clients-data">
@@ -89,6 +91,7 @@ if(mysqli_num_rows($q_exe) > 0){
 		}
 	}
 ?>
+</select>
 		</datalist>
 		</div>
 	</div>
@@ -175,7 +178,6 @@ function loadClient(){
 		dataType :"JSON",
 		type     :'POST',
 		success  :function(response){
-			console.log(response);
 				var client_id = response[0].client_id;
 				var client_name = response[0].client_name;
 				var payment_term_id = response[0].payment_term_id;
@@ -183,6 +185,8 @@ function loadClient(){
 				$('#payment_term_id').val(payment_term_id);
 				
 				$('#new-client_id').val(client_id);
+				console.log(response);
+
 				// $('#new-client_name').val(client_name);
 				if(client_id != '0'){
 					$('#clien_load_res').html('<span style="color:green;">Client Information Loaded</span>');

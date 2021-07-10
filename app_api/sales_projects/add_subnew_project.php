@@ -10,10 +10,10 @@
 
 		if(
 		isset($_POST['project_name']) &&
-		isset($_POST['quotation_id'])){		
+		isset($_POST['quotation'])){		
 			$project_name = test_inputs($_POST['project_name']);
 			$project_notes = test_inputs($_POST['project_notes']);
-            $quotation_id = test_inputs($_POST['quotation_id']);
+            $quotation_id = test_inputs($_POST['quotation']);
 
             
 			$qu_project_ins = "UPDATE  `z_project` SET 
@@ -21,8 +21,10 @@
 				$insertStatement = mysqli_prepare($KONN,$qu_project_ins);
 				
 				mysqli_stmt_execute($insertStatement);
-			
-		
+				die('1|punchlist.php');
+
+				die('0|7wiu');
+
 			}
 			
 			else {

@@ -62,8 +62,7 @@
 			?>
 		</select>
 		<!-- <input type = "text" id = "name" name = "name" required ><br> -->
-		<label for ="name">Product description</label>
-		<input type = "text" id = "description" name = "description" required ><br>
+		
 		<input type = "text" id = "level3_id" name = "level3_id" value = "<?=$level3_id?>" hidden ><br>
 		<input type = "text" id = "level3_name" name = "level3_name" hidden>
 		<input type = "text" id="id" name = "id" hidden>
@@ -94,7 +93,7 @@
 <script>
 	document.getElementById('level4Form').onsubmit =function addlevel4Data() {
 		var name = $('#addProductLevel4').find('#name').val();
-		var desc = $('#addProductLevel4').find('#description').val();
+		var desc = '';
 		var level3_id = $('#level3_id').val();
 		var type_id = $('#addProductLevel4').find('#type_id').val();
 		var id = $('#addProductLevel4').find('#id').val();

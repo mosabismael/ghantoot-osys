@@ -28,9 +28,9 @@
 <div class="row">
 <?php
 if(isset($_GET['quotation_id'])){
-	$user = '';
+	$quotation = '';
 }
-	$user =  $_GET['quotation_id'];
+	$quotation =  $_GET['quotation_id'];
 
 	
 ?>
@@ -40,19 +40,6 @@ id="add-new-client-form"
 id-modal="add_subnew_project" 
 class="boxes-holder" 
 api="<?=api_root; ?>sales_projects/add_subnew_project.php">
-
-
-
-
-<div class="row">
-	<div class="col-100">
-	
-
-	</div>
-	<input type="hidden" name='quotation_id' value='<?= $_GET['quotation_id'] ?>'>
-	
-</div>
-
 
 
 <div class="zero"></div>
@@ -66,6 +53,14 @@ api="<?=api_root; ?>sales_projects/add_subnew_project.php">
 				req="0" 
 				den="" 
 				alerter="<?=lang("Please_Check_project_notes", "AAR"); ?>" >
+				<input class="frmData" type="hidden" 
+				id="new-quotation" 
+				name="quotation" 
+				value="<?= $quotation; ?>"
+				req="0" 
+				den=""
+				 >
+
 	</div>
 </div>
 

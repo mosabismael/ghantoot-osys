@@ -166,7 +166,7 @@
 							'".$quotation_id."' 
 							);";
 							$insertStatement = mysqli_prepare($KONN,$qu_sales_quotations_contacts_ins);
-							
+
 							mysqli_stmt_execute($insertStatement);
 							$link_id = mysqli_insert_id( $KONN );
 								die("0|ERROR STATE CONTACTS");
