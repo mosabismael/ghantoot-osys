@@ -162,9 +162,11 @@
 			function closeaddItem(type){
 				
 				level = document.getElementById("add"+type);
+				console.log(level);
 				level.className = "add-new notdisplayed";
 				
 			}
+			
 			function openEditRecord(uid, name , qty, measure_id){
 				level = document.getElementById("addRecord");
 				level.className = "add-new displayed";

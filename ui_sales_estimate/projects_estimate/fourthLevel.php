@@ -30,7 +30,9 @@
 	?>
 	
 </div>
-<i class="far fa-plus-square addbutton displayed" id = "addbutton" onclick =  "openaddItem('ProductLevel4')"></i>
+<i class="far fa-plus-square addbutton displayed" id = "addbutton"   onclick = "openaddItem('ProductLevel4')"></i>
+
+
 <div class = "add-new notdisplayed" id = "addProductLevel4">
 	<?php 
 		$headerName = 'ProductLevel4';
