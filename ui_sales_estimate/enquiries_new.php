@@ -104,8 +104,47 @@ id="add-new-enquiries-form"
 id-modal="add_new_enquiries" 
 class="boxes-holder" 
 api="<?=api_root; ?>sales_projects/add_new_enquiries.php">
+<div class="col-33">
 
-
+<div class="form-grp">
+	<label class="lbl_class"><?=lang('To_Client:', 'ARR', 1); ?></label>
+<select class="frmData" type="text" 
+				id="new-client_name" 
+				name="client_name" 
+				list="clients-data"
+				value="<?=$client_name; ?>"
+				req="1" 
+				den="" 
+				placeholder="<?=lang('Type Client Name to Select'); ?>" 
+				alerter="<?=lang("Please_Check_client_name", "AAR"); ?>">
+	<datalist id="clients-data">
+<?php
+$q = "SELECT `client_name`,`client_id` FROM `gen_clients`";
+$q_exe = mysqli_query($KONN, $q);
+if(mysqli_num_rows($q_exe) > 0){
+while($record = mysqli_fetch_assoc($q_exe)){
+?>
+<option value="<?=$record['client_id']; ?>"><?=$record['client_name']; ?></option>
+<?php
+	}
+}
+?>
+	</datalist>
+</select>
+</div>
+</div>
+<div class="col-33">
+	<div class="form-grp">
+	<label class="lbl_class"><?=lang('Attn:', 'ARR', 1); ?></label>
+		<input class="frmData" type="text" 
+				id="new-attn_name" 
+				name="attn_name" 
+				req="1" 
+				den="" 
+				
+				alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>" required>
+	</div>
+	</div>
 <div class="col-30">
 	<div class="form-grp">
 		<label class="lbl_class"><?=lang('Date', 'ARR', 1); ?></label>
@@ -114,50 +153,11 @@ api="<?=api_root; ?>sales_projects/add_new_enquiries.php">
 				name="date" 
 				req="1" 
 				den="0" 
-				alerter="<?=lang("Please_Check_date", "AAR"); ?>">
+				alerter="<?=lang("Please_Check_date", "AAR"); ?>" required>
 
 			</input>
 	</div>
-	<div class="col-50">
 
-	<div class="form-grp">
-		<label class="lbl_class"><?=lang('TO:', 'ARR', 1); ?></label>
-    <select class="frmData" type="text" 
-					id="new-client_name" 
-					name="client_name" 
-					list="clients-data"
-					value="<?=$client_name; ?>"
-					req="1" 
-					den="" 
-					placeholder="<?=lang('Type Client Name to Select'); ?>" 
-					alerter="<?=lang("Please_Check_client_name", "AAR"); ?>">
-		<datalist id="clients-data">
-<?php
-$q = "SELECT `client_name`,`client_id` FROM `gen_clients`";
-$q_exe = mysqli_query($KONN, $q);
-if(mysqli_num_rows($q_exe) > 0){
-	while($record = mysqli_fetch_assoc($q_exe)){
-?>
-<option value="<?=$record['client_id']; ?>"><?=$record['client_name']; ?></option>
-<?php
-		}
-	}
-?>
-		</datalist>
-    </select>
-	</div>
-	</div>
-	<div class="col-33">
-	<div class="form-grp">
-	<label class="lbl_class"><?=lang('Attn:', 'ARR', 1); ?></label>
-		<input class="frmData" type="text" 
-				id="new-attn_name" 
-				name="attn_name" 
-				req="1" 
-				den="" 
-				alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>">
-	</div>
-	</div>
 </div>
 
 <div class="zero"></div>
@@ -170,7 +170,7 @@ if(mysqli_num_rows($q_exe) > 0){
 				name="subject_name" 
 				req="1" 
 				den="" 
-				alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>">
+				alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>" required>
 	</div>
 	</div>
 	<div class="col-100">
@@ -183,13 +183,13 @@ if(mysqli_num_rows($q_exe) > 0){
 				req="1" 
 				den="" 
         style="height:200px"
-				alerter="<?=lang("Please_Check_details", "AAR"); ?>"></textarea>
+				alerter="<?=lang("Please_Check_details", "AAR"); ?> " required></textarea>
 				
 	</div>
 	<div class="form-grp">
 
 	<label for="attachments">Choose a attachments:</label>
-	<input type="file" name="pdf_file" accept=".pdf"/>
+	<input type="file" title="Type search term here" name="pdf_file"  accept=".pdf,.docx,.xls,.csv" multiple required/>
             <input type="hidden" name="MAX_FILE_SIZE" value="67108864"/> <!--64 MB's worth in bytes-->
 
 		
@@ -221,7 +221,7 @@ if(mysqli_num_rows($q_exe) > 0){
 <div class="col-100 text-center" id="add_new_enquiries">
 		<!-- <div class="form-alerts"></div> -->
 <a  href="enquiries_List.php"><button class="btn btn-primary" type="button" onClick="enquiries_List.php"><?=lang('cancel'); ?></button></a>
-    <button type="button"  onclick="submit_form('add-new-enquiries-form', 'forward_page');" class="btn btn-primary"><?=lang("SEND ENQUIRY", "AAR"); ?></button>
+    <button type="submit"  onclick="submit_form('add-new-enquiries-form', 'forward_page');" class="btn btn-primary"><?=lang("CREATE_ENQUIRY", "AAR"); ?></button>
 		
 </div>
 

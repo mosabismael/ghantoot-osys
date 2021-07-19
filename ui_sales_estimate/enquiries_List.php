@@ -38,6 +38,17 @@
 <html dir="<?=$lang_dir; ?>" lang="<?=$lang; ?>">
 
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
     <?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -153,7 +164,7 @@ input[type=submit]:hover {
 			<th><?=lang("Subject", "AAR"); ?></th>
 			<th><?=lang("Details", "AAR"); ?></th>
 			<th><?=lang("Attachments", "AAR"); ?></th>
-			<th><?=lang("Status", "AAR"); ?></th>
+			<th><?=lang("Action", "AAR"); ?></th>
 
 		</tr>
 	</thead>
@@ -207,7 +218,7 @@ input[type=submit]:hover {
 				margin: 4px 2px;
 				cursor: pointer;'
 				type='submit'
-				value='Estimation'></form>";
+				value='Start Estimation'></form>";
 			
 			}else{
 				if ($enquiries_REC['status'] == 2){
@@ -220,7 +231,7 @@ input[type=submit]:hover {
 					display: inline-block;
 					font-size: 16px;
 					margin: 4px 2px;
-					cursor: pointer;'> Progress</button>";
+					cursor: pointer;'> In Progress</button>";
 				}
 			}
 
