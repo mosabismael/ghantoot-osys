@@ -49,6 +49,7 @@ $(document).ready(function(){
   });
 });
 </script>
+
     <?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -145,7 +146,8 @@ input[type=submit]:hover {
   cursor: pointer;" onclick="sortTable()">Sort</button>
 </div>
 	<div class="col-33">
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<input id="myInput" type="text" placeholder="Search..">
+
 </div>
 <iframe id="myFrame" style="display:none" width="600" height="300"></iframe>
 
@@ -168,7 +170,7 @@ input[type=submit]:hover {
 
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="myTable">
 <?php
 	$qu_enquiries_sel = "SELECT * FROM  `enquiries`";
 	$qu_enquiries_EXE = mysqli_query($KONN, $qu_enquiries_sel);
