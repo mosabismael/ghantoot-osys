@@ -17,8 +17,8 @@
 		</div>
 	</div>
 </div>
-<script>
-</script>
+
+
 <div class = "tabber-boq-4 notdisplayed" style = "margin-top: 5%;">
 
 	<?php
@@ -67,10 +67,10 @@
 		
 		<input type = "text" id = "level3_id" name = "level3_id" value = "<?=$level3_id?>" hidden ><br>
 		<input type = "text" id = "level3_name" name = "level3_name" hidden>
+
 		<input type = "text" id="id" name = "id" hidden>
 		<label for ="type_name">Type</label>
-		<select id="type_id" name="type_id" >
-			<option value="" disabled selected>Choose a group</option>
+		<select id="type_id" name="type_id" disabled>
 			<?php
 				$qu_type_sel = "SELECT * FROM  `z_levels_type`";
 				$qu_type_EXE = mysqli_query($KONN, $qu_type_sel);
@@ -79,11 +79,20 @@
 						$type_id = $type_REC['type_id'];
 						$type_name = $type_REC['type_name'];
 					?>
-					<option value="<?=$type_id?>"><?=$type_name?></option>
+					<?php
+							if($type_id == 4){
+								?>
+
+					<option selected value="<?=$type_id?>" ><?=$type_name?></option>
+					<?php		
+				}
+			?>
+
 					<?php
 					}
 				}
 			?>
+
 		</select>
 		<button type = "submit" name = "submitRecordLevel4" id = "button-add" onclick = "closeaddItem('ProductLevel4')">Add</button>
 	</form>
