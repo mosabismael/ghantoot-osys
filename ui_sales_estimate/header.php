@@ -162,7 +162,6 @@
 			function closeaddItem(type){
 				
 				level = document.getElementById("add"+type);
-				console.log(level);
 				level.className = "add-new notdisplayed";
 				
 			}

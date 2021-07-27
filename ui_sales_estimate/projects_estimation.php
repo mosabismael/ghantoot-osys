@@ -248,6 +248,7 @@
 				$('#history').hide();
 			}
 			function loadBoq(type_name, id, sno, level1_id, level2_id, level3_id, level4_id, level5_id, boq_id, name){
+
 				var data4 ='';
 				if($('.tabber-boq-'+id).hasClass('notdisplayed')){
 					$('.tabber-boq-'+id).removeClass('notdisplayed');
@@ -333,7 +334,10 @@
 						$('#boq_id').val(boq_id);
 						
 					}
-					
+					if( level2_id == 464 && $('.tabber-boq-4')){
+						console.log("rrr");
+						
+					}
 					$('#header-boq-title-'+id).html(name);
 					$('#completed-'+id+'-'+sno).find('i').removeClass('fas fa-check complete');
 					$('#completed-'+id+'-'+sno).find('i').removeClass('fas fa-folder');
@@ -368,7 +372,6 @@
 					}
 					if(($('#sel-4').text()=='UB/UC' || $('#sel-4').text()=='Angles' || $('#sel-4').text()=='Plates') ){
 							 data4 =  $('#header-boq-title-4').text();
-							 console.log(data4);
 							} else
 					if($('#header-boq-title-2').text() == 'Surface Treatment' && $('#sel-3').text()=='LV03'){
 						$('#boq_normal-'+id).css('display', 'none');
@@ -590,6 +593,8 @@
 			var itemsCount = 0;
 			
 			function add_st_details_table(tabber_id_sno,tabber_id , items_c ,  ths_tot,item_name, item_qty, item_price, boq_id,  item_surfacearea,  boq_surfacearea_unit_id, unit_name_surfacearea, no_coat, vol_solids , loss_factor, icf, avg_dft, tot_paint, percentage ){
+				
+
 				var boq = parseInt(boq_id);
 				var res = "";
 				$.ajax({
