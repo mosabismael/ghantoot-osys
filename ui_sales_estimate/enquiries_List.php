@@ -138,12 +138,12 @@ input[type=submit]:hover {
 
 <div class="row">
 <div class="col-33">
-<button style=" background-color: #2e6da4;
+<!-- <button style=" background-color: #2e6da4;
   color: white;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;" onclick="sortTable()">Sort</button>
+  cursor: pointer;" onclick="sortTable()">Sort</button> -->
 </div>
 	<div class="col-33">
 <input id="myInput" type="text" placeholder="Search..">
