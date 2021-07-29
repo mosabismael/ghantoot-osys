@@ -82,7 +82,7 @@
 			
 			<div class = "td"  >
 				<div class="form-item">
-					<input type="text" placeholder="<?=lang('item_qty'); ?>" id="item_qty<?=$tabber_id?>" style = "width: 35%;margin-right: 10%;">
+					<input type="text" name="item_qty<?=$tabber_id?>" placeholder="<?=lang('item_qty'); ?>" id="item_qty<?=$tabber_id?>" style = "width: 35%;margin-right: 10%;">
 					<select id="item_unit4" class="data-elem" style = "width: 40%;">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<?php
@@ -101,7 +101,7 @@
 			</div>
 			<div class = "td" id = "boq-complexity-value<?=$tabber_id?>">
 				<div class="form-item">
-					<select id="item_complexity<?=$tabber_id?>" class="data-elem" style = "width:100%">
+					<select id="item_complexity<?=$tabber_id?>" name="item_complexity<?=$tabber_id?>" class="data-elem" style = "width:100%">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<option value="extra light" ><?=lang('extra light'); ?></option>
 						<option value="light" ><?=lang('light'); ?></option>
@@ -125,7 +125,7 @@
 </script>
 			<div class = "td" id = "boq-qty-value<?=$tabber_id?>">
 				<div class="form-item">
-					<input type="text" placeholder="<?=lang('item_length'); ?>" id="item_length<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">
+					<input type="text"  name="item_length<?=$tabber_id?>" placeholder="<?=lang('item_length'); ?>" id="item_length<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">
 					<select id="item_unit_length<?=$tabber_id?>" class="data-elem" style ="width:40%">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<?php
@@ -145,7 +145,7 @@
 			
 			<div class = "td" id = "boq-sa-value<?=$tabber_id?>">
 				<div class="form-item">
-					<input type="text" placeholder="<?=lang('item_surface_area'); ?>" id="item_surface_area<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">
+					<input type="text" name="item_surface_area<?=$tabber_id?>"  placeholder="<?=lang('item_surface_area'); ?>" id="item_surface_area<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">
 					<select id="item_unit_surface_area<?=$tabber_id?>" class="data-elem" style = "width:30%">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<?php
@@ -165,7 +165,7 @@
 			
 			<div class = "td">
 				<div class="form-item">
-					<input type="text" placeholder="<?=lang('item_cost'); ?>" id="item_price<?=$tabber_id?>">
+					<input type="text" name="item_price<?=$tabber_id?>" placeholder="<?=lang('item_cost'); ?>" id="item_price<?=$tabber_id?>">
 					
 				</div>
 			</div>
