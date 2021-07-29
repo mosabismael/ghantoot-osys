@@ -34,12 +34,12 @@
 		<div class = "tr">
 			<div class = "th"><i onclick = "delete_boq(<?=$tabber_id?>);" class="fa fa-trash" ></i></div>
 			<div class = "th"><?=lang('No.'); ?></div>
-			<div class = "th" style = "width:40%"><?=lang('name'); ?></div>
-			<div class = "th" style = "width:10%" id = "qty-boq<?=$tabber_id?>"><?=lang('Quantity'); ?></div>
-			<div class = "th" style = "width:10%" id = "complexity-boq<?=$tabber_id?>"><?=lang('Complexity'); ?></div>
-			<div class = "th" style = "width:10%" id = "length-boq<?=$tabber_id?>"><?=lang('Length'); ?></div>
-			<div class = "th" style = "width:10%" id = "sa-boq<?=$tabber_id?>"><?=lang('surface area'); ?></div>
-			<div class = "th" id = "cost-boq<?=$tabber_id?>"><?=lang('Cost'); ?></div>
+			<div class = "th" style = "width:35%"><?=lang('name'); ?></div>
+			<div class = "th" style = "width:15%" id = "qty-boq<?=$tabber_id?>"><?=lang('Quantity'); ?></div>
+			<div class = "th" style = "width:15%" id = "complexity-boq<?=$tabber_id?>"><?=lang('Complexity'); ?></div>
+			<div class = "th" style = "width:15%" id = "length-boq<?=$tabber_id?>"><?=lang('Length'); ?></div>
+			<div class = "th" style = "width:15%" id = "sa-boq<?=$tabber_id?>"><?=lang('surface area'); ?></div>
+			<div class = "th" style = "width:15%" id = "cost-boq<?=$tabber_id?>"><?=lang('Cost'); ?></div>
 			<div class = "th" style = "display:none" id = "manhour-boq<?=$tabber_id?>"><?=lang('Manhour'); ?></div>
 			<div class = "th"><?=lang('Total'); ?></div>
 		</div>
@@ -206,7 +206,7 @@
 ?>
 
 </div>
-<i class="far fa-plus-square addbutton displayed" id = "addbutton"   onclick = "openaddItem('ProductLevel4')"></i>
+<!-- <i class="far fa-plus-square addbutton displayed" id = "addbutton"   onclick = "openaddItem('ProductLevel4')"></i> -->
 
 
 <div class = "add-new notdisplayed" id = "addProductLevel4">
@@ -303,6 +303,7 @@
 		return false;
 	};
 	function loadLevel4Data(id, name, level1_id, level2_id, level3_id){
+		console.log(name);
 		$.ajax({
 			url      :"projects_estimate/fourthLevelData.php",
 			data     :{ 'id': id,'level1_id':level1_id,'level2_id':level2_id,'level3_id':level3_id},

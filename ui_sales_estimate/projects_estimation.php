@@ -335,7 +335,6 @@
 						
 					}
 					if( level2_id == 464 && $('.tabber-boq-4')){
-						console.log("rrr");
 						
 					}
 					$('#header-boq-title-'+id).html(name);
