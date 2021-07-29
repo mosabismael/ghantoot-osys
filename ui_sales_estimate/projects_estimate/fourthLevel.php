@@ -34,14 +34,14 @@
 		<div class = "tr">
 			<div class = "th"><i onclick = "delete_boq(<?=$tabber_id?>);" class="fa fa-trash" ></i></div>
 			<div class = "th"><?=lang('No.'); ?></div>
-			<div class = "th" style = "width:35%"><?=lang('name'); ?></div>
+			<div class = "th" style = "width:20%"><?=lang('name'); ?></div>
 			<div class = "th" style = "width:15%" id = "qty-boq<?=$tabber_id?>"><?=lang('Quantity'); ?></div>
 			<div class = "th" style = "width:15%" id = "complexity-boq<?=$tabber_id?>"><?=lang('Complexity'); ?></div>
 			<div class = "th" style = "width:15%" id = "length-boq<?=$tabber_id?>"><?=lang('Length'); ?></div>
 			<div class = "th" style = "width:15%" id = "sa-boq<?=$tabber_id?>"><?=lang('surface area'); ?></div>
 			<div class = "th" style = "width:15%" id = "cost-boq<?=$tabber_id?>"><?=lang('Cost'); ?></div>
 			<div class = "th" style = "display:none" id = "manhour-boq<?=$tabber_id?>"><?=lang('Manhour'); ?></div>
-			<div class = "th"><?=lang('Total'); ?></div>
+			<div class = "th" style = "width:35%" ><?=lang('Total'); ?></div>
 		</div>
 	</div>
 	<div class="tableBody" id = "level4Body">
@@ -166,6 +166,7 @@
 			<div class = "td">
 				<div class="form-item">
 					<input type="text" placeholder="<?=lang('item_cost'); ?>" id="item_price<?=$tabber_id?>">
+					
 				</div>
 			</div>
 			
@@ -177,7 +178,7 @@
 			<div class = "td">
 				<div class="form-item">
 					<!-- <button class="btn btn-info" onclick = "closeaddItem('ProductLevel4')" type="button" style = "font-size:15px">&nbsp;&nbsp;&nbsp;<?=lang('Add_item'); ?>&nbsp;&nbsp;&nbsp;</button> -->
-					<button class="btn btn-info"  type = "submit" name = "submitRecordLevel4" id = "button-add" onclick = "closeaddItem('ProductLevel4')"><?=lang('Add_item'); ?></button>
+					<button class="btn btn-info"  type = "submit" name = "submitRecordLevel4" id = "button-add" onclick = "closeaddItem('ProductLevel4')"><?=lang('Add_item'); ?>&nbsp;&nbsp;&nbsp;</button>
 
 				</div>
 			</div>
