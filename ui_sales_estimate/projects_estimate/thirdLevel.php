@@ -118,11 +118,12 @@
 					// '<div class = "td"><a '+onclick+'>'+response[i].level4_name+'</a> </div>'+
 					'<div class = "td">' + response[i].sno + '</div>'+
 					'<div class = "td"><button '+onclick+'>'+response[i].level4_name+'</button> </div>'+
-					'<div class = "td">QUANTITY</div>'+
-					'<div class = "td">COMPLEXITY</div>'+
-					'<div class = "td">LENGTH</div>'+
-					'<div class = "td">SURFACE AREA	</div>'+
-					'<div class = "td">COST</div>'+
+					'<div class = "td">'+ response[i].quantity +'</div>'+
+					'<div class = "td">'+response[i].complexity+'</div>'+
+					'<div class = "td">'+response[i].length+'</div>'+
+					'<div class = "td">'+response[i].surface_area+'</div>'+
+					'<div class = "td">'+response[i].cost+'</div>'+
+
 					'<div class = "td" style = "width: 15%;"><input class = "estimation_amount" style = "border:none;" type = "text" id = "amount-4-'+response[i].level4_id+'" value = '+response[i].total_amount+'></div>'+			
 
 					'<div class = "td"><i class="far fa-edit " onclick = "openEdit('+ "'" +response[i].level4_name+ "'" +","+response[i].level4_id+","+ "'" +response[i].level4_description+ "'" +","+response[i].type_id+   ", 'addProductLevel4'" + ')"></i></div>'+
