@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2021 at 07:54 AM
+-- Generation Time: Aug 05, 2021 at 12:05 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -48283,11 +48283,11 @@ CREATE TABLE `z_project_level4` (
   `level3_id` int(5) NOT NULL,
   `level4_description` varchar(100) NOT NULL,
   `type_id` int(5) NOT NULL,
-  `quantity` int(50) NOT NULL,
+  `quantity` varchar(50) NOT NULL,
   `complexity` varchar(50) DEFAULT NULL,
-  `length` int(50) NOT NULL,
-  `surface_area` int(50) NOT NULL,
-  `cost` int(50) NOT NULL
+  `length` varchar(50) NOT NULL,
+  `surface_area` varchar(50) NOT NULL,
+  `cost` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -48295,17 +48295,7 @@ CREATE TABLE `z_project_level4` (
 --
 
 INSERT INTO `z_project_level4` (`level4_id`, `level4_name`, `level3_id`, `level4_description`, `type_id`, `quantity`, `complexity`, `length`, `surface_area`, `cost`) VALUES
-(54, '40x40 | 5.0', 259, '', 0, 0, NULL, 0, 0, 0),
-(55, '40x40 | 3.0', 259, '', 0, 0, NULL, 0, 0, 0),
-(58, '40x40 | 3.0', 259, '', 4, 0, NULL, 0, 0, 0),
-(60, '40x40 | 4.0', 260, '', 4, 0, NULL, 0, 0, 0),
-(61, '40x40 | 3.6', 279, '', 4, 0, NULL, 0, 0, 0),
-(72, '60x60 | 3.6', 259, '', 0, 0, NULL, 0, 0, 0),
-(78, '60x60 | 3.0', 259, '', 0, 0, NULL, 0, 0, 0),
-(79, '60x60 | 4.0', 0, '', 0, 0, NULL, 0, 0, 0),
-(80, '60x60 | 3.0', 259, '', 0, 0, NULL, 0, 0, 0),
-(83, '40x40 | 3.6', 268, '', 4, 0, NULL, 0, 0, 0),
-(96, '60x60 | 5.0', 259, '', 4, 0, NULL, 0, 0, 0);
+(145, '40x40 | 3.6', 259, '', 4, '23', 'light', '2', '3', '');
 
 -- --------------------------------------------------------
 
@@ -49168,7 +49158,7 @@ ALTER TABLE `z_project_level3_steel_template`
 -- AUTO_INCREMENT for table `z_project_level4`
 --
 ALTER TABLE `z_project_level4`
-  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `z_project_level5`
