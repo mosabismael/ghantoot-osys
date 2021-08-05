@@ -48,7 +48,7 @@
 			
 		</div>
 
-	<div class = "tableBody">
+	<div class = "tableBody" >
 		<div class = "tr" id="added_items<?=$tabber_id?>"><hr></div>	
 		<div class = "tr">
 			<div class = "td"></div>
@@ -82,7 +82,7 @@
 			
 			<div class = "td"  >
 				<div class="form-item">
-					<input type="text" name="item_qty<?=$tabber_id?>" placeholder="<?=lang('item_qty'); ?>" id="item_qty<?=$tabber_id?>" style = "width: 35%;margin-right: 10%;">
+					<input   type="text"  placeholder="<?=lang('item_qty'); ?>" id="item_qty-4" style = "width: 35%;margin-right: 10%;">
 					<select id="item_unit4" class="data-elem" style = "width: 40%;">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<?php
@@ -101,8 +101,8 @@
 			</div>
 			<div class = "td" id = "boq-complexity-value<?=$tabber_id?>">
 				<div class="form-item">
-					<select id="item_complexity<?=$tabber_id?>" name="item_complexity<?=$tabber_id?>" class="data-elem" style = "width:100%">
-						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
+					<select id="item_complexity-4"  class="data-elem" style = "width:100%">
+						<option value="" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<option value="extra light" ><?=lang('extra light'); ?></option>
 						<option value="light" ><?=lang('light'); ?></option>
 						<option value="medium" ><?=lang('medium'); ?></option>
@@ -112,20 +112,10 @@
 					</select>
 				</div>
 			</div>
-	
-<script>
-		var temp="jumbo"; 
-    $("#item_complexity<?=$tabber_id?>").val(temp);
-
-
-	
-
-	
-
-</script>
+<!--  -->
 			<div class = "td" id = "boq-qty-value<?=$tabber_id?>">
 				<div class="form-item">
-					<input type="text"  name="item_length<?=$tabber_id?>" placeholder="<?=lang('item_length'); ?>" id="item_length<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">
+					<input type="text"   placeholder="<?=lang('item_length'); ?>" id="item_length-4" style = "width: 35%;margin-right: 5%;">
 					<select id="item_unit_length<?=$tabber_id?>" class="data-elem" style ="width:40%">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<?php
@@ -145,7 +135,7 @@
 			
 			<div class = "td" id = "boq-sa-value<?=$tabber_id?>">
 				<div class="form-item">
-					<input type="text" name="item_surface_area<?=$tabber_id?>"  placeholder="<?=lang('item_surface_area'); ?>" id="item_surface_area<?=$tabber_id?>" style = "width: 35%;margin-right: 5%;">
+					<input type="text"   placeholder="<?=lang('item_surface_area'); ?>" id="item_surface_area-4" style = "width: 35%;margin-right: 5%;">
 					<select id="item_unit_surface_area<?=$tabber_id?>" class="data-elem" style = "width:30%">
 						<option value="0" disabled selected><?=lang('---select Unit ---'); ?></option>
 						<?php
@@ -165,7 +155,7 @@
 			
 			<div class = "td">
 				<div class="form-item">
-					<input type="text" name="item_price<?=$tabber_id?>" placeholder="<?=lang('item_cost'); ?>" id="item_price<?=$tabber_id?>">
+					<input type="text" placeholder="<?=lang('item_cost'); ?>" id="item_price-4">
 					
 				</div>
 			</div>
@@ -194,9 +184,9 @@
 	
 </div>
 </form>
-						</div>
+	</div>
 
-						<div class = "tabber-boq-4 notdisplayed" style = "margin-top: 5%;">
+<div class = "tabber-boq-4 notdisplayed" style = "margin-top: 5%;">
 
 <?php
     $tabber_id = "-4";
@@ -281,13 +271,24 @@
 		var name = $('#addProductLeveltest').find('#name').val();
 		var desc = '';
 		var level3_id = $('#level3_id').val();
+
 		var type_id = $('#addProductLevel4').find('#type_id').val();
+		var quantity = $('#addProductLeveltest').find('#item_qty-4').val();
+		var complexity = $('#addProductLeveltest').find('#item_complexity-4').val();
+		var length = $('#addProductLeveltest').find('#item_length-4').val();
+		var surface_area = $('#addProductLeveltest').find('#item_surface_area-4').val();
+		var cost = $('#addProductLeveltest').find('#item_price-4').val();
+
 		var id = 0;
-		console.log(name,level3_id,type_id,id);
+		console.log(quantity,
+		complexity,
+length,
+surface_area,
+cost);
 
 		$.ajax({
 			url: "projects_estimate/add_level4_data.php",
-			data     :{ 'name': name,'level3_id':level3_id, 'description':desc,'type_id':type_id,'id':id },
+			data     :{ 'name': name,'level3_id':level3_id, 'description':desc,'type_id':type_id,'id':id,'quantity':quantity,'complexity':complexity,'length':length,'surface_area':surface_area,'cost':cost},
 			dataType :"json",
 			type     :'GET',
 			success: function (response) {
