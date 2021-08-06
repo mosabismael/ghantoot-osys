@@ -4,7 +4,6 @@
 <div class  ="header-title"   id = "header-boq-title<?=$tabber_id?>" style = "float: left;font-size: 25px;"></div>
 
 
-
 <div class="table" id = "boq_normal<?=$tabber_id?>">
 	<div class = "tableHeader">
 		<div class = "tr">

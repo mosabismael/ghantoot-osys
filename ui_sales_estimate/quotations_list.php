@@ -10,6 +10,31 @@
 <!DOCTYPE html>
 <html dir="<?=$lang_dir; ?>" lang="<?=$lang; ?>">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<style>
+
+#myInput {
+  background-image: url('/app/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+</style>
 <style>
 .styled {
     border: 0;
@@ -54,7 +79,10 @@
 
 <div class="row">
 	<div class="col-100">
-	
+	<div class="col-33">
+<input id="myInput" type="text" placeholder="Search..">
+
+</div>
 <table id="dataTable" class="tabler" border="2">
 	<thead>
 		<tr>
@@ -70,7 +98,7 @@
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="myTable">
 <?php
 	$qu_sales_quotations_sel = "SELECT * FROM  `sales_quotations`";
 	$qu_sales_quotations_EXE = mysqli_query($KONN, $qu_sales_quotations_sel);

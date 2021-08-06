@@ -137,7 +137,18 @@ input[type=submit]:hover {
 ?>
 
 <div class="row">
+<<<<<<< HEAD
 
+=======
+<div class="col-33">
+<!-- <button style=" background-color: #2e6da4;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;" onclick="sortTable()">Sort</button> -->
+</div>
+>>>>>>> 09fa6bb29be87ddce47019adeae71d9b523dfa78
 	<div class="col-33">
 <input id="myInput" type="text" placeholder="Search..">
 

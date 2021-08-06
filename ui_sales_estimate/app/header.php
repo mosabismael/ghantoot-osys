@@ -21,9 +21,7 @@
 			<span><?=lang("Quotations", "AAR"); ?></span>
 		</div>
 	
-		<div data-ids="5" class="navItem">
-			<span><?=lang("Project", "AAR"); ?></span>
-		</div>
+		
 		
 	</div>
 	
