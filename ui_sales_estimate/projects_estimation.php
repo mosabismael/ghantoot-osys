@@ -249,6 +249,7 @@
 			}
 			function loadBoq(type_name, id, sno, level1_id, level2_id, level3_id, level4_id, level5_id, boq_id, name){
 				var data4 ='';
+				console.log(id);
 				if($('.tabber-boq-'+id).hasClass('notdisplayed')){
 					$('.tabber-boq-'+id).removeClass('notdisplayed');
 					$('.tabber-boq-'+id).addClass('displayed');
@@ -368,7 +369,6 @@
 					}
 					if(($('#sel-4').text()=='UB/UC' || $('#sel-4').text()=='Angles' || $('#sel-4').text()=='Plates') ){
 							 data4 =  $('#header-boq-title-4').text();
-							 console.log(data4);
 							} else
 					if($('#header-boq-title-2').text() == 'Surface Treatment' && $('#sel-3').text()=='LV03'){
 						$('#boq_normal-'+id).css('display', 'none');
