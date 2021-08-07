@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <html dir="<?=$lang_dir; ?>" lang="<?=$lang; ?>">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
