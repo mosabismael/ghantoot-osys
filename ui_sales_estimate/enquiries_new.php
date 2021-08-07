@@ -141,7 +141,6 @@ while($record = mysqli_fetch_assoc($q_exe)){
 				name="attn_name" 
 				req="1" 
 				den="" 
-				
 				alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>" required>
 	</div>
 	</div>
@@ -202,9 +201,6 @@ while($record = mysqli_fetch_assoc($q_exe)){
 		<select class="frmData" type="text" 
 				id="new-enquiry_type" 
 				name="enquiry_type" 
-				req="1" 
-        
-				den="" 
 				alerter="<?=lang("Please_Check_enquiry_type", "AAR"); ?>">
         <option value="pricing_levels">Pricing levels</option>
       <option value="maintenance">Maintenance</option>

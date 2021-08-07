@@ -100,6 +100,7 @@
 				var cc = 0;
 				for( i=0 ; i < response.length ; i ++ ){
 					cc++;
+					console.log(response[i]);
 					var req_item_id = parseInt( response[i].req_item_id );
 					var boq_td = '';
 					var onclick = 'onclick = "set_tabber(5);loadLevel4Data('+response[i].level4_id+",'" +response[i].level4_name+ "'"+","+level1_id+","+level2_id+","+id+');"';
