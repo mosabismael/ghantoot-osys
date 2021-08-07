@@ -296,6 +296,18 @@ while($record = mysqli_fetch_assoc($q_exe)){
 				alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>" required>
 	</div>
 	</div>
+  <div class="col-33">
+	<div class="form-grp">
+	<label class="lbl_class"><?=lang('Budget:', 'ARR', 1); ?></label>
+		<input class="frmData" type="number" 
+				id="new-budget" 
+				placeholder="budget"
+				name="budget" 
+				req="1" 
+				den="" 
+				alerter="<?=lang("Please_Check_budget", "AAR"); ?>" required>
+	</div>
+	</div>
 	<div class="col-100">
 	<div class="form-grp">
 		<label class="lbl_class"><?=lang('Details', 'ARR', 1); ?></label>
