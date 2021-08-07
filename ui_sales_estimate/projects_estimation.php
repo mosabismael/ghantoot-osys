@@ -250,6 +250,7 @@
 			function loadBoq(type_name, id, sno, level1_id, level2_id, level3_id, level4_id, level5_id, boq_id, name){
 
 				var data4 ='';
+				console.log(id);
 				if($('.tabber-boq-'+id).hasClass('notdisplayed')){
 					$('.tabber-boq-'+id).removeClass('notdisplayed');
 					$('.tabber-boq-'+id).addClass('displayed');
