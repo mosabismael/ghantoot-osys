@@ -20,10 +20,45 @@ $(document).ready(function(){
   });
 });
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
+<script>
 
+function openPdf()
+{
+var omyFrame = document.getElementById("myFrame");
+omyFrame.style.display="block";
+omyFrame.src = "1dummy.pdf";
+}
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.filterable {
+  margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+  margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+  background-color: transparent;
+  border: none;
+  cursor: auto;
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+  color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+  color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+  color: #333;
+}
 #myInput {
   background-image: url('/app/searchicon.png');
   background-position: 10px 12px;
@@ -37,6 +72,21 @@ $(document).ready(function(){
 </style>
 	<?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </head>
 <body>
 <?php
@@ -53,17 +103,23 @@ $(document).ready(function(){
 <input id="myInput" type="text" placeholder="Search..">
 
 </div>
+<div class="row">
+    <div class="panel panel-primary filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">Enquiries List</h3>
+        <div class="pull-right"><button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button></div>
+      </div>
+      <table class="table" border="2">
 
-<table id="dataTable" class="tabler" border="2">
-	<thead>
-		<tr>
-			<th><?=lang("Sys_Id", "AAR"); ?></th>
-			<th><?=lang("Created_Date", "AAR"); ?></th>
-			<th><?=lang("Client_Name", "AAR"); ?></th>
-			<th><?=lang("Status", "AAR"); ?></th>
-			<th>&nbsp;</th>
-		</tr>
-	</thead>
+        <thead>
+          <tr class="filters">
+		  <th><input type="text" class="form-control" placeholder="Sys_Id" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Created_Date" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Client Name" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Status" disabled></th>
+          </tr>
+        </thead>
+		
 	<tbody id="myTable">
 <?php
 	$qu_z_project_sel = "SELECT * FROM  `z_project`";
@@ -138,7 +194,7 @@ $(document).ready(function(){
 ?>
 	</tbody>
 </table>
-		
+</div>
 	</div>
 	<div class="zero"></div>
 </div>
@@ -148,5 +204,29 @@ $(document).ready(function(){
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
 	include('app/footer.php');
 ?>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
 </html>
