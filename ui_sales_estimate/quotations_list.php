@@ -23,7 +23,29 @@ $(document).ready(function(){
 });
 </script>
 <style>
-
+.filterable {
+  margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+  margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+  background-color: transparent;
+  border: none;
+  cursor: auto;
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+  color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+  color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+  color: #333;
+}
 #myInput {
   background-image: url('/app/searchicon.png');
   background-position: 10px 12px;
@@ -67,6 +89,11 @@ $(document).ready(function(){
 
 	<?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php
@@ -83,22 +110,29 @@ $(document).ready(function(){
 <input id="myInput" type="text" placeholder="Search..">
 
 </div>
-<table id="dataTable" class="tabler" border="2">
-	<thead>
-		<tr>
-			<th><?=lang("Sys_Id", "AAR"); ?></th>
-			<th><?=lang("REF", "AAR"); ?># - <?=lang("REV", "AAR"); ?></th>
-			<th><?=lang("RFQ", "AAR"); ?></th>
-			<th><?=lang("Date", "AAR"); ?></th>
-			<th><?=lang("Token_-_Client_Name", "AAR"); ?></th>
-			<th><?=lang("Valid_Until", "AAR"); ?></th>
-			<th><?=lang("Status", "AAR"); ?></th>
+<div class="row">
+    <div class="panel panel-primary filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">Quotations List</h3>
+        <div class="pull-right"><button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button></div>
+      </div>
+      <table class="table" border="2">
+
+        <thead>
+          <tr class="filters">
+		  <th><input type="text" class="form-control" placeholder="Sys Id" disabled></th>
+            <th><input type="text" class="form-control" placeholder="REF" disabled></th>
+            <th><input type="text" class="form-control" placeholder="RFQ" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Date" disabled></th>
+			<th><input type="text" class="form-control" placeholder="Client Name" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Valid Until" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Status" disabled></th>
 			<th width="200px"  ><?=lang("convert", "AAR"); ?></th>
 
-			<th>&nbsp;</th>
-		</tr>
-	</thead>
-	<tbody id="myTable">
+
+          </tr>
+        </thead>
+			<tbody id="myTable">
 <?php
 	$qu_sales_quotations_sel = "SELECT * FROM  `sales_quotations`";
 	$qu_sales_quotations_EXE = mysqli_query($KONN, $qu_sales_quotations_sel);
@@ -162,7 +196,8 @@ $(document).ready(function(){
 ?>
 	</tbody>
 </table>
-		
+</div>
+	
 	</div>
 	<div class="zero"></div>
 </div>
@@ -172,5 +207,7 @@ $(document).ready(function(){
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
 	include('app/footer.php');
 ?>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
 </html>
