@@ -14,6 +14,8 @@
 		isset($_POST['date']) &&
 		isset($_POST['subject_name']) &&
 		isset($_POST['details']) &&
+		isset($_POST['budget']) &&
+
 		isset($_POST['attn_name'])){		
 			$enquiry_id = 0;
 			$client_name = test_inputs($_POST['client_name']);
@@ -22,6 +24,7 @@
 			$details = test_inputs($_POST['details']);
 			$subject = test_inputs($_POST['subject_name']);
 			$attn = test_inputs($_POST['attn_name']);
+			$budget = test_inputs($_POST['budget']);
 
 			
 			
@@ -32,14 +35,16 @@
 			`date`, 
 			`subject`,
 			`attn`,
-			`details`
+			`details`,
+			`budget`
 			) VALUES (
 			'".$client_name."', 
 			'".$enquiry."', 
 			'".$date."', 
 			'".$subject."',
 			'".$attn."',
-			'".$details."'
+			'".$details."',
+			'".$budget."'
 			);";
 			$insertStatement = mysqli_prepare($KONN,$qu_gen_enquiry_ins);
 			

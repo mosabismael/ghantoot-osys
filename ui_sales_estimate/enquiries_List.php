@@ -191,7 +191,7 @@ input[type=submit]:hover {
             <th><input type="text" class="form-control" placeholder="Date" disabled></th>
             <th><input type="text" class="form-control" placeholder="Client Name" disabled></th>
             <th><input type="text" class="form-control" placeholder="Subject" disabled></th>
-            <th><input type="text" class="form-control" placeholder="Details" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Budget" disabled></th>
             <th><input type="text" class="form-control" placeholder="Attachments" disabled></th>
             <th><input type="text" class="form-control" placeholder="Action" disabled></th>
           </tr>
@@ -206,7 +206,7 @@ input[type=submit]:hover {
 			$client_id = $enquiries_REC['client_id'];
 			$date = $enquiries_REC['date'];
 			$enquiry_type = $enquiries_REC['enquiry_type'];
-			$details = $enquiries_REC['details'];
+			$details = $enquiries_REC['budget'];
 			$qu_z_project_sel = "SELECT * FROM  `z_project` WHERE `enquiries_id` = $enquiry_id";
 			$qu_z_project_EXE = mysqli_query($KONN, $qu_z_project_sel);
 			$project_id = "NA";
@@ -281,7 +281,7 @@ input[type=submit]:hover {
 			<td><?=$enquiries_REC["date"]; ?></td>
 			<td><?=$client_name; ?></td>
 			<td><?=$enquiries_REC["subject"]; ?></td>
-			<td><?=$enquiries_REC["details"]; ?></td>
+			<td><?=$enquiries_REC["budget"]; ?></td>
 			<td><input type="button" value="Open PDF" onclick = "openPdf()"/>
 		</td>
 			<td><?=$status; ?></td>
