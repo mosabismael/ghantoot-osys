@@ -12,7 +12,7 @@
 			<span><?=lang("clients", "AAR"); ?></span>
 		</div>
 		<div data-ids="2" class="navItem">
-			<span><?=lang("Enquiries ", "AAR"); ?></span>
+			<span><?=lang("Inquiries ", "AAR"); ?></span>
 		</div>
 		<div data-ids="3" class="navItem">
 			<span><?=lang("Estimation", "AAR"); ?></span>
@@ -66,7 +66,7 @@
 		</a>
 		<a class="<?php if( $subPageID == 21 ){ echo "activeSub"; } ?>" href="enquiries_List.php">
 			<i class="fas fa-clipboard-list"></i>
-			<span><?=lang("enquiries_List", "AAR"); ?></span>
+			<span><?=lang("Inquiries_List", "AAR"); ?></span>
 		</a>
 </div>
 
