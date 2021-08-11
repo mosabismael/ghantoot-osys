@@ -127,6 +127,7 @@ $(document).ready(function(){
 			<th><input type="text" class="form-control" placeholder="Client Name" disabled></th>
             <th><input type="text" class="form-control" placeholder="Valid Until" disabled></th>
             <th><input type="text" class="form-control" placeholder="Status" disabled></th>
+			<th width="200px"  ><?=lang("print", "AAR"); ?></th>
 			<th width="200px"  ><?=lang("convert", "AAR"); ?></th>
 
 
@@ -178,6 +179,9 @@ $(document).ready(function(){
 			<td><?=$client_name; ?></td>
 			<td><?=$valider; ?></td>
 			<td><?=$stater; ?></td>
+			<td>
+			<button onclick="window.print()" class="btn"><i class="fa fa-print"></i> Print</button>
+				</td>
 			<td ><?=$convert; ?></td>
 
 			<td class="text-center">

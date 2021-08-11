@@ -193,6 +193,7 @@ input[type=submit]:hover {
             <th><input type="text" class="form-control" placeholder="Subject" disabled></th>
             <th><input type="text" class="form-control" placeholder="Budget" disabled></th>
             <th><input type="text" class="form-control" placeholder="Attachments" disabled></th>
+			<th width="200px"  ><?=lang("print", "AAR"); ?></th>
             <th><input type="text" class="form-control" placeholder="Action" disabled></th>
           </tr>
         </thead>
@@ -282,6 +283,8 @@ input[type=submit]:hover {
 			<td><?=$client_name; ?></td>
 			<td><?=$enquiries_REC["subject"]; ?></td>
 			<td><?=$enquiries_REC["budget"]; ?></td>
+			<td>
+			<button  onclick="window.print()" class="btn"><i class="fa fa-print"></i> Print</button></td>
 			<td><input type="button" value="Open PDF" onclick = "openPdf()"/>
 		</td>
 			<td><?=$status; ?></td>

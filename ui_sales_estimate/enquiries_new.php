@@ -197,7 +197,7 @@ $(document).ready(function() {
 		 for (var i = 0; i < files.length; i++) {
 			 var file = files[i];
 
-			 $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><input type='text' id='fname' name='fname'>").insertAfter('#file__input');
+			 $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><input type='text' 	placeholder='Name...' id='fname' name='fname'>").insertAfter('#file__input');
 		 }	
 	 });
 	 //Click to remove item
@@ -328,7 +328,7 @@ while($record = mysqli_fetch_assoc($q_exe)){
   <form action="#" name="form" method="get">
     <div class="file">
       <div class="file__input" id="file__input">
-        <input class="file__input--file" id="customFile" type="file" multiple="multiple" name="files[]"/>
+        <input class="file__input--file" id="customFile" type="file"  multiple="multiple" name="files[]"/>
         <label class="file__input--label" for="customFile" data-text-btn="Upload">Add file:</label>
       </div>
     </div>
