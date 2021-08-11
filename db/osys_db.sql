@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2021 at 12:05 PM
+-- Generation Time: Aug 11, 2021 at 05:22 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -1639,6 +1639,20 @@ CREATE TABLE `acc_suppliers_payments` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attachments`
+--
+
+CREATE TABLE `attachments` (
+  `id` int(11) NOT NULL,
+  `title` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `uploaded_on` datetime NOT NULL,
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `enquiries`
 --
 
@@ -1651,16 +1665,18 @@ CREATE TABLE `enquiries` (
   `status` int(10) NOT NULL,
   `subject` varchar(50) NOT NULL,
   `attn` varchar(50) NOT NULL,
-  `attachment` mediumblob NOT NULL
+  `attachment` mediumblob NOT NULL,
+  `budget` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `enquiries`
 --
 
-INSERT INTO `enquiries` (`enquiry_id`, `client_id`, `date`, `details`, `enquiry_type`, `status`, `subject`, `attn`, `attachment`) VALUES
-(18, 2, '2021-07-05 20:00:00', 'sdfs', 'maintenance', 2, 'العنوان الاول', 'musab', ''),
-(19, 7, '2021-07-14 20:00:00', 'سسب', 'pricing_levels', 2, 'العنوان الثاني', 'musab', '');
+INSERT INTO `enquiries` (`enquiry_id`, `client_id`, `date`, `details`, `enquiry_type`, `status`, `subject`, `attn`, `attachment`, `budget`) VALUES
+(18, 2, '2021-07-05 20:00:00', 'sdfs', 'maintenance', 2, 'العنوان الاول', 'musab', '', 0),
+(19, 7, '2021-07-14 20:00:00', 'سسب', 'pricing_levels', 2, 'العنوان الثاني', 'musab', '', 0),
+(28, 3, '2021-08-15 20:00:00', 'sdfsfa', 'maintenance', 0, 'العنوسببش', 'ryry', '', 45);
 
 -- --------------------------------------------------------
 
@@ -11847,7 +11863,16 @@ INSERT INTO `gen_status_change` (`status_id`, `status_action`, `status_date`, `i
 (9578, 'draft', '2021-07-14 11:18:00', 31, 'sales_quotations', 228),
 (9579, 'draft', '2021-07-14 11:19:00', 32, 'sales_quotations', 228),
 (9580, 'Enquiries_added', '2021-07-18 15:34:00', 19, 'enquiries', 228),
-(9581, 'draft', '2021-08-04 10:37:00', 790, 'pur_requisitions', 119);
+(9581, 'draft', '2021-08-04 10:37:00', 790, 'pur_requisitions', 119),
+(9582, 'Enquiries_added', '2021-08-07 10:30:00', 20, 'enquiries', 228),
+(9583, 'Enquiries_added', '2021-08-07 10:38:00', 21, 'enquiries', 228),
+(9584, 'Enquiries_added', '2021-08-07 10:39:00', 22, 'enquiries', 228),
+(9585, 'Enquiries_added', '2021-08-07 10:41:00', 23, 'enquiries', 228),
+(9586, 'Enquiries_added', '2021-08-07 10:43:00', 24, 'enquiries', 228),
+(9587, 'Enquiries_added', '2021-08-07 10:45:00', 25, 'enquiries', 228),
+(9588, 'Enquiries_added', '2021-08-07 10:47:00', 26, 'enquiries', 228),
+(9589, 'Enquiries_added', '2021-08-07 10:48:00', 27, 'enquiries', 228),
+(9590, 'Enquiries_added', '2021-08-11 10:37:00', 28, 'enquiries', 228);
 
 -- --------------------------------------------------------
 
@@ -48295,7 +48320,7 @@ CREATE TABLE `z_project_level4` (
 --
 
 INSERT INTO `z_project_level4` (`level4_id`, `level4_name`, `level3_id`, `level4_description`, `type_id`, `quantity`, `complexity`, `length`, `surface_area`, `cost`) VALUES
-(145, '40x40 | 3.6', 259, '', 4, '23', 'light', '2', '3', '');
+(146, '40x40 | 3.2', 259, '', 4, '23', 'light', '2', '3', '');
 
 -- --------------------------------------------------------
 
@@ -48449,6 +48474,12 @@ ALTER TABLE `acc_suppliers_invoices`
 --
 ALTER TABLE `acc_suppliers_payments`
   ADD PRIMARY KEY (`supp_payment_id`);
+
+--
+-- Indexes for table `attachments`
+--
+ALTER TABLE `attachments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `enquiries`
@@ -48909,16 +48940,22 @@ ALTER TABLE `z_work_scope`
 --
 
 --
+-- AUTO_INCREMENT for table `attachments`
+--
+ALTER TABLE `attachments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `enquiries`
 --
 ALTER TABLE `enquiries`
-  MODIFY `enquiry_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `enquiry_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `gen_status_change`
 --
 ALTER TABLE `gen_status_change`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9582;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9591;
 
 --
 -- AUTO_INCREMENT for table `gen_status_change_depandancy`
@@ -49158,7 +49195,7 @@ ALTER TABLE `z_project_level3_steel_template`
 -- AUTO_INCREMENT for table `z_project_level4`
 --
 ALTER TABLE `z_project_level4`
-  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `z_project_level5`

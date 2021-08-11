@@ -197,7 +197,7 @@ $(document).ready(function() {
 		 for (var i = 0; i < files.length; i++) {
 			 var file = files[i];
 
-			 $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><input type='text' 	placeholder='Name...' id='fname' name='fname'>").insertAfter('#file__input');
+			 $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><input type='text' 	placeholder='title...' id='fname' name='fname'>").insertAfter('#file__input');
 		 }	
 	 });
 	 //Click to remove item
