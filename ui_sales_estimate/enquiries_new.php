@@ -38,12 +38,94 @@
 <html dir="<?=$lang_dir; ?>" lang="<?=$lang; ?>">
 
 <head>
+<meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'><link rel="stylesheet" href="./style.css">
+
     <?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
 
+h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.wrap {
+  width: 500px;
+  margin: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 4px;
+  background-color: #2e4261;
+  box-shadow: 0 1px 2px 0 #c9ced1;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  
+}
+
+.file {
+  position: relative;
+  max-width: 22.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+.file__input, .file__value {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-bottom: 0.875rem;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 0.9375rem 1.0625rem;
+}
+.file__input--file {
+  position: absolute;
+  opacity: 0;
+}
+.file__input--label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.file__input--label:after {
+  content: attr(data-text-btn);
+  border-radius: 3px;
+  background-color: #536480;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.18);
+  padding: 0.9375rem 1.0625rem;
+  margin: -0.9375rem -1.0625rem;
+  color: white;
+  cursor: pointer;
+}
+.file__value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+.file__value:hover:after {
+  color: white;
+}
+.file__value:after {
+  content: "X";
+  cursor: pointer;
+}
+.file__value:after:hover {
+  color: white;
+}
+.file__remove {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+}
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -73,7 +155,24 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
+.box {
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
 
+  
+  
+  min-height: 200px;
+  width: 60vw;
+  margin: 100px auto;
+  background: white;
+  border-radius: 5px;
+}
 input[type=submit]:hover {
   background-color: #45a049;
 }
@@ -86,16 +185,41 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+
+$(document).ready(function() {
+	 
+	 // ------------  File upload BEGIN ------------
+	 $('.file__input--file').on('change',function(event){
+		 var files = event.target.files;
+		 for (var i = 0; i < files.length; i++) {
+			 var file = files[i];
+
+			 $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><input type='text' 	placeholder='title...' id='fname' name='fname'>").insertAfter('#file__input');
+		 }	
+	 });
+	 //Click to remove item
+	 $('body').on('click', '.file__value', function() {
+		 $(this).remove();
+	 });
+	 // ------------ File upload END ------------ 
+	 
+	 
+	 
+ });</script>
+
 <?php
 
 	$WHERE = "";
 	include('app/header.php');
 	//PAGE DATA START -----------------------------------------------///---------------------------------
 ?>
-
 <h2>Enquiry Form</h2>
 <p>Complete this Enquiry Form to obtain additional information about our services or send personal complaints. We will analyze your enquiry and return to you shortly by email or phone.</p>
-  
+<div class="box">
+
   <div class="row">
 
 
@@ -141,7 +265,6 @@ while($record = mysqli_fetch_assoc($q_exe)){
 				name="attn_name" 
 				req="1" 
 				den="" 
-				
 				alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>" required>
 	</div>
 	</div>
@@ -173,6 +296,18 @@ while($record = mysqli_fetch_assoc($q_exe)){
 				alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>" required>
 	</div>
 	</div>
+  <div class="col-33">
+	<div class="form-grp">
+	<label class="lbl_class"><?=lang('Budget:', 'ARR', 1); ?></label>
+		<input class="frmData" type="number" 
+				id="new-budget" 
+				placeholder="budget"
+				name="budget" 
+				req="1" 
+				den="" 
+				alerter="<?=lang("Please_Check_budget", "AAR"); ?>" required>
+	</div>
+	</div>
 	<div class="col-100">
 	<div class="form-grp">
 		<label class="lbl_class"><?=lang('Details', 'ARR', 1); ?></label>
@@ -186,14 +321,18 @@ while($record = mysqli_fetch_assoc($q_exe)){
 				alerter="<?=lang("Please_Check_details", "AAR"); ?> " required></textarea>
 				
 	</div>
-	<div class="form-grp">
-
-	<label for="attachments">Choose a attachments:</label>
-	<input type="file" title="Type search term here" name="pdf_file"  accept=".pdf,.docx,.xls,.csv" multiple required/>
-            <input type="hidden" name="MAX_FILE_SIZE" value="67108864"/> <!--64 MB's worth in bytes-->
-
-		
-</div>
+	
+	<div class="wrap">
+  <h1>File upload multiple</h1>
+  <h1>Choose a attachments</h1>
+  <form action="#" name="form" method="get">
+    <div class="file">
+      <div class="file__input" id="file__input">
+        <input class="file__input--file" id="customFile" type="file"  multiple="multiple" name="files[]"/>
+        <label class="file__input--label" for="customFile" data-text-btn="Upload">Add file:</label>
+      </div>
+    </div>
+  </form>
 </div>
 
 <div class="col-100">
@@ -202,9 +341,6 @@ while($record = mysqli_fetch_assoc($q_exe)){
 		<select class="frmData" type="text" 
 				id="new-enquiry_type" 
 				name="enquiry_type" 
-				req="1" 
-        
-				den="" 
 				alerter="<?=lang("Please_Check_enquiry_type", "AAR"); ?>">
         <option value="pricing_levels">Pricing levels</option>
       <option value="maintenance">Maintenance</option>
@@ -227,6 +363,8 @@ while($record = mysqli_fetch_assoc($q_exe)){
 
 </form>
 </div>
+</div>
+
 <?php
 	//PAGE DATA END   ----------------------------------------------///---------------------------------
 	include('app/footer.php');

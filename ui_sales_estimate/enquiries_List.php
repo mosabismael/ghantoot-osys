@@ -39,6 +39,7 @@
 
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</script><script  src="./script.js"></script>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -53,11 +54,34 @@ $(document).ready(function(){
     <?php include('app/meta.php'); ?>
     <?php include('app/assets.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-
+.filterable {
+  margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+  margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+  background-color: transparent;
+  border: none;
+  cursor: auto;
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+  color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+  color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+  color: #333;
+}
 .pagination {
   display: inline-block;
 }
@@ -152,25 +176,28 @@ input[type=submit]:hover {
 <iframe id="myFrame" style="display:none" width="600" height="300"></iframe>
 
 </div>
+  <div class="row">
+    <div class="panel panel-primary filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">Enquiries List</h3>
+        <div class="pull-right"><button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button></div>
+      </div>
+      <table class="table" border="2">
 
-<div class="row">
-	<div class="col-100">
-	
-<table id="dataTable" class="tabler" border="2">
-	<thead>
-		<tr>
-			<th><?=lang("Sys_Id", "AAR"); ?></th>
-			<th><?=lang("Enquiry Type", "AAR"); ?></th>
-			<th><?=lang("Date", "AAR"); ?></th>
-			<th><?=lang("Client Name", "AAR"); ?></th>
-			<th><?=lang("Subject", "AAR"); ?></th>
-			<th><?=lang("Details", "AAR"); ?></th>
-			<th><?=lang("Attachments", "AAR"); ?></th>
-			<th><?=lang("Action", "AAR"); ?></th>
-
-		</tr>
-	</thead>
-	<tbody id="myTable">
+        <thead>
+          <tr class="filters">
+		  <th><input type="text" class="form-control" placeholder="Sys_Id" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Enquiry Type" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Date" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Client Name" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Subject" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Budget" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Attachments" disabled></th>
+			<th width="200px"  ><?=lang("print", "AAR"); ?></th>
+            <th><input type="text" class="form-control" placeholder="Action" disabled></th>
+          </tr>
+        </thead>
+		<tbody id="myTable">
 <?php
 	$qu_enquiries_sel = "SELECT * FROM  `enquiries`";
 	$qu_enquiries_EXE = mysqli_query($KONN, $qu_enquiries_sel);
@@ -180,7 +207,7 @@ input[type=submit]:hover {
 			$client_id = $enquiries_REC['client_id'];
 			$date = $enquiries_REC['date'];
 			$enquiry_type = $enquiries_REC['enquiry_type'];
-			$details = $enquiries_REC['details'];
+			$details = $enquiries_REC['budget'];
 			$qu_z_project_sel = "SELECT * FROM  `z_project` WHERE `enquiries_id` = $enquiry_id";
 			$qu_z_project_EXE = mysqli_query($KONN, $qu_z_project_sel);
 			$project_id = "NA";
@@ -255,7 +282,9 @@ input[type=submit]:hover {
 			<td><?=$enquiries_REC["date"]; ?></td>
 			<td><?=$client_name; ?></td>
 			<td><?=$enquiries_REC["subject"]; ?></td>
-			<td><?=$enquiries_REC["details"]; ?></td>
+			<td><?=$enquiries_REC["budget"]; ?></td>
+			<td>
+			<button  onclick="window.print()" class="btn"><i class="fa fa-print"></i> Print</button></td>
 			<td><input type="button" value="Open PDF" onclick = "openPdf()"/>
 		</td>
 			<td><?=$status; ?></td>
@@ -271,7 +300,10 @@ input[type=submit]:hover {
 	}
 ?>
 	</tbody>
-</table>
+      </table>
+    </div>
+  </div>
+
 <div class="pagination">
   <a href="#">&laquo;</a>
   <a href="#" class="active">1</a>
@@ -291,40 +323,6 @@ input[type=submit]:hover {
 	include('app/footer.php');
 ?>
 <script>
-function sortTable() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("dataTable");
-  switching = true;
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[3];
-      y = rows[i + 1].getElementsByTagName("TD")[3];
-      //check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
-}
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -352,5 +350,7 @@ omyFrame.src = "1dummy.pdf";
 
 
 </script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
 </html>
