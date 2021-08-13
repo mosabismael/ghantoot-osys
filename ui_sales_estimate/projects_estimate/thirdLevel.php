@@ -85,6 +85,7 @@
 		return false;
 	};
 	function loadLevel3Data(id, name, level1_id , level2_id){
+
 		$.ajax({
 			url      :"projects_estimate/thirdLevelData.php",
 			data     :{ 'id': id,'level1_id':level1_id,'level2_id':level2_id},
@@ -114,7 +115,6 @@
 					var tr = '' + 
 					'<div class = "tr" id = "level4-'+response[i].level4_id+'">'+
 					'<div class = "td"></div>'+
-
 					// '<div class = "td"><a '+onclick+'>'+response[i].level4_name+'</a> </div>'+
 					'<div class = "td">' + response[i].sno + '</div>'+
 					'<div class = "td"><button '+onclick+'>'+response[i].level4_name+'</button> </div>'+

@@ -418,7 +418,9 @@
 					set_tabber(3); loadLevel2Data($('#level2_id').val(),$('#level2_name').val(),$('#level1_id').val())	;
 				}
 				else if(id == '-4'){
+					console.log($('#level3_id').val());
 					set_tabber(4); loadLevel3Data($('#level3_id').val(),$('#level3_name').val(),$('#level1_id').val(),$('#level2_id').val());
+
 				}
 				else if(id == '-5'){
 					set_tabber(5); loadLevel4Data($('#level4_id').val(),$('#level4_name').val(),$('#level1_id').val(),$('#level2_id').val(),$('#level3_id').val())	;
