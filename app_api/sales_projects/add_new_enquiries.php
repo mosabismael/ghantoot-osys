@@ -25,10 +25,9 @@
 			$subject = test_inputs($_POST['subject_name']);
 			$attn = test_inputs($_POST['attn_name']);
 			$budget = test_inputs($_POST['budget']);
+			die('0|7wiu');
 
-			
-			
-			
+
 			$qu_gen_enquiry_ins = "INSERT INTO `enquiries` (
 			`client_id`, 
 			`enquiry_type`, 

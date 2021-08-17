@@ -186,14 +186,14 @@
 				
 				<thead>
 					<tr class="filters">
-						<th><input type="text" class="form-control" placeholder="Sys_Id" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Sys Id" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Enquiry Type" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Date" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Client Name" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Subject" disabled></th>
-						<th><input type="text" class="form-control" placeholder="Details" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Budget" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Attachments" disabled></th>
-						<th width="200px"  ><?=lang("print", "AAR"); ?></th>
+						<th><p class="form-control" >Print</p></th>
 						<th><input type="text" class="form-control" placeholder="Action" disabled></th>
 					</tr>
 				</thead>
@@ -283,8 +283,7 @@
 								<td><?=$enquiries_REC["date"]; ?></td>
 								<td><?=$client_name; ?></td>
 								<td><?=$enquiries_REC["subject"]; ?></td>
-								<td><?=$enquiries_REC["details"]; ?></td>
-								
+								<td><i style="font-size:24px; color:green" class="fa" >&#xf155;</i> <?=$enquiries_REC["budget"]; ?></td>
 								<td>
 									<?php
 										$qu_enquiries_sel1 = "SELECT * FROM  `enquiry_attachment` where enquiry_id = $enquiry_id";
@@ -299,6 +298,8 @@
 											}
 											?>
 										</td>
+										<td><button onclick="window.print()">Print</button></td>
+
 										<td><?=$status; ?></td>
 									</tr>
 									<?php

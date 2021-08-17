@@ -430,7 +430,7 @@
 								id="new-enquiry_type" 
 								name="enquiry_type" 
 								alerter="<?=lang("Please_Check_enquiry_type", "AAR"); ?>">
-									<option value="pricing_levels">Pricing levels</option>
+									<option value="pricing levels">Pricing levels</option>
 									<option value="maintenance">Maintenance</option>
 									<option value="testing">Testing</option>
 									<option value="complaints">Complaints</option>
