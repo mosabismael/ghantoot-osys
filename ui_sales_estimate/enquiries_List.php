@@ -186,6 +186,7 @@
 				
 				<thead>
 					<tr class="filters">
+					<th></th>				
 						<th><input type="text" class="form-control" placeholder="Sys Id" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Enquiry Type" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Date" disabled></th>
@@ -278,6 +279,7 @@
 								
 							?>
 							<tr id="quote-<?=$enquiry_id; ?>">
+							<td><a href="edit.php?id=<?php echo $data['id']; ?>"><i class="far fa-edit">Edit</i></a><a href="delete.php?id=<?php echo $data['id']; ?>"><i class="fas fa-trash">Delete</i></a></td>
 								<td><?=$enquiry_id; ?></td>
 								<td><?=$enquiries_REC["enquiry_type"]; ?></td>
 								<td><?=$enquiries_REC["date"]; ?></td>
