@@ -288,8 +288,9 @@
 			var files = event.target.files;
 			for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-			$("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div>").insertAfter('#file__input');
-			
+			// $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div>").insertAfter('#file__input');
+			$("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><div><input type='text' placeholder='Tite...' id='attachment_tite' name='attachment_tite'></div>").insertAfter('#file__input');
+
 			}	
 			});
 			//Click to remove item
