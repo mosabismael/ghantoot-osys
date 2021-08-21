@@ -296,7 +296,7 @@ if ($client_id != 0) {
 
 					?>
 							<tr id="quote-<?= $enquiry_id; ?>">
-								<td><a href="edit.php?id=<?php echo $data['id']; ?>"><i class="far fa-edit"></i></a><a href=""><i class="fas fa-trash"></i></a></td>
+								<td><a href="enquiry_edit.php?enquiry_id=<?=$enquiry_id?>"><i class="far fa-edit"></i></a><a href=""><i onclick ="delete_enquiry(<?=$enquiry_id?>)" class="fas fa-trash"></i></a></td>
 								<td><?= $enquiry_id; ?></td>
 								<td><?= $enquiries_REC["enquiry_type"]; ?></td>
 								<td><?= $enquiries_REC["date"]; ?></td>
@@ -379,6 +379,18 @@ if ($client_id != 0) {
 			omyFrame.style.display = "block";
 			omyFrame.src = "fileupload/".value;
 		}
+		function delete_enquiry(id){
+				$.ajax({
+					type: "GET",
+					url: "delete_enquiry.php",
+					data: {'enquiry_id':id},
+					dataType: "json",
+					success: function(response) {
+						alert("deleted");
+					}
+				});
+				
+			}
 	</script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="./script.js"></script>
