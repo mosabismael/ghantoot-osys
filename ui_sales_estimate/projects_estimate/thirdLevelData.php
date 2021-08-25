@@ -43,7 +43,9 @@
 			$cost = $project_level4_REC['cost'];
 			$qu_prject_sel = "SELECT count(*) as count FROM  `z_project_level5` WHERE `level4_id` = $level4_id "  ;
 			$qu_project_EXE = mysqli_query($KONN, $qu_prject_sel);
-			$total_amount = 0;
+			$total_amount = $cost*$quantity*$length;
+			// $total_amount = 0;
+
 			$boq_id =0;
 			$show_complete = '0';
 			if(mysqli_num_rows($qu_project_EXE)){
