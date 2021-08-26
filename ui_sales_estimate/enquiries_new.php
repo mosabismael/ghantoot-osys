@@ -56,7 +56,7 @@ h1 {
 }
 
 .wrap {
-  width: 500px;
+  width: 50%;
   margin: auto;
   position: -webkit-sticky;
   position: sticky;
