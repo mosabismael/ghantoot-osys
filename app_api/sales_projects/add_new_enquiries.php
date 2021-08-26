@@ -7,6 +7,7 @@
 	require_once($main_pointer.'bootstrap/app_config.php');
 	require_once($main_pointer.'bootstrap/chk_log_user.php');
 	try{
+		die($_POST['budget']);
 
 		if(
 			isset($_POST['client_name']) &&
@@ -15,7 +16,6 @@
 		isset($_POST['subject_name']) &&
 		isset($_POST['details']) &&
 		isset($_POST['budget']) &&
-
 		isset($_POST['attn_name'])){		
 			$enquiry_id = 0;
 			$client_name = test_inputs($_POST['client_name']);
@@ -25,10 +25,9 @@
 			$subject = test_inputs($_POST['subject_name']);
 			$attn = test_inputs($_POST['attn_name']);
 			$budget = test_inputs($_POST['budget']);
+			die('0|7wiu');
 
-			
-			
-			
+
 			$qu_gen_enquiry_ins = "INSERT INTO `enquiries` (
 			`client_id`, 
 			`enquiry_type`, 

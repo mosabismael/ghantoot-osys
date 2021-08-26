@@ -36,10 +36,16 @@
 			$level4_description = $project_level4_REC['level4_description'];
 			$type_id = $project_level4_REC['type_id'];
 			$type_name = $project_level4_REC['type_name'];
-			
+			$quantity = $project_level4_REC['quantity'];
+			$complexity = $project_level4_REC['complexity'];
+			$length = $project_level4_REC['length']; 
+			$surface_area = $project_level4_REC['surface_area'];
+			$cost = $project_level4_REC['cost'];
 			$qu_prject_sel = "SELECT count(*) as count FROM  `z_project_level5` WHERE `level4_id` = $level4_id "  ;
 			$qu_project_EXE = mysqli_query($KONN, $qu_prject_sel);
-			$total_amount = 0;
+			$total_amount = $cost*$quantity*$length;
+			// $total_amount = 0;
+
 			$boq_id =0;
 			$show_complete = '0';
 			if(mysqli_num_rows($qu_project_EXE)){
@@ -95,6 +101,11 @@
 			"level4_id" => $level4_id, 
 			"level4_name" => $level4_name, 
 			"level3_id" => $level3_id, 
+			"quantity" => $quantity, 
+			"complexity" => $complexity, 
+			"length" => $length, 
+			"surface_area" => $surface_area, 
+			"cost" => $cost, 
 			"level4_description" => $level4_description, 
 			"type_id" => $type_id,
 			"type_name" => $type_name,
@@ -105,8 +116,6 @@
 			
 			$sNo++;
 		}
-		
-		
 	}
 	echo json_encode($IAM_ARRAY);
 ?>

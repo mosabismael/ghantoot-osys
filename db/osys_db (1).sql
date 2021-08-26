@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2021 at 05:22 PM
+-- Generation Time: Aug 16, 2021 at 02:36 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -1676,7 +1676,32 @@ CREATE TABLE `enquiries` (
 INSERT INTO `enquiries` (`enquiry_id`, `client_id`, `date`, `details`, `enquiry_type`, `status`, `subject`, `attn`, `attachment`, `budget`) VALUES
 (18, 2, '2021-07-05 20:00:00', 'sdfs', 'maintenance', 2, 'العنوان الاول', 'musab', '', 0),
 (19, 7, '2021-07-14 20:00:00', 'سسب', 'pricing_levels', 2, 'العنوان الثاني', 'musab', '', 0),
-(28, 3, '2021-08-15 20:00:00', 'sdfsfa', 'maintenance', 0, 'العنوسببش', 'ryry', '', 45);
+(31, 3, '2021-08-07 20:00:00', 'يليل', 'pricing_levels', 0, 'aada', 'ققق', '', 0),
+(32, 4, '2021-08-09 20:00:00', 'sgsg', 'pricing_levels', 0, 'dgdfgf', 'dffd', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `enquiry_attachment`
+--
+
+CREATE TABLE `enquiry_attachment` (
+  `attachment_id` int(5) NOT NULL,
+  `attachment` varchar(250) NOT NULL,
+  `attachment_tite` varchar(250) NOT NULL,
+  `enquiry_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `enquiry_attachment`
+--
+
+INSERT INTO `enquiry_attachment` (`attachment_id`, `attachment`, `attachment_tite`, `enquiry_id`) VALUES
+(0, 'data.php', 'data.php', 31),
+(0, 'explan.docx', 'explan.docx', 31),
+(0, 'Introducing Melody General contracting.docx', 'Introducing Melody General contracting.docx', 31),
+(0, 'explan.docx', 'explan.docx', 32),
+(0, 'Introducing Melody General contracting.docx', 'Introducing Melody General contracting.docx', 32);
 
 -- --------------------------------------------------------
 
@@ -11872,7 +11897,11 @@ INSERT INTO `gen_status_change` (`status_id`, `status_action`, `status_date`, `i
 (9587, 'Enquiries_added', '2021-08-07 10:45:00', 25, 'enquiries', 228),
 (9588, 'Enquiries_added', '2021-08-07 10:47:00', 26, 'enquiries', 228),
 (9589, 'Enquiries_added', '2021-08-07 10:48:00', 27, 'enquiries', 228),
-(9590, 'Enquiries_added', '2021-08-11 10:37:00', 28, 'enquiries', 228);
+(9590, 'Enquiries_added', '2021-08-11 10:37:00', 28, 'enquiries', 228),
+(9591, 'Enquiries_added', '2021-08-16 13:08:00', 29, 'enquiries', 228),
+(9592, 'Enquiries_added', '2021-08-16 13:09:00', 30, 'enquiries', 228),
+(9593, 'Enquiries_added', '2021-08-16 13:37:00', 31, 'enquiries', 228),
+(9594, 'Enquiries_added', '2021-08-16 16:17:00', 32, 'enquiries', 228);
 
 -- --------------------------------------------------------
 
@@ -48320,7 +48349,8 @@ CREATE TABLE `z_project_level4` (
 --
 
 INSERT INTO `z_project_level4` (`level4_id`, `level4_name`, `level3_id`, `level4_description`, `type_id`, `quantity`, `complexity`, `length`, `surface_area`, `cost`) VALUES
-(146, '40x40 | 3.2', 259, '', 4, '23', 'light', '2', '3', '');
+(146, '40x40 | 3.2', 259, '', 4, '23', 'light', '2', '3', ''),
+(148, '40x40 | 3.0', 268, '', 4, '23', 'extra light', '', '', '23');
 
 -- --------------------------------------------------------
 
@@ -48949,13 +48979,13 @@ ALTER TABLE `attachments`
 -- AUTO_INCREMENT for table `enquiries`
 --
 ALTER TABLE `enquiries`
-  MODIFY `enquiry_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `enquiry_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `gen_status_change`
 --
 ALTER TABLE `gen_status_change`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9591;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9595;
 
 --
 -- AUTO_INCREMENT for table `gen_status_change_depandancy`
@@ -49195,7 +49225,7 @@ ALTER TABLE `z_project_level3_steel_template`
 -- AUTO_INCREMENT for table `z_project_level4`
 --
 ALTER TABLE `z_project_level4`
-  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `z_project_level5`
