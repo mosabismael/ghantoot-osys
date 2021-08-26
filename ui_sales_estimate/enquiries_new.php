@@ -78,9 +78,10 @@
 		if( $enquiry_id != 0 ){
 			
 			$files = array_filter($_FILES['customFile']['name']); //something like that to be used before processing files.
-			
+			$title = $_POST["attachment_tite[]"];
 			// Count # of uploaded files in array
 			$total = count($_FILES['customFile']['name']);
+			
 			//echo $total;
 			// Loop through each file
 			for( $i=0 ; $i < $total ; $i++ ) {
@@ -286,7 +287,8 @@
 			var files = event.target.files;
 			for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-      $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><div><input type='text' placeholder='Tite...' id='attachment_tite' name='attachment_tite'></div>").insertAfter('#file__input');
+      $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><div ></div>").insertAfter('#file__input');
+      $("<div ><input type='text' placeholder='Tite...' id='attachment_tite' name='attachment_tite[]'></div>").insertAfter('#file__input');
 
 			}	
 			});
