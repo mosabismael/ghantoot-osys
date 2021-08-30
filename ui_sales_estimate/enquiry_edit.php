@@ -150,12 +150,12 @@
 			margin-bottom: 20px;
 			color: #fff;
 			}
-			
 			.wrap {
 			width: 500px;
 			margin: auto;
 			position: -webkit-sticky;
-			position: sticky;
+			/* position: sticky; */
+			position: relative;
 			left: 50%;
 			transform: translate(-50%);
 			border-radius: 4px;
