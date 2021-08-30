@@ -6,19 +6,34 @@
 	$page_title=$page_description=$page_keywords=$page_author= "GOMI ERP";
 	
     $menuId = 2;
-	$subPageID = 20;
+	$subPageID = 21;
 	
 	
 	
 	
 	$client_id = 0;
 	$client_name = "";
+	$enquiry_id = $_GET['enquiry_id'];
+	if(isset( $_GET['enquiry_id'] )){
+		$enquiry_id = $_GET['enquiry_id'];
+		$qu_gen_clients_sel = "SELECT * FROM  `enquiries` WHERE `enquiry_id` = $enquiry_id";
+		$qu_gen_clients_EXE = mysqli_query($KONN, $qu_gen_clients_sel);
+		$gen_clients_DATA;
+		if(mysqli_num_rows($qu_gen_clients_EXE)){
+			$gen_clients_DATA = mysqli_fetch_assoc($qu_gen_clients_EXE);
+			$client_id = $gen_clients_DATA['client_id'];
+			$date = $gen_clients_DATA['date'];
+			$details = $gen_clients_DATA['details'];
+			$enquiry_type = $gen_clients_DATA['enquiry_type'];
+			$subject = $gen_clients_DATA['subject'];
+			$attn = $gen_clients_DATA['attn'];
+			$budget = $gen_clients_DATA['budget'];
+		}
+	}
+	
 	if( isset( $_GET['client_id'] ) ){
 		$client_id = (int) test_inputs( $_GET['client_id'] );
 	}
-	
-	
-	
 	
 	if( $client_id != 0 ){
 		//load client name
@@ -31,7 +46,6 @@
 		}
 	}
 	
-	
 	if(
 	isset($_POST['client_name']) &&
 	isset($_POST['enquiry_type']) &&
@@ -41,6 +55,8 @@
 	isset($_POST['attn_name'])){		
 		$enquiry_id = 0;
 		$client_name = test_inputs($_POST['client_name']);
+		$enquiry_id = test_inputs($_POST['enquiry_id']);
+		$budget = test_inputs($_POST['budget']);
 		$enquiry = test_inputs($_POST['enquiry_type']);
 		$date = test_inputs($_POST['date']);
 		$details = test_inputs($_POST['details']);
@@ -52,37 +68,25 @@
 		
 		
 		
-		$qu_gen_enquiry_ins = "INSERT INTO `enquiries` (
-		`client_id`, 
-		`enquiry_type`, 
-		`date`, 
-		`subject`,
-		`attn`,
-		`details`,
-		`attachment`
-		) VALUES (
-		'".$client_name."', 
-		'".$enquiry."', 
-		'".$date."', 
-		'".$subject."',
-		'".$attn."',
-		'".$details."',
-		''
-		);";
-		
+		$qu_gen_enquiry_ins = "UPDATE `enquiries` SET
+		`client_id` = '".$client_name."',
+		`enquiry_type` = '".$enquiry."', 
+		`date` = '".$date."', 
+		`subject` = '".$subject."',
+		`attn` = '".$attn."',
+		`details` = '".$details."',
+		`budget` = '".$budget."' where enquiry_id = '".$enquiry_id."'";
+		echo $qu_gen_enquiry_ins;
 		$insertStatement = mysqli_prepare($KONN,$qu_gen_enquiry_ins);
 		
 		mysqli_stmt_execute($insertStatement);
-		
-		$enquiry_id = mysqli_insert_id($KONN);
+	
 		if( $enquiry_id != 0 ){
 			
 			$files = array_filter($_FILES['customFile']['name']); //something like that to be used before processing files.
-			$title = $_POST['attachment_title'];
-
+			
 			// Count # of uploaded files in array
 			$total = count($_FILES['customFile']['name']);
-			
 			//echo $total;
 			// Loop through each file
 			for( $i=0 ; $i < $total ; $i++ ) {
@@ -98,12 +102,10 @@
 					$qu_gen_enquiry_ins = "INSERT INTO `enquiry_attachment` (
 					`enquiry_id`, 
 					`attachment_tite`, 
-					`title`,
 					`attachment`
 					) VALUES (
 					'".$enquiry_id."', 
 					'".$files[$i]."', 
-					'".$title."', 
 					'".$files[$i]."'
 					);";
 					//echo $qu_gen_enquiry_ins;
@@ -112,13 +114,14 @@
 					mysqli_stmt_execute($insertStatement);
 				}
 			}
-		//	die();
+			//	die();
 			
-			if( insert_state_change($KONN, 'Enquiries_added', $enquiry_id, "enquiries", $EMPLOYEE_ID) ){
+			if( insert_state_change($KONN, 'Enquiries_edited', $enquiry_id, "enquiries", $EMPLOYEE_ID) ){
 				header("location: enquiries_List.php");
 				die();
 			}
-			
+			header("location: enquiries_List.php");
+				die();
 			
 			
 		}	
@@ -152,8 +155,7 @@
 			width: 500px;
 			margin: auto;
 			position: -webkit-sticky;
-			/* position: sticky; */
-			position: relative;
+			position: sticky;
 			left: 50%;
 			transform: translate(-50%);
 			border-radius: 4px;
@@ -207,10 +209,7 @@
 			.file__value:hover:after {
 			color: white;
 			}
-			.file__value:after {
-			content: "X";
-			cursor: pointer;
-			}
+			
 			.file__value:after:hover {
 			color: white;
 			}
@@ -282,7 +281,6 @@
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 		
 		<script>
-			
 			$(document).ready(function() {
 			
 			// ------------  File upload BEGIN ------------
@@ -290,9 +288,8 @@
 			var files = event.target.files;
 			for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-      $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><div ></div>").insertAfter('#file__input');
-      $("<div ><input type='text' placeholder='Tite...' id='attachment_title' name='attachment_title'></div>").insertAfter('#file__input');
-
+			$("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div>").insertAfter('#file__input');
+			
 			}	
 			});
 			//Click to remove item
@@ -319,13 +316,14 @@
 				
 				
 				<form 
-				id="add-new-enquiries-form" 
-				id-modal="add_new_enquiries" 
+				id="edit-new-enquiries-form" 
+				id-modal="edit_new_enquiries" 
 				class="boxes-holder" 
-				api="<?=api_root; ?>sales_projects/add_new_enquiries.php"  method="post" enctype="multipart/form-data" >
+				method="post" enctype="multipart/form-data" >
 					<div class="col-33">
 						
 						<div class="form-grp">
+							<input type="hidden" value ="<?=$enquiry_id?>" name = "enquiry_id">
 							<label class="lbl_class"><?=lang('To_Client:', 'ARR', 1); ?></label>
 							<select class="frmData" type="text" 
 							id="new-client_name" 
@@ -342,9 +340,17 @@
 										$q_exe = mysqli_query($KONN, $q);
 										if(mysqli_num_rows($q_exe) > 0){
 											while($record = mysqli_fetch_assoc($q_exe)){
-											?>
-											<option value="<?=$record['client_id']; ?>"><?=$record['client_name']; ?></option>
-											<?php
+												if($client_id == $record['client_id']){
+												?>
+												<option value="<?=$record['client_id']; ?>" selected><?=$record['client_name']; ?></option>
+												<?php
+												}
+												else{
+												?>
+												<option value="<?=$record['client_id']; ?>"><?=$record['client_name']; ?></option>
+												
+												<?php
+												}
 											}
 										}
 									?>
@@ -360,7 +366,8 @@
 							name="attn_name" 
 							req="1" 
 							den="" 
-							alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>" required>
+							alerter="<?=lang("Please_Check_attn_name", "AAR"); ?>" 
+							value = <?=$attn?> required>
 						</div>
 					</div>
 					<div class="col-30">
@@ -371,7 +378,8 @@
 							name="date" 
 							req="1" 
 							den="0" 
-							alerter="<?=lang("Please_Check_date", "AAR"); ?>" required>
+							alerter="<?=lang("Please_Check_date", "AAR"); ?>" 
+							value = <?=$date?> required>
 							
 							</input>
 						</div>
@@ -388,7 +396,8 @@
 							name="subject_name" 
 							req="1" 
 							den="" 
-							alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>" required>
+							alerter="<?=lang("Please_Check_subject_name", "AAR"); ?>" 
+							value = <?=$subject?> required>
 						</div>
 					</div>
 					<div class="col-33">
@@ -400,7 +409,8 @@
 							name="budget" 
 							req="1" 
 							den="" 
-							alerter="<?=lang("Please_Check_budget", "AAR"); ?>" required>
+							alerter="<?=lang("Please_Check_budget", "AAR"); ?>" 
+							value = <?=$budget?> required>
 						</div>
 					</div>
 					<div class="col-100">
@@ -413,7 +423,8 @@
 							req="1" 
 							den="" 
 							style="height:200px"
-							alerter="<?=lang("Please_Check_details", "AAR"); ?> " required></textarea>
+							alerter="<?=lang("Please_Check_details", "AAR"); ?> " 
+							required><?=$details?></textarea>
 							
 						</div>
 						
@@ -422,43 +433,71 @@
 							<h1>Choose a attachments</h1>
 							<div class="file form-grp">
 								<div class="file__input form-grp" id="file__input">
-									<input class="file__input--file frmData" id = "customFile" name="customFile[]" type="file" multiple="multiple" />
+									<input class="file__input--file frmData" id = "customFile" name="customFile[]" type="file" multiple="multiple" value = "xyz"/>
 									<label class="file__input--label" for="customFile" data-text-btn="Upload">Add file:</label>
+									<?php
+										$q = "SELECT * FROM `enquiry_attachment` where enquiry_id = $enquiry_id";
+										$q_exe = mysqli_query($KONN, $q);
+										if(mysqli_num_rows($q_exe) > 0){
+											while($record = mysqli_fetch_assoc($q_exe)){
+											?>
+											<div class='file__value'>
+												<div class='file__value--text'><?=$record['attachment']?></div>
+												<div style = "cursor:pointer" onclick = "remove_attachment(<?=$record['attachment_id']?>)" >X</div>
+											</div>
+											<?php
+											}
+										}
+									?>
 								</div>
+								
 							</div>
 							
-						</div>
-						
-						<div class="col-100">
+							</div>
+							
+							<div class="col-100">
 							<div class="form-grp">
-								<label class="lbl_class"><?=lang('Enquiry type', 'ARR', 1); ?></label>
-								<select class="frmData" type="text" 
-								id="new-enquiry_type" 
-								name="enquiry_type" 
-								alerter="<?=lang("Please_Check_enquiry_type", "AAR"); ?>">
-									<option value="pricing levels">Pricing levels</option>
-									<option value="maintenance">Maintenance</option>
-									<option value="testing">Testing</option>
-									<option value="complaints">Complaints</option>
-								</select>
-								
+							<label class="lbl_class"><?=lang('Enquiry type', 'ARR', 1); ?></label>
+											<select class="frmData" type="text" 
+											id="new-enquiry_type" 
+											name="enquiry_type" 
+											alerter="<?=lang("Please_Check_enquiry_type", "AAR"); ?>">
+												<option value="pricing levels" <?=$enquiry_type == 'pricing levels' ? ' selected="selected"' : '';?>>Pricing levels</option>
+												<option value="maintenance" <?=$enquiry_type == 'maintenance' ? ' selected="selected"' : '';?>>Maintenance</option>
+												<option value="testing" <?=$enquiry_type == 'testing' ? ' selected="selected"' : '';?>>Testing</option>
+												<option value="complaints" <?=$enquiry_type == 'complaints' ? ' selected="selected"' : '';?>>Complaints</option>
+											</select>
+											
 							</div>
 						</div>
 						
 						
 						<div class="zero"></div>
 						
-						<div class="col-100 text-center" id="add_new_enquiries">
+						<div class="col-100 text-center" id="edit_new_enquiries">
 							<!-- <div class="form-alerts"></div> -->
 							<a  href="enquiries_List.php"><button class="btn btn-primary" type="button" onClick="enquiries_List.php"><?=lang('cancel'); ?></button></a>
-							<button type="submit"  class="btn btn-primary"><?=lang("CREATE_ENQUIRY", "AAR"); ?></button>
+							<button type="submit"  class="btn btn-primary"><?=lang("EDIT_ENQUIRY", "AAR"); ?></button>
 							
 						</div>
 						
 					</form>
 				</div>
 			</div>
-			
+			<script>
+			function remove_attachment(id){
+				$.ajax({
+					type: "GET",
+					url: "delete_attachment.php",
+					data: {'attachment_id':id},
+					dataType: "json",
+					success: function(response) {
+						alert("deleted");
+					}
+				});
+				
+			}
+			</script>
 			<?php
 				//PAGE DATA END   ----------------------------------------------///---------------------------------
 				include('app/footer.php');

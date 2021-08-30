@@ -210,6 +210,7 @@ if ($client_id != 0) {
 						<th><input type="text" class="form-control" placeholder="Subject" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Budget" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Attachments" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Attachments name" disabled></th>
 						<th>
 							<p class="form-control">Print</p>
 						</th>
@@ -310,13 +311,16 @@ if ($client_id != 0) {
 									if (mysqli_num_rows($qu_enquiries_EXE1)) {
 										while ($enquiries_REC1 = mysqli_fetch_assoc($qu_enquiries_EXE1)) {
 											$attachment  = $enquiries_REC1['attachment'];
+											$title  = $enquiries_REC1['title'];
+
 									?>
-											<a href="fileupload/<?= $attachment ?>" target='_blank'><input type="button" value="<?= $attachment ?>" /><a>
+											<p>Title: <?= $title ?></p> <a href="fileupload/<?= $attachment ?>" target='_blank'><input type="button" value="<?= $attachment ?>" /><a></br>
 											<?php
 										}
 									}
 											?>
 								</td>
+								
 								<td><button onclick="window.print()">Print</button></td>
 
 								<td><?= $status; ?></td>

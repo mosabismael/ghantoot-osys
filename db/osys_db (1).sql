@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2021 at 02:36 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Aug 30, 2021 at 09:29 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1674,10 +1674,7 @@ CREATE TABLE `enquiries` (
 --
 
 INSERT INTO `enquiries` (`enquiry_id`, `client_id`, `date`, `details`, `enquiry_type`, `status`, `subject`, `attn`, `attachment`, `budget`) VALUES
-(18, 2, '2021-07-05 20:00:00', 'sdfs', 'maintenance', 2, 'العنوان الاول', 'musab', '', 0),
-(19, 7, '2021-07-14 20:00:00', 'سسب', 'pricing_levels', 2, 'العنوان الثاني', 'musab', '', 0),
-(31, 3, '2021-08-07 20:00:00', 'يليل', 'pricing_levels', 0, 'aada', 'ققق', '', 0),
-(32, 4, '2021-08-09 20:00:00', 'sgsg', 'pricing_levels', 0, 'dgdfgf', 'dffd', '', 0);
+(62, 0, '2021-08-11 20:00:00', 'sfsfsf', 'pricing levels', 0, 'العنوان الاول', 'musab', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1689,19 +1686,17 @@ CREATE TABLE `enquiry_attachment` (
   `attachment_id` int(5) NOT NULL,
   `attachment` varchar(250) NOT NULL,
   `attachment_tite` varchar(250) NOT NULL,
-  `enquiry_id` int(5) NOT NULL
+  `enquiry_id` int(5) NOT NULL,
+  `title` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `enquiry_attachment`
 --
 
-INSERT INTO `enquiry_attachment` (`attachment_id`, `attachment`, `attachment_tite`, `enquiry_id`) VALUES
-(0, 'data.php', 'data.php', 31),
-(0, 'explan.docx', 'explan.docx', 31),
-(0, 'Introducing Melody General contracting.docx', 'Introducing Melody General contracting.docx', 31),
-(0, 'explan.docx', 'explan.docx', 32),
-(0, 'Introducing Melody General contracting.docx', 'Introducing Melody General contracting.docx', 32);
+INSERT INTO `enquiry_attachment` (`attachment_id`, `attachment`, `attachment_tite`, `enquiry_id`, `title`) VALUES
+(0, 'enquiry_edit.php', 'enquiry_edit.php', 62, 'test2'),
+(0, 'delete_enquiry.php', 'delete_enquiry.php', 62, 'test2');
 
 -- --------------------------------------------------------
 
@@ -11901,7 +11896,39 @@ INSERT INTO `gen_status_change` (`status_id`, `status_action`, `status_date`, `i
 (9591, 'Enquiries_added', '2021-08-16 13:08:00', 29, 'enquiries', 228),
 (9592, 'Enquiries_added', '2021-08-16 13:09:00', 30, 'enquiries', 228),
 (9593, 'Enquiries_added', '2021-08-16 13:37:00', 31, 'enquiries', 228),
-(9594, 'Enquiries_added', '2021-08-16 16:17:00', 32, 'enquiries', 228);
+(9594, 'Enquiries_added', '2021-08-16 16:17:00', 32, 'enquiries', 228),
+(9595, 'Enquiries_added', '2021-08-26 10:43:00', 33, 'enquiries', 228),
+(9596, 'Enquiries_added', '2021-08-26 11:06:00', 34, 'enquiries', 228),
+(9597, 'Enquiries_edited', '2021-08-26 11:08:00', 34, 'enquiries', 228),
+(9598, 'Enquiries_added', '2021-08-26 11:48:00', 35, 'enquiries', 228),
+(9599, 'Enquiries_added', '2021-08-26 11:57:00', 36, 'enquiries', 228),
+(9600, 'Enquiries_edited', '2021-08-26 11:57:00', 36, 'enquiries', 228),
+(9601, 'Enquiries_added', '2021-08-26 12:01:00', 37, 'enquiries', 228),
+(9602, 'Enquiries_added', '2021-08-26 12:14:00', 39, 'enquiries', 228),
+(9603, 'Enquiries_added', '2021-08-26 12:17:00', 40, 'enquiries', 228),
+(9604, 'Enquiries_added', '2021-08-30 10:17:00', 41, 'enquiries', 228),
+(9605, 'Enquiries_added', '2021-08-30 10:19:00', 42, 'enquiries', 228),
+(9606, 'Enquiries_added', '2021-08-30 10:33:00', 43, 'enquiries', 228),
+(9607, 'Enquiries_added', '2021-08-30 10:34:00', 44, 'enquiries', 228),
+(9608, 'Enquiries_added', '2021-08-30 10:35:00', 45, 'enquiries', 228),
+(9609, 'Enquiries_added', '2021-08-30 10:36:00', 46, 'enquiries', 228),
+(9610, 'Enquiries_added', '2021-08-30 10:37:00', 47, 'enquiries', 228),
+(9611, 'Enquiries_edited', '2021-08-30 10:37:00', 47, 'enquiries', 228),
+(9612, 'Enquiries_added', '2021-08-30 10:38:00', 48, 'enquiries', 228),
+(9613, 'Enquiries_added', '2021-08-30 10:38:00', 49, 'enquiries', 228),
+(9614, 'Enquiries_added', '2021-08-30 10:51:00', 50, 'enquiries', 228),
+(9615, 'Enquiries_added', '2021-08-30 10:52:00', 51, 'enquiries', 228),
+(9616, 'Enquiries_added', '2021-08-30 11:05:00', 52, 'enquiries', 228),
+(9617, 'Enquiries_added', '2021-08-30 11:06:00', 53, 'enquiries', 228),
+(9618, 'Enquiries_added', '2021-08-30 11:07:00', 54, 'enquiries', 228),
+(9619, 'Enquiries_added', '2021-08-30 11:08:00', 55, 'enquiries', 228),
+(9620, 'Enquiries_added', '2021-08-30 11:09:00', 56, 'enquiries', 228),
+(9621, 'Enquiries_added', '2021-08-30 11:14:00', 57, 'enquiries', 228),
+(9622, 'Enquiries_added', '2021-08-30 11:16:00', 58, 'enquiries', 228),
+(9623, 'Enquiries_added', '2021-08-30 11:17:00', 59, 'enquiries', 228),
+(9624, 'Enquiries_added', '2021-08-30 11:17:00', 60, 'enquiries', 228),
+(9625, 'Enquiries_added', '2021-08-30 11:18:00', 61, 'enquiries', 228),
+(9626, 'Enquiries_added', '2021-08-30 11:28:00', 62, 'enquiries', 228);
 
 -- --------------------------------------------------------
 
@@ -43573,7 +43600,21 @@ INSERT INTO `z_boq` (`boq_id`, `boq_material_name`, `level1_id`, `level2_id`, `l
 (705, '', 267, 464, 259, 59, 0, 1, 86),
 (706, '', 267, 467, 279, 61, 0, 1, 86),
 (707, '', 272, 478, 268, 83, 0, 1, 87),
-(708, '', 267, 468, 0, 0, 0, 1, 86);
+(708, '', 267, 468, 0, 0, 0, 1, 86),
+(709, 'Steel fabrication', 278, 500, 0, 0, 0, 0, 88),
+(710, 'Painting', 278, 501, 287, 0, 0, 0, 88),
+(711, 'Blasting', 278, 501, 288, 0, 0, 0, 88),
+(712, 'Steel Assembly and Erection', 278, 502, 0, 0, 0, 0, 88),
+(713, 'Panel Erection', 278, 503, 0, 0, 0, 0, 88),
+(714, 'Metal decking Fabrication', 278, 504, 0, 0, 0, 0, 88),
+(715, 'Metal Deck Erection', 278, 505, 0, 0, 0, 0, 88),
+(716, 'Steel fabrication', 283, 514, 0, 0, 0, 0, 89),
+(717, 'Painting', 283, 515, 296, 0, 0, 0, 89),
+(718, 'Blasting', 283, 515, 297, 0, 0, 0, 89),
+(719, 'Steel Assembly and Erection', 283, 516, 0, 0, 0, 0, 89),
+(720, 'Panel Erection', 283, 517, 0, 0, 0, 0, 89),
+(721, 'Metal decking Fabrication', 283, 518, 0, 0, 0, 0, 89),
+(722, 'Metal Deck Erection', 283, 519, 0, 0, 0, 0, 89);
 
 -- --------------------------------------------------------
 
@@ -47107,7 +47148,19 @@ INSERT INTO `z_manhour_detail` (`manhour_detail_id`, `name`, `weight`, `manhour`
 (1363, 'Heavy', 0, 9, 10, 90, 0, '', 0, '', 0, 15, 694),
 (1364, 'Medium', 0, 9, 12, 108, 0, '', 0, '', 0, 15, 694),
 (1365, 'Extra Heavy', 0, 8, 10, 75, 0, '', 0, '', 0, 15, 694),
-(1366, 'Jumbo', 0, 9, 11, 99, 0, '', 0, '', 0, 15, 694);
+(1366, 'Jumbo', 0, 9, 11, 99, 0, '', 0, '', 0, 15, 694),
+(1367, 'Light', 0, 10, 12, 120, 0, '', 0, '', 0, 15, 709),
+(1368, 'Extra Light', 0, 11, 12, 132, 0, '', 0, '', 0, 15, 709),
+(1369, 'Heavy', 0, 9, 10, 90, 0, '', 0, '', 0, 15, 709),
+(1370, 'Medium', 0, 9, 12, 108, 0, '', 0, '', 0, 15, 709),
+(1371, 'Extra Heavy', 0, 8, 10, 75, 0, '', 0, '', 0, 15, 709),
+(1372, 'Jumbo', 0, 9, 11, 99, 0, '', 0, '', 0, 15, 709),
+(1373, 'Light', 0, 10, 12, 120, 0, '', 0, '', 0, 15, 716),
+(1374, 'Extra Light', 0, 11, 12, 132, 0, '', 0, '', 0, 15, 716),
+(1375, 'Heavy', 0, 9, 10, 90, 0, '', 0, '', 0, 15, 716),
+(1376, 'Medium', 0, 9, 12, 108, 0, '', 0, '', 0, 15, 716),
+(1377, 'Extra Heavy', 0, 8, 10, 75, 0, '', 0, '', 0, 15, 716),
+(1378, 'Jumbo', 0, 9, 11, 99, 0, '', 0, '', 0, 15, 716);
 
 -- --------------------------------------------------------
 
@@ -47155,7 +47208,9 @@ INSERT INTO `z_project` (`project_id`, `project_name`, `project_decsription`, `p
 (57, 'qwetry', '', 'wqerty', 'draft', '2020-11-17 00:00:00', 4, 229, 'steel', 0, 0),
 (60, 'testlast', '', 'qwerty', 'draft', '2020-11-19 00:00:00', 3, 229, 'steel', 0, 32),
 (86, 'test one', '', '', 'draft', '2021-07-10 00:00:00', 2, 228, 'steel', 18, 29),
-(87, '', '', '', 'draft', '2021-07-24 00:00:00', 7, 228, 'steel', 19, 0);
+(87, '', '', '', 'draft', '2021-07-24 00:00:00', 7, 228, 'steel', 19, 0),
+(88, '', '', '', 'draft', '2021-08-22 00:00:00', 3, 228, 'steel', 31, 0),
+(89, '', '', '', 'draft', '2021-08-26 00:00:00', 1, 228, 'steel', 33, 0);
 
 -- --------------------------------------------------------
 
@@ -47445,7 +47500,17 @@ INSERT INTO `z_project_level1` (`level1_id`, `level1_name`, `project_id`, `level
 (273, 'ManPower', 87, '', 1),
 (274, 'Tools and Equipment', 87, '', 1),
 (275, 'Services and Sub Contractor', 87, '', 1),
-(276, 'Others', 87, '', 1);
+(276, 'Others', 87, '', 1),
+(277, 'Material', 88, '', 1),
+(278, 'ManPower', 88, '', 1),
+(279, 'Tools and Equipment', 88, '', 1),
+(280, 'Services and Sub Contractor', 88, '', 1),
+(281, 'Others', 88, '', 1),
+(282, 'Material', 89, '', 1),
+(283, 'ManPower', 89, '', 1),
+(284, 'Tools and Equipment', 89, '', 1),
+(285, 'Services and Sub Contractor', 89, '', 1),
+(286, 'Others', 89, '', 1);
 
 -- --------------------------------------------------------
 
@@ -47959,7 +48024,35 @@ INSERT INTO `z_project_level2` (`level2_id`, `level2_name`, `level1_id`, `level2
 (488, 'Steel Assembly and Erection', 273, '', 2, 0, 0, 1),
 (489, 'Panel Erection', 273, '', 2, 0, 0, 1),
 (490, 'Metal decking Fabrication', 273, '', 2, 0, 0, 1),
-(491, 'Metal Deck Erection', 273, '', 2, 0, 0, 1);
+(491, 'Metal Deck Erection', 273, '', 2, 0, 0, 1),
+(492, 'Steel', 277, '', 4, 0, 0, 1),
+(493, 'Consumables', 277, '', 4, 0, 0, 1),
+(494, 'Surface Treatment', 277, '', 4, 0, 0, 1),
+(495, 'Fasteners', 277, '', 4, 0, 0, 1),
+(496, 'Panels', 277, '', 4, 0, 0, 1),
+(497, 'Metal decking Fabrication', 277, '', 4, 0, 0, 1),
+(498, 'Metal Deck Erection', 277, '', 4, 0, 0, 1),
+(499, 'Studs', 277, '', 4, 0, 0, 1),
+(500, 'Steel fabrication', 278, '', 2, 0, 0, 1),
+(501, 'Steel Surface Treatment', 278, '', 2, 0, 0, 1),
+(502, 'Steel Assembly and Erection', 278, '', 2, 0, 0, 1),
+(503, 'Panel Erection', 278, '', 2, 0, 0, 1),
+(504, 'Metal decking Fabrication', 278, '', 2, 0, 0, 1),
+(505, 'Metal Deck Erection', 278, '', 2, 0, 0, 1),
+(506, 'Steel', 282, '', 4, 0, 0, 1),
+(507, 'Consumables', 282, '', 4, 0, 0, 1),
+(508, 'Surface Treatment', 282, '', 4, 0, 0, 1),
+(509, 'Fasteners', 282, '', 4, 0, 0, 1),
+(510, 'Panels', 282, '', 4, 0, 0, 1),
+(511, 'Metal decking Fabrication', 282, '', 4, 0, 0, 1),
+(512, 'Metal Deck Erection', 282, '', 4, 0, 0, 1),
+(513, 'Studs', 282, '', 4, 0, 0, 1),
+(514, 'Steel fabrication', 283, '', 2, 0, 0, 1),
+(515, 'Steel Surface Treatment', 283, '', 2, 0, 0, 1),
+(516, 'Steel Assembly and Erection', 283, '', 2, 0, 0, 1),
+(517, 'Panel Erection', 283, '', 2, 0, 0, 1),
+(518, 'Metal decking Fabrication', 283, '', 2, 0, 0, 1),
+(519, 'Metal Deck Erection', 283, '', 2, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -48298,7 +48391,25 @@ INSERT INTO `z_project_level3` (`level3_id`, `level3_name`, `level2_id`, `level3
 (276, 'Blasting', 487, '', 2),
 (277, 'Identity', 465, 'gggg', 2),
 (278, 'Identity', 466, 'gggg', 3),
-(279, 'mosab', 467, 'gggg', 2);
+(279, 'mosab', 467, 'gggg', 2),
+(280, 'UB/UC', 492, '', 4),
+(281, 'Angles', 492, '', 4),
+(282, 'Plates', 492, '', 4),
+(283, 'SHS/RHS', 492, '', 4),
+(284, 'Pipes', 492, '', 4),
+(285, 'HB/IB/UP', 492, '', 4),
+(286, 'Chequered Plates', 492, '', 4),
+(287, 'Painting', 501, '', 2),
+(288, 'Blasting', 501, '', 2),
+(289, 'UB/UC', 506, '', 4),
+(290, 'Angles', 506, '', 4),
+(291, 'Plates', 506, '', 4),
+(292, 'SHS/RHS', 506, '', 4),
+(293, 'Pipes', 506, '', 4),
+(294, 'HB/IB/UP', 506, '', 4),
+(295, 'Chequered Plates', 506, '', 4),
+(296, 'Painting', 515, '', 2),
+(297, 'Blasting', 515, '', 2);
 
 -- --------------------------------------------------------
 
@@ -48350,7 +48461,9 @@ CREATE TABLE `z_project_level4` (
 
 INSERT INTO `z_project_level4` (`level4_id`, `level4_name`, `level3_id`, `level4_description`, `type_id`, `quantity`, `complexity`, `length`, `surface_area`, `cost`) VALUES
 (146, '40x40 | 3.2', 259, '', 4, '23', 'light', '2', '3', ''),
-(148, '40x40 | 3.0', 268, '', 4, '23', 'extra light', '', '', '23');
+(148, '40x40 | 3.0', 268, '', 4, '23', 'extra light', '', '', '23'),
+(151, '40x40 | 3.6', 280, '', 4, '44', 'extra light', '4', '5', '4'),
+(152, '40x40 | 2.5', 289, '', 4, '23', 'extra light', '2', '3', '23');
 
 -- --------------------------------------------------------
 
@@ -48979,13 +49092,13 @@ ALTER TABLE `attachments`
 -- AUTO_INCREMENT for table `enquiries`
 --
 ALTER TABLE `enquiries`
-  MODIFY `enquiry_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `enquiry_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `gen_status_change`
 --
 ALTER TABLE `gen_status_change`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9595;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9627;
 
 --
 -- AUTO_INCREMENT for table `gen_status_change_depandancy`
@@ -49129,7 +49242,7 @@ ALTER TABLE `users_notifications`
 -- AUTO_INCREMENT for table `z_boq`
 --
 ALTER TABLE `z_boq`
-  MODIFY `boq_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=709;
+  MODIFY `boq_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=723;
 
 --
 -- AUTO_INCREMENT for table `z_boq_details`
@@ -49165,13 +49278,13 @@ ALTER TABLE `z_levels_type`
 -- AUTO_INCREMENT for table `z_manhour_detail`
 --
 ALTER TABLE `z_manhour_detail`
-  MODIFY `manhour_detail_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1367;
+  MODIFY `manhour_detail_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1379;
 
 --
 -- AUTO_INCREMENT for table `z_project`
 --
 ALTER TABLE `z_project`
-  MODIFY `project_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `project_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `z_project_leve3_sst_template`
@@ -49183,7 +49296,7 @@ ALTER TABLE `z_project_leve3_sst_template`
 -- AUTO_INCREMENT for table `z_project_level1`
 --
 ALTER TABLE `z_project_level1`
-  MODIFY `level1_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=277;
+  MODIFY `level1_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
 
 --
 -- AUTO_INCREMENT for table `z_project_level1_template`
@@ -49195,7 +49308,7 @@ ALTER TABLE `z_project_level1_template`
 -- AUTO_INCREMENT for table `z_project_level2`
 --
 ALTER TABLE `z_project_level2`
-  MODIFY `level2_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=492;
+  MODIFY `level2_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=520;
 
 --
 -- AUTO_INCREMENT for table `z_project_level2_boq_sf_template`
@@ -49213,7 +49326,7 @@ ALTER TABLE `z_project_level2_material_template`
 -- AUTO_INCREMENT for table `z_project_level3`
 --
 ALTER TABLE `z_project_level3`
-  MODIFY `level3_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
+  MODIFY `level3_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=298;
 
 --
 -- AUTO_INCREMENT for table `z_project_level3_steel_template`
@@ -49225,7 +49338,7 @@ ALTER TABLE `z_project_level3_steel_template`
 -- AUTO_INCREMENT for table `z_project_level4`
 --
 ALTER TABLE `z_project_level4`
-  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `level4_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT for table `z_project_level5`
