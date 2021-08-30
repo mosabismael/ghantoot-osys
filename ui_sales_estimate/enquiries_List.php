@@ -210,7 +210,6 @@ if ($client_id != 0) {
 						<th><input type="text" class="form-control" placeholder="Subject" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Budget" disabled></th>
 						<th><input type="text" class="form-control" placeholder="Attachments" disabled></th>
-						<th><input type="text" class="form-control" placeholder="Attachments name" disabled></th>
 						<th>
 							<p class="form-control">Print</p>
 						</th>
