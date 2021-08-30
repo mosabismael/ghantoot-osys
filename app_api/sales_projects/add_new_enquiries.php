@@ -26,7 +26,7 @@
 			$attn = test_inputs($_POST['attn_name']);
 			$budget = test_inputs($_POST['budget']);
 			die('0|7wiu');
-
+			print($budget);
 
 			$qu_gen_enquiry_ins = "INSERT INTO `enquiries` (
 			`client_id`, 
@@ -34,16 +34,16 @@
 			`date`, 
 			`subject`,
 			`attn`,
-			`details`,
-			`budget`
+			`budget`,
+			`details`
 			) VALUES (
 			'".$client_name."', 
 			'".$enquiry."', 
 			'".$date."', 
 			'".$subject."',
 			'".$attn."',
-			'".$details."',
-			'".$budget."'
+			'".$budget."',
+			'".$details."'
 			);";
 			$insertStatement = mysqli_prepare($KONN,$qu_gen_enquiry_ins);
 			
