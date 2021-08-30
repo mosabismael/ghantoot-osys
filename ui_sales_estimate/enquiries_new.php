@@ -79,7 +79,9 @@
 			
 			$files = array_filter($_FILES['customFile']['name']); //something like that to be used before processing files.
 			$title = $_POST['attachment_title'];
-
+			foreach( $title as $v ) {
+				print $v;
+		}
 			// Count # of uploaded files in array
 			$total = count($_FILES['customFile']['name']);
 			
@@ -103,7 +105,7 @@
 					) VALUES (
 					'".$enquiry_id."', 
 					'".$files[$i]."', 
-					'".$title."', 
+					'".$title[$i]."', 
 					'".$files[$i]."'
 					);";
 					//echo $qu_gen_enquiry_ins;
@@ -291,7 +293,7 @@
 			for (var i = 0; i < files.length; i++) {
 			var file = files[i];
       $("<div class='file__value'><div class='file__value--text'>" + file.name + "</div><div class='file__value--remove' data-id='" + file.name + "' ></div></div><div ></div>").insertAfter('#file__input');
-      $("<div ><input type='text' placeholder='Tite...' id='attachment_title' name='attachment_title'></div>").insertAfter('#file__input');
+      $("<div ><input type='text' placeholder='Tite...' id='attachment_title' name='attachment_title[]'></div>").insertAfter('#file__input');
 
 			}	
 			});
